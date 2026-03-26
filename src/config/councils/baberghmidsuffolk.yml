@@ -4,4 +4,5 @@ platform: idox
 base_url: "https://planning.baberghmidsuffolk.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-# Combined planning service covering Babergh and Mid Suffolk
+rate_limit_delay: 3.0
+# Combined planning service covering Babergh and Mid Suffolk - slow server needs longer timeout

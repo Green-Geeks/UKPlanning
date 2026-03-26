@@ -29,22 +29,22 @@ IDOX_SELECTORS = {
 }
 
 IDOX_DATES_SELECTORS = {
-    "date_received": "th:-soup-contains('Application Received') + td",
-    "date_validated": "th:-soup-contains('Validated') + td",
-    "expiry_date": "th:-soup-contains('Expiry Date') + td",
-    "target_date": "th:-soup-contains('Target Date') + td",
-    "decision_date": "th:-soup-contains('Decision Made Date') + td",
-    "consultation_expiry": "th:-soup-contains('Standard Consultation Expiry') + td",
+    "date_received": ["th:-soup-contains('Application Received') + td", "th:-soup-contains('Received Date') + td"],
+    "date_validated": ["th:-soup-contains('Validated') + td", "th:-soup-contains('Registration Date') + td"],
+    "expiry_date": ["th:-soup-contains('Expiry Date') + td"],
+    "target_date": ["th:-soup-contains('Target Date') + td"],
+    "decision_date": ["th:-soup-contains('Decision Made Date') + td", "th:-soup-contains('Decision Issued Date') + td"],
+    "consultation_expiry": ["th:-soup-contains('Standard Consultation Expiry') + td"],
 }
 
 IDOX_INFO_SELECTORS = {
-    "application_type": "th:-soup-contains('Application Type') + td",
-    "case_officer": "th:-soup-contains('Case Officer') + td",
-    "parish": "th:-soup-contains('Parish') + td",
-    "ward": "th:-soup-contains('Ward') + td",
-    "applicant_name": "th:-soup-contains('Applicant Name') + td",
-    "agent_name": "th:-soup-contains('Agent Name') + td",
-    "decision_level": "th:-soup-contains('Decision Level') + td",
+    "application_type": ["th:-soup-contains('Application Type') + td"],
+    "case_officer": ["th:-soup-contains('Case Officer') + td"],
+    "parish": ["th:-soup-contains('Parish') + td"],
+    "ward": ["th:-soup-contains('Ward') + td"],
+    "applicant_name": ["th:-soup-contains('Applicant Name') + td", "th:-soup-contains('Applicant') + td"],
+    "agent_name": ["th:-soup-contains('Agent Name') + td"],
+    "decision_level": ["th:-soup-contains('Decision Level') + td", "th:-soup-contains('Actual Decision Level') + td"],
 }
 
 

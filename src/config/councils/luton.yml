@@ -1,7 +1,7 @@
 name: Luton
 authority_code: luton
-platform: idox_crumb
-base_url: "http://www.eplan.luton.gov.uk/PublicAccess/tdc/DcApplication"
+platform: idox
+base_url: "https://planning.luton.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-# Was Public Access
+# Migrated from eplan.luton.gov.uk to planning.luton.gov.uk, now standard Idox
