@@ -119,5 +119,49 @@ class IdoxScraper(BaseScraper):
         return results
 
     async def fetch_detail(self, application: ApplicationSummary) -> ApplicationDetail:
-        """Fetch full details — stub, implemented in next task."""
-        raise NotImplementedError("fetch_detail not yet implemented")
+        """Fetch full application details from summary, dates, and info tabs."""
+        summary_html = await self._client.get_html(application.url)
+        summary_data = self._parser.extract(summary_html, self._summary_selectors)
+
+        dates_data = {}
+        dates_el = self._parser.select_one(summary_html, self._search_selectors["dates_tab"])
+        if dates_el:
+            dates_url = urljoin(self.config.base_url, dates_el["href"])
+            dates_html = await self._client.get_html(dates_url)
+            dates_data = self._parser.extract(dates_html, self._dates_selectors)
+
+        info_data = {}
+        info_el = self._parser.select_one(summary_html, self._search_selectors["info_tab"])
+        if info_el:
+            info_url = urljoin(self.config.base_url, info_el["href"])
+            info_html = await self._client.get_html(info_url)
+            info_data = self._parser.extract(info_html, self._info_selectors)
+
+        raw = {k: v for d in (summary_data, dates_data, info_data) for k, v in d.items() if v is not None}
+
+        return ApplicationDetail(
+            reference=summary_data.get("reference") or application.uid,
+            address=summary_data.get("address") or "",
+            description=summary_data.get("description") or "",
+            url=application.url,
+            application_type=info_data.get("application_type"),
+            status=summary_data.get("status"),
+            date_received=self._parse_date(dates_data.get("date_received")),
+            date_validated=self._parse_date(dates_data.get("date_validated")),
+            ward=info_data.get("ward"),
+            parish=info_data.get("parish"),
+            applicant_name=info_data.get("applicant_name"),
+            case_officer=info_data.get("case_officer"),
+            raw_data=raw,
+        )
+
+    @staticmethod
+    def _parse_date(date_str):
+        """Parse Idox date strings like 'Mon 15 Jan 2024' or '15/01/2024'."""
+        if not date_str:
+            return None
+        from dateutil import parser as dateutil_parser
+        try:
+            return dateutil_parser.parse(date_str, dayfirst=True).date()
+        except (ValueError, TypeError):
+            return None

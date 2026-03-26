@@ -148,3 +148,59 @@ class TestIdoxGatherIds:
 
         results = await scraper.gather_ids(date(2024, 1, 1), date(2024, 1, 14))
         assert results == []
+
+
+from src.core.scraper import ApplicationDetail
+
+SUMMARY_HTML = (FIXTURES / "idox_detail_summary.html").read_text()
+DATES_HTML = (FIXTURES / "idox_detail_dates.html").read_text()
+INFO_HTML = (FIXTURES / "idox_detail_info.html").read_text()
+
+
+class TestIdoxFetchDetail:
+    async def test_fetch_detail_full(self):
+        scraper = IdoxScraper(config=IDOX_CONFIG)
+        mock_client = AsyncMock()
+        mock_client.get_html = AsyncMock(side_effect=[SUMMARY_HTML, DATES_HTML, INFO_HTML])
+        scraper._client = mock_client
+
+        app = ApplicationSummary(
+            uid="24/00001/FUL",
+            url="https://publicaccess.hart.gov.uk/online-applications/applicationDetails.do?activeTab=summary&keyVal=ABC123",
+        )
+        detail = await scraper.fetch_detail(app)
+
+        assert detail.reference == "24/00001/FUL"
+        assert detail.address == "123 High Street, Testtown, TT1 1AA"
+        assert detail.description == "Erection of single storey rear extension"
+        assert detail.status == "Awaiting decision"
+        assert detail.application_type == "Full Planning Permission"
+        assert detail.case_officer == "John Smith"
+        assert detail.parish == "Testtown Parish Council"
+        assert detail.ward == "Testtown Ward"
+        assert detail.applicant_name == "Mr J Doe"
+        assert detail.raw_data is not None
+        assert "date_validated" in detail.raw_data
+
+    async def test_fetch_detail_missing_tabs(self):
+        """If dates/info tabs are missing from summary page, still returns what it can."""
+        no_tabs_html = """
+        <html><body>
+        <table id="simpleDetailsTable">
+          <tr><th>Reference</th><td>24/00001/FUL</td></tr>
+          <tr><th>Address</th><td>123 High Street</td></tr>
+          <tr><th>Proposal</th><td>Test</td></tr>
+        </table>
+        </body></html>
+        """
+        scraper = IdoxScraper(config=IDOX_CONFIG)
+        mock_client = AsyncMock()
+        mock_client.get_html = AsyncMock(return_value=no_tabs_html)
+        scraper._client = mock_client
+
+        app = ApplicationSummary(uid="24/00001/FUL", url="https://example.com/app")
+        detail = await scraper.fetch_detail(app)
+
+        assert detail.reference == "24/00001/FUL"
+        assert detail.address == "123 High Street"
+        assert detail.application_type is None
