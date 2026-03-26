@@ -1,0 +1,6 @@
+name: Blackpool
+authority_code: blackpool
+platform: idox_endexc
+base_url: "https://idoxpa.blackpool.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

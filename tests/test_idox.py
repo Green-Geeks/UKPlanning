@@ -242,3 +242,14 @@ class TestIdoxFullPipeline:
         result = await scraper.scrape(date(2024, 1, 1), date(2024, 1, 14))
         assert not result.is_success
         assert "Connection refused" in result.error
+
+
+class TestIdoxConfigs:
+    def test_sample_configs_load(self):
+        config_dir = Path(__file__).parent.parent / "src" / "config" / "councils"
+        if not config_dir.exists():
+            pytest.skip("No council configs directory")
+        configs = load_all_councils(config_dir)
+        assert len(configs) >= 4
+        platforms = {c.platform for c in configs}
+        assert "idox" in platforms

@@ -1,0 +1,9 @@
+name: Belfast
+authority_code: belfast
+platform: idox_ni
+base_url: "https://epicpublic.planningni.gov.uk/publicaccess"
+schedule: "0 4 * * *"
+requires_js: false
+variant: ni
+fields:
+  case_prefixes: "LA04,Z/20"
