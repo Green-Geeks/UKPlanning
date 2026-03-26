@@ -14,6 +14,7 @@ class CouncilConfig(BaseModel):
     base_url: str
     schedule: str = "0 3 * * *"
     requires_js: bool = False
+    enabled: bool = True
     selectors: Dict[str, str] = {}
     fields: Dict[str, str] = {}
     scraper_class: Optional[str] = None

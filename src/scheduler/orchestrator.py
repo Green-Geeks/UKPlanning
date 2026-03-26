@@ -28,6 +28,7 @@ class Orchestrator:
                 existing.base_url = config.base_url
                 existing.schedule_cron = config.schedule
                 existing.requires_js = config.requires_js
+                existing.enabled = config.enabled
             else:
                 council = Council(
                     name=config.name,
@@ -36,7 +37,7 @@ class Orchestrator:
                     base_url=config.base_url,
                     schedule_cron=config.schedule,
                     requires_js=config.requires_js,
-                    enabled=True,
+                    enabled=config.enabled,
                 )
                 self._session.add(council)
         self._session.commit()
