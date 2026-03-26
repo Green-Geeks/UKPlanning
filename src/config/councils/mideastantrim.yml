@@ -1,9 +1,7 @@
 name: MidEastAntrim
 authority_code: mideastantrim
-platform: idox_ni
-base_url: "http://epicpublic.planningni.gov.uk/publicaccess"
-schedule: "0 3 * * *"
+platform: ni_portal
+base_url: https://planningregister.planningsystemni.gov.uk
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
-enabled: false
-# NI portal migrated to planningregister.planningsystemni.gov.uk - needs custom scraper
+enabled: true
