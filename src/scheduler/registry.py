@@ -2,6 +2,7 @@ from src.core.config import CouncilConfig
 from src.core.scraper import BaseScraper
 from src.platforms.idox import IdoxScraper, IdoxEndExcScraper, IdoxNIScraper, IdoxCrumbScraper
 from src.platforms.planning_explorer import PlanningExplorerScraper
+from src.platforms.swiftlg import SwiftLGScraper, SwiftLGLabelScraper
 
 
 class ScraperRegistry:
@@ -14,6 +15,8 @@ class ScraperRegistry:
             "idox_ni": IdoxNIScraper,
             "idox_crumb": IdoxCrumbScraper,
             "planning_explorer": PlanningExplorerScraper,
+            "swiftlg": SwiftLGScraper,
+            "swiftlg_label": SwiftLGLabelScraper,
         }
 
     def get_scraper_class(self, platform):
