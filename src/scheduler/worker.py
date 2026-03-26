@@ -44,7 +44,9 @@ async def run_council_scrape(
 
     scraper = registry.create_scraper(config)
     apps_found = 0
+    apps_inserted = 0
     apps_updated = 0
+    apps_failed = 0
 
     try:
         # Step 1: Gather IDs
@@ -56,19 +58,25 @@ async def run_council_scrape(
         for summary in summaries:
             try:
                 detail = await scraper.fetch_detail(summary)
-                apps_updated += _upsert_application(session, council.id, detail)
+                change_type = _upsert_application(session, council.id, detail)
+                if change_type == "inserted":
+                    apps_inserted += 1
+                elif change_type == "updated":
+                    apps_updated += 1
                 session.commit()
             except Exception as e:
+                apps_failed += 1
                 logger.warning("Error fetching %s/%s: %s", config.authority_code, summary.uid, e)
                 session.rollback()
 
         scrape_run.status = "success"
         scrape_run.applications_found = apps_found
-        scrape_run.applications_updated = apps_updated
+        scrape_run.applications_updated = apps_inserted + apps_updated
         council.last_successful_at = now
         logger.info(
-            "Scrape %s complete: found=%d updated=%d",
-            config.authority_code, apps_found, apps_updated,
+            "Scrape %s complete: found=%d inserted=%d updated=%d unchanged=%d failed=%d",
+            config.authority_code, apps_found, apps_inserted, apps_updated,
+            apps_found - apps_inserted - apps_updated - apps_failed, apps_failed,
         )
     except Exception as e:
         scrape_run.status = "failed"
@@ -81,7 +89,7 @@ async def run_council_scrape(
 
 
 def _upsert_application(session, council_id, detail):
-    """Insert or update an application. Returns 1 if changed, 0 if unchanged."""
+    """Insert or update an application. Returns 'inserted', 'updated', or 'unchanged'."""
     existing = session.execute(
         select(Application).where(
             Application.council_id == council_id,
@@ -101,7 +109,7 @@ def _upsert_application(session, council_id, detail):
         if detail.raw_data:
             existing.raw_data = detail.raw_data
             changed = True
-        return 1 if changed else 0
+        return "updated" if changed else "unchanged"
     else:
         app = Application(
             council_id=council_id,
@@ -121,4 +129,4 @@ def _upsert_application(session, council_id, detail):
             raw_data=detail.raw_data,
         )
         session.add(app)
-        return 1
+        return "inserted"

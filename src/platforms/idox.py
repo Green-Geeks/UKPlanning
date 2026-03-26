@@ -21,11 +21,11 @@ IDOX_SEARCH_SELECTORS = {
 }
 
 IDOX_SELECTORS = {
-    "reference": "th:-soup-contains('Reference') + td",
-    "address": "th:-soup-contains('Address') + td",
-    "description": "th:-soup-contains('Proposal') + td",
-    "status": "th:-soup-contains('Status') + td",
-    "alt_reference": "th:-soup-contains('Alternative Reference') + td",
+    "reference": ["th:-soup-contains('Reference') + td", "th:-soup-contains('Application Number') + td"],
+    "address": ["th:-soup-contains('Address') + td", "th:-soup-contains('Location') + td", "th:-soup-contains('Site') + td"],
+    "description": ["th:-soup-contains('Proposal') + td", "th:-soup-contains('Description') + td"],
+    "status": ["th:-soup-contains('Status') + td"],
+    "alt_reference": ["th:-soup-contains('Alternative Reference') + td"],
 }
 
 IDOX_DATES_SELECTORS = {

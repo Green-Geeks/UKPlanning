@@ -18,16 +18,23 @@ class PageParser:
     def extract(
         self,
         html: str,
-        selectors: dict[str, str],
+        selectors: dict,
         transforms: Optional[dict[str, Callable[[str], str]]] = None,
     ) -> dict[str, Optional[str]]:
         """Extract named fields from HTML using CSS selectors.
+
+        Selectors can be a single string or a list of fallback strings.
         Returns a dict with field names as keys. Missing fields are None.
         """
         soup = self._soup(html)
         result: dict[str, Optional[str]] = {}
         for field_name, selector in selectors.items():
-            element = soup.select_one(selector)
+            candidates = selector if isinstance(selector, list) else [selector]
+            element = None
+            for sel in candidates:
+                element = soup.select_one(sel)
+                if element:
+                    break
             if element:
                 value = element.get_text(strip=True)
                 if transforms and field_name in transforms:
