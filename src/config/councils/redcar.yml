@@ -1,7 +1,7 @@
 name: Redcar
 authority_code: redcar
-platform: bespoke
-base_url: https://planning.redcar-cleveland.gov.uk/
+platform: planning_register
+base_url: https://planning.redcar-cleveland.gov.uk
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

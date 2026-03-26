@@ -1,7 +1,7 @@
 name: Wychavon
 authority_code: wychavon
-platform: bespoke
-base_url: https://plan.wychavon.gov.uk/
+platform: planning_register
+base_url: https://plan.wychavon.gov.uk
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true
