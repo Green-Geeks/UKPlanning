@@ -1,6 +1,7 @@
 from src.core.config import CouncilConfig
 from src.core.scraper import BaseScraper
 from src.platforms.idox import IdoxScraper, IdoxEndExcScraper, IdoxNIScraper, IdoxCrumbScraper
+from src.platforms.planning_explorer import PlanningExplorerScraper
 
 
 class ScraperRegistry:
@@ -12,6 +13,7 @@ class ScraperRegistry:
             "idox_endexc": IdoxEndExcScraper,
             "idox_ni": IdoxNIScraper,
             "idox_crumb": IdoxCrumbScraper,
+            "planning_explorer": PlanningExplorerScraper,
         }
 
     def get_scraper_class(self, platform):
