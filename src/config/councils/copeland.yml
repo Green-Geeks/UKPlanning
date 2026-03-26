@@ -4,4 +4,4 @@ platform: salesforce
 base_url: https://cumberlandcouncil.my.site.com/pr3/s/register-view
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

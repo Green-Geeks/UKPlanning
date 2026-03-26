@@ -4,4 +4,4 @@ platform: salesforce
 base_url: https://planningaccess.bromley.gov.uk/pr/s/register-view
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

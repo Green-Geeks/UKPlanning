@@ -4,6 +4,7 @@ from src.platforms.agile import AgileApplicationsScraper
 from src.platforms.idox import IdoxScraper, IdoxEndExcScraper, IdoxNIScraper, IdoxCrumbScraper
 from src.platforms.ni_portal import NIPortalScraper
 from src.platforms.planning_explorer import PlanningExplorerScraper
+from src.platforms.salesforce_arcus import SalesforceArcusScraper
 from src.platforms.swiftlg import SwiftLGScraper, SwiftLGLabelScraper
 
 
@@ -21,6 +22,7 @@ class ScraperRegistry:
             "swiftlg_label": SwiftLGLabelScraper,
             "ni_portal": NIPortalScraper,
             "agile": AgileApplicationsScraper,
+            "salesforce": SalesforceArcusScraper,
         }
 
     def get_scraper_class(self, platform):
