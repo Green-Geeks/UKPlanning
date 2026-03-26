@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}{{ application.reference if application else "Not Found" }} - UK Planning Dashboard{% endblock %}
+{% block content %}
+{% if application %}
+<h1>{{ application.reference }}</h1>
+<p><a href="/councils/{{ council.authority_code }}">{{ council.name }}</a></p>
+<dl class="detail-grid">
+    <dt>Address</dt><dd>{{ application.address or "N/A" }}</dd>
+    <dt>Description</dt><dd>{{ application.description or "N/A" }}</dd>
+    <dt>Type</dt><dd>{{ application.application_type or "N/A" }}</dd>
+    <dt>Status</dt><dd>{{ application.status or "N/A" }}</dd>
+    <dt>Decision</dt><dd>{{ application.decision or "N/A" }}</dd>
+    <dt>Date Received</dt><dd>{{ application.date_received or "N/A" }}</dd>
+    <dt>Date Validated</dt><dd>{{ application.date_validated or "N/A" }}</dd>
+    <dt>Ward</dt><dd>{{ application.ward or "N/A" }}</dd>
+    <dt>Parish</dt><dd>{{ application.parish or "N/A" }}</dd>
+    <dt>Applicant</dt><dd>{{ application.applicant_name or "N/A" }}</dd>
+    <dt>Case Officer</dt><dd>{{ application.case_officer or "N/A" }}</dd>
+    <dt>First Scraped</dt><dd>{{ application.first_scraped_at }}</dd>
+    <dt>Last Updated</dt><dd>{{ application.last_updated_at }}</dd>
+    {% if application.url %}
+    <dt>Source</dt><dd><a href="{{ application.url }}" target="_blank">View on council website</a></dd>
+    {% endif %}
+</dl>
+{% if application.raw_data %}
+<h2>Raw Data</h2>
+<pre style="background:#f7fafc;padding:1rem;border-radius:4px;overflow-x:auto;">{{ application.raw_data | tojson(indent=2) }}</pre>
+{% endif %}
+{% else %}
+<h1>Application not found</h1>
+{% endif %}
+{% endblock %}

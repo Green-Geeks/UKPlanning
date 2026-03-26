@@ -1,0 +1,99 @@
+from pathlib import Path
+
+from fastapi import FastAPI, Request, Depends
+from fastapi.responses import RedirectResponse
+from fastapi.templating import Jinja2Templates
+from sqlalchemy import select, func
+from sqlalchemy.orm import Session
+
+from src.core.models import Council, Application, ScrapeRun
+from src.dashboard.dependencies import get_db
+
+TEMPLATES_DIR = Path(__file__).parent / "templates"
+
+
+def create_app():
+    app = FastAPI(title="UK Planning Dashboard")
+    templates = Jinja2Templates(directory=str(TEMPLATES_DIR))
+
+    @app.get("/")
+    async def index():
+        return RedirectResponse(url="/search")
+
+    @app.get("/search")
+    async def search(
+        request: Request,
+        q: str = "",
+        council: str = "",
+        page: int = 1,
+        db: Session = Depends(get_db),
+    ):
+        per_page = 50
+        offset = (page - 1) * per_page
+        query = select(Application).join(Council)
+        if q:
+            query = query.where(
+                Application.description.ilike(f"%{q}%")
+                | Application.address.ilike(f"%{q}%")
+            )
+        if council:
+            query = query.where(Council.authority_code == council)
+        total = db.execute(select(func.count()).select_from(query.subquery())).scalar()
+        applications = db.execute(
+            query.order_by(Application.first_scraped_at.desc()).offset(offset).limit(per_page)
+        ).scalars().all()
+        councils = db.execute(select(Council).order_by(Council.name)).scalars().all()
+        return templates.TemplateResponse("search.html", {
+            "request": request, "applications": applications, "councils": councils,
+            "q": q, "selected_council": council, "page": page,
+            "total": total, "per_page": per_page,
+        })
+
+    @app.get("/councils")
+    async def councils_list(request: Request, db: Session = Depends(get_db)):
+        councils = db.execute(select(Council).order_by(Council.name)).scalars().all()
+        stats = {}
+        for c in councils:
+            app_count = db.execute(select(func.count()).where(Application.council_id == c.id)).scalar()
+            last_run = db.execute(
+                select(ScrapeRun).where(ScrapeRun.council_id == c.id).order_by(ScrapeRun.id.desc()).limit(1)
+            ).scalar_one_or_none()
+            stats[c.id] = {"app_count": app_count, "last_run": last_run}
+        return templates.TemplateResponse("councils.html", {
+            "request": request, "councils": councils, "stats": stats,
+        })
+
+    @app.get("/councils/{authority_code}")
+    async def council_detail(request: Request, authority_code: str, page: int = 1, db: Session = Depends(get_db)):
+        council = db.execute(select(Council).where(Council.authority_code == authority_code)).scalar_one_or_none()
+        if not council:
+            return templates.TemplateResponse("council.html", {
+                "request": request, "council": None, "applications": [], "runs": [],
+                "page": 1, "total": 0, "per_page": 50,
+            })
+        per_page = 50
+        offset = (page - 1) * per_page
+        total = db.execute(select(func.count()).where(Application.council_id == council.id)).scalar()
+        applications = db.execute(
+            select(Application).where(Application.council_id == council.id)
+            .order_by(Application.first_scraped_at.desc()).offset(offset).limit(per_page)
+        ).scalars().all()
+        runs = db.execute(
+            select(ScrapeRun).where(ScrapeRun.council_id == council.id).order_by(ScrapeRun.id.desc()).limit(20)
+        ).scalars().all()
+        return templates.TemplateResponse("council.html", {
+            "request": request, "council": council, "applications": applications,
+            "runs": runs, "page": page, "total": total, "per_page": per_page,
+        })
+
+    @app.get("/applications/{app_id}")
+    async def application_detail(request: Request, app_id: int, db: Session = Depends(get_db)):
+        application = db.execute(select(Application).where(Application.id == app_id)).scalar_one_or_none()
+        council = None
+        if application:
+            council = db.execute(select(Council).where(Council.id == application.council_id)).scalar_one_or_none()
+        return templates.TemplateResponse("application.html", {
+            "request": request, "application": application, "council": council,
+        })
+
+    return app

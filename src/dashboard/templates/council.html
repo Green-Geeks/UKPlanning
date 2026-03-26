@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}{{ council.name if council else "Not Found" }} - UK Planning Dashboard{% endblock %}
+{% block content %}
+{% if council %}
+<h1>{{ council.name }}</h1>
+<dl class="detail-grid">
+    <dt>Platform</dt><dd>{{ council.platform }}</dd>
+    <dt>Base URL</dt><dd><a href="{{ council.base_url }}" target="_blank">{{ council.base_url }}</a></dd>
+    <dt>Schedule</dt><dd>{{ council.schedule_cron }}</dd>
+    <dt>Status</dt><dd>{% if council.enabled %}<span class="badge badge-success">Enabled</span>{% else %}<span class="badge badge-danger">Disabled</span>{% endif %}</dd>
+    <dt>Last Scraped</dt><dd>{{ council.last_scraped_at or "Never" }}</dd>
+    <dt>Last Success</dt><dd>{{ council.last_successful_at or "Never" }}</dd>
+</dl>
+<h2>Recent Scrape Runs</h2>
+<table>
+    <thead><tr><th>Started</th><th>Status</th><th>Found</th><th>Updated</th><th>Error</th></tr></thead>
+    <tbody>
+    {% for run in runs %}
+    <tr>
+        <td>{{ run.started_at }}</td>
+        <td><span class="badge badge-{{ 'success' if run.status == 'success' else 'danger' }}">{{ run.status }}</span></td>
+        <td>{{ run.applications_found }}</td>
+        <td>{{ run.applications_updated }}</td>
+        <td>{{ run.error_message or "" }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<h2>Applications ({{ total }})</h2>
+<table>
+    <thead><tr><th>Reference</th><th>Address</th><th>Description</th><th>Status</th></tr></thead>
+    <tbody>
+    {% for app in applications %}
+    <tr>
+        <td><a href="/applications/{{ app.id }}">{{ app.reference }}</a></td>
+        <td>{{ app.address or "" }}</td>
+        <td>{{ app.description or "" }}</td>
+        <td>{{ app.status or "" }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<h1>Council not found</h1>
+{% endif %}
+{% endblock %}

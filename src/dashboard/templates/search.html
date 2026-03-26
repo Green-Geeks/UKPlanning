@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Search - UK Planning Dashboard{% endblock %}
+{% block content %}
+<h1>Search Planning Applications</h1>
+<form class="search-form" method="get" action="/search">
+    <input type="text" name="q" value="{{ q }}" placeholder="Search descriptions and addresses...">
+    <select name="council">
+        <option value="">All Councils</option>
+        {% for c in councils %}
+        <option value="{{ c.authority_code }}" {% if c.authority_code == selected_council %}selected{% endif %}>{{ c.name }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Search</button>
+</form>
+<p>{{ total }} results found{% if q %} for "{{ q }}"{% endif %}</p>
+<table>
+    <thead><tr><th>Reference</th><th>Address</th><th>Description</th><th>Status</th><th>Received</th></tr></thead>
+    <tbody>
+    {% for app in applications %}
+    <tr>
+        <td><a href="/applications/{{ app.id }}">{{ app.reference }}</a></td>
+        <td>{{ app.address or "" }}</td>
+        <td>{{ app.description or "" }}</td>
+        <td>{% if app.status %}<span class="badge badge-info">{{ app.status }}</span>{% endif %}</td>
+        <td>{{ app.date_received or "" }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% if total > per_page %}
+<div class="pagination">
+    {% if page > 1 %}<a href="/search?q={{ q }}&council={{ selected_council }}&page={{ page - 1 }}">Previous</a>{% endif %}
+    <span>Page {{ page }} of {{ (total // per_page) + 1 }}</span>
+    {% if page * per_page < total %}<a href="/search?q={{ q }}&council={{ selected_council }}&page={{ page + 1 }}">Next</a>{% endif %}
+</div>
+{% endif %}
+{% endblock %}

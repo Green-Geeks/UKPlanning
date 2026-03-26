@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}UK Planning Dashboard{% endblock %}</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #333; line-height: 1.6; }
+        nav { background: #1a365d; color: white; padding: 1rem 2rem; display: flex; gap: 2rem; align-items: center; }
+        nav a { color: white; text-decoration: none; font-weight: 500; }
+        nav a:hover { text-decoration: underline; }
+        nav .brand { font-size: 1.2rem; font-weight: 700; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        th { background: #f7fafc; font-weight: 600; }
+        tr:hover { background: #f7fafc; }
+        a { color: #2b6cb0; }
+        .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: 500; }
+        .badge-success { background: #c6f6d5; color: #22543d; }
+        .badge-danger { background: #fed7d7; color: #742a2a; }
+        .badge-warning { background: #fefcbf; color: #744210; }
+        .badge-info { background: #bee3f8; color: #2a4365; }
+        .search-form { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .search-form input[type="text"] { flex: 1; min-width: 200px; padding: 0.5rem 1rem; border: 1px solid #cbd5e0; border-radius: 4px; font-size: 1rem; }
+        .search-form select { padding: 0.5rem; border: 1px solid #cbd5e0; border-radius: 4px; }
+        .search-form button { padding: 0.5rem 1.5rem; background: #2b6cb0; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; }
+        .search-form button:hover { background: #2c5282; }
+        .pagination { margin: 2rem 0; display: flex; gap: 0.5rem; }
+        .pagination a { padding: 0.5rem 1rem; border: 1px solid #cbd5e0; border-radius: 4px; text-decoration: none; }
+        .detail-grid { display: grid; grid-template-columns: 200px 1fr; gap: 0.5rem 1rem; }
+        .detail-grid dt { font-weight: 600; color: #4a5568; }
+        .detail-grid dd { margin: 0; }
+        h1 { margin-bottom: 1rem; }
+        h2 { margin: 1.5rem 0 0.75rem; }
+    </style>
+</head>
+<body>
+    <nav>
+        <span class="brand">UK Planning</span>
+        <a href="/search">Search</a>
+        <a href="/councils">Councils</a>
+    </nav>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
