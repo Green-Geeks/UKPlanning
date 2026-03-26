@@ -4,4 +4,4 @@ platform: planning_register
 base_url: https://wnc.planning-register.co.uk/
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

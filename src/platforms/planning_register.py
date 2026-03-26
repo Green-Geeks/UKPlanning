@@ -1,0 +1,182 @@
+"""Planning Register platform scraper (planning-register.co.uk and similar).
+
+Used by ~9 UK councils. The search form requires reCAPTCHA, but the
+/Search/Standard endpoint (used by weekly lists) accepts date parameters
+directly without captcha.
+
+We use /Search/Standard with AcknowledgeLetterDateFrom/To for date-based search,
+then fetch /Planning/Display/{reference} for detail.
+"""
+import re
+from datetime import date, datetime
+from typing import List, Optional
+from urllib.parse import quote
+
+import httpx
+from bs4 import BeautifulSoup
+
+from src.core.config import CouncilConfig
+from src.core.scraper import ApplicationDetail, ApplicationSummary, BaseScraper
+
+# Map authority_code -> base URL
+COUNCIL_URLS = {
+    "daventry": "https://wnc.planning-register.co.uk",
+    "northampton": "https://wnc.planning-register.co.uk",
+    "southnorthamptonshire": "https://wnc.planning-register.co.uk",
+    "suffolk": "https://suffolk.planning-register.co.uk",
+    "westsussex": "https://westsussex.planning-register.co.uk",
+    "barrow": "https://planningregister.westmorlandandfurness.gov.uk",
+    "eden": "https://planningregister.westmorlandandfurness.gov.uk",
+    "southlakeland": "https://planningregister.westmorlandandfurness.gov.uk",
+    "crawley": "https://planningregister.crawley.gov.uk",
+}
+
+
+def _parse_date_str(s: str) -> Optional[date]:
+    """Parse DD/MM/YYYY date string."""
+    if not s:
+        return None
+    for fmt in ["%d/%m/%Y", "%Y-%m-%d"]:
+        try:
+            return datetime.strptime(s.strip(), fmt).date()
+        except ValueError:
+            continue
+    return None
+
+
+class PlanningRegisterScraper(BaseScraper):
+    """Scraper for planning-register.co.uk and similar ASP.NET planning registers."""
+
+    def __init__(self, config: CouncilConfig):
+        super().__init__(config)
+        self._base_url = COUNCIL_URLS.get(
+            config.authority_code, config.base_url.rstrip("/")
+        )
+        self._client = httpx.AsyncClient(
+            headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"},
+            follow_redirects=True,
+            timeout=30,
+        )
+        self._disclaimer_accepted = False
+
+    async def _accept_disclaimer(self):
+        """Accept the site disclaimer to get a session cookie."""
+        if self._disclaimer_accepted:
+            return
+        await self._client.post(
+            f"{self._base_url}/Disclaimer/Accept?returnUrl=%2F"
+        )
+        self._disclaimer_accepted = True
+
+    async def gather_ids(self, date_from: date, date_to: date) -> List[ApplicationSummary]:
+        """Search via /Search/Standard with date parameters (no captcha needed)."""
+        await self._accept_disclaimer()
+
+        # Format dates as MM/DD/YYYY HH:MM:SS (US format as used by the weekly list URLs)
+        from_str = quote(f"{date_from.month:02d}/{date_from.day:02d}/{date_from.year} 00:00:00")
+        to_str = quote(f"{date_to.month:02d}/{date_to.day:02d}/{date_to.year} 00:00:00")
+
+        # Try multiple date parameter names — different councils use different field names
+        date_params = [
+            ("AcknowledgeLetterDateFrom", "AcknowledgeLetterDateTo"),
+            ("DateReceivedFrom", "DateReceivedTo"),
+            ("DateValidFrom", "DateValidTo"),
+            ("DateDeterminedFrom", "DateDeterminedTo"),
+        ]
+
+        resp = None
+        for from_param, to_param in date_params:
+            url = f"{self._base_url}/Search/Standard?{from_param}={from_str}&{to_param}={to_str}"
+            resp = await self._client.get(url)
+            resp.raise_for_status()
+            if "<table" in resp.text and "<tr" in resp.text:
+                break  # Found results
+
+        soup = BeautifulSoup(resp.text, "html.parser")
+        summaries = []
+
+        for table in soup.find_all("table"):
+            rows = table.find_all("tr")
+            if len(rows) < 2:
+                continue
+
+            for row in rows[1:]:
+                cells = row.find_all("td")
+                if not cells:
+                    continue
+
+                # Find the detail link
+                link = row.find("a", href=re.compile(r"/Planning/Display/"))
+                if not link:
+                    continue
+
+                href = link.get("href", "")
+                # Extract reference from the first cell text
+                ref_text = cells[0].get_text(strip=True)
+                # Clean up - the text often has the header embedded
+                ref = re.sub(r"^Reference No\.?\s*", "", ref_text).strip()
+
+                summaries.append(ApplicationSummary(
+                    uid=ref,
+                    url=f"{self._base_url}{href}" if href.startswith("/") else href,
+                ))
+
+        # Check for pagination
+        next_link = soup.find("a", text=re.compile(r"Next|›"))
+        if next_link:
+            # TODO: handle pagination for large result sets
+            pass
+
+        return summaries
+
+    async def fetch_detail(self, application: ApplicationSummary) -> ApplicationDetail:
+        """Fetch application detail page."""
+        await self._accept_disclaimer()
+
+        resp = await self._client.get(application.url)
+        resp.raise_for_status()
+
+        text = resp.text
+        detail = {
+            "reference": application.uid,
+            "address": "",
+            "description": "",
+        }
+
+        # Extract fields by label pattern: "Label  Value" in the text
+        field_patterns = {
+            "reference": r"Application Number\s+(.+?)(?=\n|Application Type)",
+            "application_type": r"Application Type\s+(.+?)(?=\n|Status)",
+            "status": r"Status\s+(.+?)(?=\n|Decision Level)",
+            "case_officer": r"Case Officer\s+(.+?)(?=\n|Location)",
+            "address": r"Location\s+(.+?)(?=\n|Proposal)",
+            "description": r"Proposal\s+(.+?)(?=\n|Parish)",
+            "parish": r"Parish\s+(.+?)(?=\n|Ward)",
+            "ward": r"Ward\s+(.+?)(?=\n|Received)",
+            "date_received": r"Received Date\s+(.+?)(?=\n|Valid)",
+            "date_validated": r"Valid Date\s+(.+?)(?=\n|Weekly)",
+            "decision": r"Decision\s+(.+?)(?=\n|Decision Issued)",
+        }
+
+        # Parse using the page text
+        page_text = BeautifulSoup(text, "html.parser").get_text()
+        for field, pattern in field_patterns.items():
+            match = re.search(pattern, page_text)
+            if match:
+                detail[field] = match.group(1).strip()
+
+        return ApplicationDetail(
+            reference=detail.get("reference", application.uid),
+            address=detail.get("address", ""),
+            description=detail.get("description", ""),
+            url=application.url,
+            application_type=detail.get("application_type"),
+            status=detail.get("status"),
+            decision=detail.get("decision") if detail.get("decision") else None,
+            date_received=_parse_date_str(detail.get("date_received", "")),
+            date_validated=_parse_date_str(detail.get("date_validated", "")),
+            ward=detail.get("ward"),
+            parish=detail.get("parish"),
+            applicant_name=None,
+            case_officer=detail.get("case_officer"),
+        )
