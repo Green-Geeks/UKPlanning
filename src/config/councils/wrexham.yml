@@ -1,0 +1,7 @@
+name: Wrexham
+authority_code: wrexham
+platform: unsupported
+base_url: "http://planning.wrexham.gov.uk/Planning/lg"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

@@ -1,0 +1,7 @@
+name: Lancashire
+authority_code: lancashire
+platform: unsupported
+base_url: "http://planningregister.lancashire.gov.uk"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

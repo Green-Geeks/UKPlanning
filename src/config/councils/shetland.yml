@@ -1,0 +1,6 @@
+name: Shetland
+authority_code: shetland
+platform: idox
+base_url: "http://pa.shetland.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

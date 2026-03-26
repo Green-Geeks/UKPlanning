@@ -1,0 +1,7 @@
+name: Coventry
+authority_code: coventry
+platform: unsupported
+base_url: "http://planning.coventry.gov.uk/portal/servlets"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

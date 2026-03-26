@@ -1,0 +1,8 @@
+name: WalthamForest
+authority_code: walthamforest
+platform: unsupported
+base_url: "https://planning.walthamforest.gov.uk/Planning/lg"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false
+# was PlanningExplorer

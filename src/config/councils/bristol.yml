@@ -1,0 +1,6 @@
+name: Bristol
+authority_code: bristol
+platform: idox
+base_url: "http://planningonline.bristol.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

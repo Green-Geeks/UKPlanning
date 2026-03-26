@@ -1,0 +1,6 @@
+name: Brentwood
+authority_code: brentwood
+platform: idox
+base_url: "http://publicaccess.brentwood.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

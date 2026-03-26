@@ -1,0 +1,6 @@
+name: Glasgow
+authority_code: glasgow
+platform: idox
+base_url: "https://publicaccess.glasgow.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

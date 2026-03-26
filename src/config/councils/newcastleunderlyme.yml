@@ -1,0 +1,6 @@
+name: NewcastleUnderLyme
+authority_code: newcastleunderlyme
+platform: idox
+base_url: "https://publicaccess.newcastle-staffs.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

@@ -1,0 +1,6 @@
+name: Snowdonia
+authority_code: snowdonia
+platform: swiftlg
+base_url: "http://planning.snowdonia-npa.gov.uk/swiftlg_snpa/apas/run"
+schedule: "0 3 * * *"
+requires_js: false

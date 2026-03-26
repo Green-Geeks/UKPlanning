@@ -1,0 +1,8 @@
+name: Bridgend
+authority_code: bridgend
+platform: unsupported
+base_url: "http://planning.bridgend.gov.uk"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false
+# was Ocella2 scraper

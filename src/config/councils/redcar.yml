@@ -1,0 +1,7 @@
+name: Redcar
+authority_code: redcar
+platform: unsupported
+base_url: "https://planning.redcar-cleveland.gov.uk/%28S%28ne5wxckt3lgrtfwtxqt3skxw%29%29"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

@@ -1,0 +1,7 @@
+name: Monmouthshire
+authority_code: monmouthshire
+platform: unsupported
+base_url: "http://idox.monmouthshire.gov.uk/WAM/searchsubmit"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

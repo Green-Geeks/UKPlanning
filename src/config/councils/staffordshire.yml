@@ -1,0 +1,7 @@
+name: Staffordshire
+authority_code: staffordshire
+platform: unsupported
+base_url: "http://apps.staffordshire.gov.uk/CPLand"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

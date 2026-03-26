@@ -1,0 +1,6 @@
+name: Bassetlaw
+authority_code: bassetlaw
+platform: idox
+base_url: "http://publicaccess.bassetlaw.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

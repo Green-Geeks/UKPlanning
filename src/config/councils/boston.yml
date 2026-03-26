@@ -1,0 +1,8 @@
+name: Boston
+authority_code: boston
+platform: unsupported
+base_url: "http://www.boston.gov.uk"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false
+# Was SwiftLG before Sep 2014

@@ -1,0 +1,6 @@
+name: York
+authority_code: york
+platform: idox
+base_url: "https://planningaccess.york.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

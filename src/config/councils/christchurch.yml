@@ -1,0 +1,7 @@
+name: Christchurch
+authority_code: christchurch
+platform: unsupported
+base_url: ""
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

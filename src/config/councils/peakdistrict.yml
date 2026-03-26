@@ -1,0 +1,7 @@
+name: PeakDistrict
+authority_code: peakdistrict
+platform: unsupported
+base_url: "http://pam.peakdistrict.gov.uk"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

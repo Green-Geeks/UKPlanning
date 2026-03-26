@@ -1,0 +1,6 @@
+name: Wycombe
+authority_code: wycombe
+platform: idox
+base_url: "http://publicaccess.wycombe.gov.uk/idoxpa-web"
+schedule: "0 3 * * *"
+requires_js: false

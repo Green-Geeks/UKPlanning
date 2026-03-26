@@ -1,0 +1,7 @@
+name: Barrow
+authority_code: barrow
+platform: unsupported
+base_url: "http://www.barrowbc.gov.uk/papps"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

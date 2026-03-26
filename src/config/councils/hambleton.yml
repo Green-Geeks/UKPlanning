@@ -1,0 +1,6 @@
+name: Hambleton
+authority_code: hambleton
+platform: idox
+base_url: "https://planning.hambleton.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

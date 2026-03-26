@@ -1,0 +1,6 @@
+name: BreconBeacons
+authority_code: breconbeacons
+platform: idox_crumb
+base_url: "http://planningbreconnpa.org/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

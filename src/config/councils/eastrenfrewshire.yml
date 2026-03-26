@@ -1,0 +1,6 @@
+name: EastRenfrewshire
+authority_code: eastrenfrewshire
+platform: idox
+base_url: "https://ercbuildingstandards.eastrenfrewshire.gov.uk/buildingstandards"
+schedule: "0 3 * * *"
+requires_js: false

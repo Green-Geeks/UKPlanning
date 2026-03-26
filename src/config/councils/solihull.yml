@@ -1,0 +1,7 @@
+name: Solihull
+authority_code: solihull
+platform: idox
+base_url: "https://publicaccess.solihull.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false
+# was Custom PeriodScraper

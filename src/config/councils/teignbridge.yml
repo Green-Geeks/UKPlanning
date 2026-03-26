@@ -1,0 +1,7 @@
+name: Teignbridge
+authority_code: teignbridge
+platform: unsupported
+base_url: "http://gis.teignbridge.gov.uk/TeignbridgePlanningOnline"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

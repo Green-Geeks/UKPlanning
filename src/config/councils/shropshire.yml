@@ -1,0 +1,6 @@
+name: Shropshire
+authority_code: shropshire
+platform: idox
+base_url: "https://pa.shropshire.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

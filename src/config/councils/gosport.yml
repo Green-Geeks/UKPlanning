@@ -1,0 +1,6 @@
+name: Gosport
+authority_code: gosport
+platform: idox
+base_url: "https://publicaccess.gosport.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

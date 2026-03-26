@@ -1,0 +1,6 @@
+name: Chichester
+authority_code: chichester
+platform: idox
+base_url: "https://publicaccess.chichester.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

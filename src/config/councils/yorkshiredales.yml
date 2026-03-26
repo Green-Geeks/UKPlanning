@@ -1,0 +1,7 @@
+name: YorkshireDales
+authority_code: yorkshiredales
+platform: unsupported
+base_url: "http://www.yorkshiredales.org.uk/living-and-working/planning"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

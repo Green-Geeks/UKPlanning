@@ -1,0 +1,6 @@
+name: Hastings
+authority_code: hastings
+platform: idox_endexc
+base_url: "http://publicaccess.hastings.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

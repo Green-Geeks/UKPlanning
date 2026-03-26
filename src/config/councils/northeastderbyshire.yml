@@ -1,0 +1,6 @@
+name: NorthEastDerbyshire
+authority_code: northeastderbyshire
+platform: idox
+base_url: "http://planapps-online.ne-derbyshire.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

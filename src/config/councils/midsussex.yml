@@ -1,0 +1,6 @@
+name: MidSussex
+authority_code: midsussex
+platform: idox
+base_url: "https://pa.midsussex.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

@@ -1,0 +1,6 @@
+name: EastLothian
+authority_code: eastlothian
+platform: idox_crumb
+base_url: "http://pa.eastlothian.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

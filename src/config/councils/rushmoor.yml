@@ -1,0 +1,6 @@
+name: Rushmoor
+authority_code: rushmoor
+platform: idox
+base_url: "http://publicaccess.rushmoor.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

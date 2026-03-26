@@ -1,0 +1,6 @@
+name: Renfrewshire
+authority_code: renfrewshire
+platform: idox_endexc
+base_url: "http://pl.renfrewshire.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

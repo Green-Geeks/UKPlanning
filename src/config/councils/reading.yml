@@ -1,0 +1,7 @@
+name: Reading
+authority_code: reading
+platform: unsupported
+base_url: "http://planning.reading.gov.uk/fastweb_PL"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

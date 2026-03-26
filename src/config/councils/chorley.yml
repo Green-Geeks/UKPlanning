@@ -1,0 +1,6 @@
+name: Chorley
+authority_code: chorley
+platform: idox
+base_url: "https://planning.chorley.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

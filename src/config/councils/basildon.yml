@@ -1,0 +1,6 @@
+name: Basildon
+authority_code: basildon
+platform: idox
+base_url: "http://planning.basildon.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

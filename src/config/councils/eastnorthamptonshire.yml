@@ -1,0 +1,6 @@
+name: EastNorthamptonshire
+authority_code: eastnorthamptonshire
+platform: idox_crumb
+base_url: "http://pawebsrv.east-northamptonshire.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

@@ -1,0 +1,6 @@
+name: Inverclyde
+authority_code: inverclyde
+platform: idox
+base_url: "https://planning.inverclyde.gov.uk/Online"
+schedule: "0 3 * * *"
+requires_js: false

@@ -1,0 +1,6 @@
+name: Edinburgh
+authority_code: edinburgh
+platform: idox
+base_url: "https://citydev-portal.edinburgh.gov.uk/idoxpa-web"
+schedule: "0 3 * * *"
+requires_js: false

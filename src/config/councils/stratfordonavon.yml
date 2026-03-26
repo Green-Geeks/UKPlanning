@@ -1,0 +1,7 @@
+name: StratfordOnAvon
+authority_code: stratfordonavon
+platform: unsupported
+base_url: "https://apps.stratford.gov.uk/eplanning"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

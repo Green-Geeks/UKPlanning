@@ -1,0 +1,7 @@
+name: Elmbridge
+authority_code: elmbridge
+platform: unsupported
+base_url: "http://emaps.elmbridge.gov.uk"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

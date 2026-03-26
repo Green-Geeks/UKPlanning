@@ -1,0 +1,7 @@
+name: Harlow
+authority_code: harlow
+platform: idox
+base_url: "https://planningonline.harlow.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false
+# was Fastweb

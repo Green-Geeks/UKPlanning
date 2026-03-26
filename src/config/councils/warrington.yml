@@ -1,0 +1,6 @@
+name: Warrington
+authority_code: warrington
+platform: swiftlg
+base_url: "http://planning.warrington.gov.uk/swiftlg/apas/run"
+schedule: "0 3 * * *"
+requires_js: false

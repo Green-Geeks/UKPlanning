@@ -1,0 +1,7 @@
+name: Rutland
+authority_code: rutland
+platform: swiftlg
+base_url: "http://planningonline.rutland.gov.uk/swift/apas/run"
+schedule: "0 3 * * *"
+requires_js: false
+# Was AppSearchServ

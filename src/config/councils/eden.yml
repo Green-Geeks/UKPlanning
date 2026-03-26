@@ -1,0 +1,7 @@
+name: Eden
+authority_code: eden
+platform: unsupported
+base_url: "http://eforms.eden.gov.uk/fastweb"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

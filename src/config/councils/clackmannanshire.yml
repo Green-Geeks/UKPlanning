@@ -1,0 +1,6 @@
+name: Clackmannanshire
+authority_code: clackmannanshire
+platform: idox
+base_url: "https://eplanning.clacks.gov.uk/eplanning"
+schedule: "0 3 * * *"
+requires_js: false

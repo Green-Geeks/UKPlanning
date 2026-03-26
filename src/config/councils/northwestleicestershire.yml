@@ -1,0 +1,6 @@
+name: NorthWestLeicestershire
+authority_code: northwestleicestershire
+platform: idox
+base_url: "https://plans.nwleics.gov.uk/public-access"
+schedule: "0 3 * * *"
+requires_js: false

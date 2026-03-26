@@ -1,0 +1,7 @@
+name: Colchester
+authority_code: colchester
+platform: unsupported
+base_url: "http://www.planning.colchester.gov.uk/WAM"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

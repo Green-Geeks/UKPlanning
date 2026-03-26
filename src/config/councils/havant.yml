@@ -1,0 +1,6 @@
+name: Havant
+authority_code: havant
+platform: idox_endexc
+base_url: "http://www5.havant.gov.uk/ACOLNETDCOnline"
+schedule: "0 3 * * *"
+requires_js: false

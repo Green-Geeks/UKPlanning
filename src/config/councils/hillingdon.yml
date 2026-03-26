@@ -1,0 +1,7 @@
+name: Hillingdon
+authority_code: hillingdon
+platform: unsupported
+base_url: "http://planning.hillingdon.gov.uk/OcellaWeb"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

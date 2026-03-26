@@ -1,0 +1,7 @@
+name: WestLothian
+authority_code: westlothian
+platform: idox_endexc
+base_url: "https://planning.westlothian.gov.uk/publicaccess"
+schedule: "0 3 * * *"
+requires_js: false
+# was WeeklyWAM

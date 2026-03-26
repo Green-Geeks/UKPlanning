@@ -1,0 +1,7 @@
+name: SurreyHeath
+authority_code: surreyheath
+platform: unsupported
+base_url: "http://isharemaps.surreyheath.gov.uk/ishare54/custom/planning"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

@@ -1,0 +1,7 @@
+name: Tameside
+authority_code: tameside
+platform: unsupported
+base_url: "http://public.tameside.gov.uk/plan"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

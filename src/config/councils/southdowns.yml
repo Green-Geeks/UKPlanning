@@ -1,0 +1,6 @@
+name: SouthDowns
+authority_code: southdowns
+platform: idox
+base_url: "http://planningpublicaccess.southdowns.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

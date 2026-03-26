@@ -1,0 +1,7 @@
+name: SouthSomerset
+authority_code: southsomerset
+platform: unsupported
+base_url: "http://www.southsomerset.gov.uk/planning-and-building-control/view-a-planning-application-online"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

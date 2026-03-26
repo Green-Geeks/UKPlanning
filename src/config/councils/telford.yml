@@ -1,0 +1,7 @@
+name: Telford
+authority_code: telford
+platform: unsupported
+base_url: "https://secure.telford.gov.uk/planning"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

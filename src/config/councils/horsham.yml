@@ -1,0 +1,6 @@
+name: Horsham
+authority_code: horsham
+platform: idox
+base_url: "https://public-access.horsham.gov.uk/public-access"
+schedule: "0 3 * * *"
+requires_js: false

@@ -1,0 +1,6 @@
+name: Manchester
+authority_code: manchester
+platform: idox
+base_url: "http://pa.manchester.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

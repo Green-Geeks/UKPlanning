@@ -1,0 +1,6 @@
+name: EppingForest
+authority_code: eppingforest
+platform: planning_explorer
+base_url: "http://plan1.eppingforestdc.gov.uk/Northgate/PlanningExplorer"
+schedule: "0 3 * * *"
+requires_js: false

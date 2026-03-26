@@ -1,0 +1,6 @@
+name: ThreeRivers
+authority_code: threerivers
+platform: idox
+base_url: "http://www3.threerivers.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

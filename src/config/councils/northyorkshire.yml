@@ -1,0 +1,7 @@
+name: NorthYorkshire
+authority_code: northyorkshire
+platform: unsupported
+base_url: "https://onlineplanningregister.northyorks.gov.uk/register"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

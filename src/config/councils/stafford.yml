@@ -1,0 +1,6 @@
+name: Stafford
+authority_code: stafford
+platform: idox
+base_url: "https://www12.staffordbc.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

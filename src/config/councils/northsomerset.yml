@@ -1,0 +1,7 @@
+name: NorthSomerset
+authority_code: northsomerset
+platform: unsupported
+base_url: "http://wam.n-somerset.gov.uk/MULTIWAM/searchsubmit"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

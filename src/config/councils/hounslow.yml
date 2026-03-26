@@ -1,0 +1,7 @@
+name: Hounslow
+authority_code: hounslow
+platform: unsupported
+base_url: "http://planning.hounslow.gov.uk"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

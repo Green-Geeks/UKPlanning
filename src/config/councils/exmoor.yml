@@ -1,0 +1,7 @@
+name: Exmoor
+authority_code: exmoor
+platform: unsupported
+base_url: "http://www.exmoor-nationalpark.gov.uk/planning"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

@@ -1,0 +1,6 @@
+name: City
+authority_code: city
+platform: idox
+base_url: "http://www.planning2.cityoflondon.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

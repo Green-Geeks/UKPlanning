@@ -1,0 +1,6 @@
+name: EastStaffordshire
+authority_code: eaststaffordshire
+platform: planning_explorer
+base_url: "http://www.eaststaffsbc.gov.uk/Northgate/PlanningExplorer"
+schedule: "0 3 * * *"
+requires_js: false

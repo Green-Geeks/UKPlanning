@@ -1,0 +1,7 @@
+name: Leicester
+authority_code: leicester
+platform: unsupported
+base_url: "http://rcweb.leicester.gov.uk/planning/onlinequery"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

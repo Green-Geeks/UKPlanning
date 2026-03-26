@@ -1,0 +1,7 @@
+name: Sutton
+authority_code: sutton
+platform: unsupported
+base_url: "https://fastweb.sutton.gov.uk/fastweb"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

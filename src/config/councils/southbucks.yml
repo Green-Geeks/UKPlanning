@@ -1,0 +1,6 @@
+name: SouthBucks
+authority_code: southbucks
+platform: idox
+base_url: "http://sbdc-paweb.southbucks.gov.uk/publicaccess/tdc/DcApplication"
+schedule: "0 3 * * *"
+requires_js: false

@@ -1,0 +1,7 @@
+name: TowerHamlets
+authority_code: towerhamlets
+platform: idox_endexc
+base_url: "https://development.towerhamlets.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false
+# was WeeklyWAM up to end Sep 2015

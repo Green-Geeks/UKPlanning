@@ -1,0 +1,6 @@
+name: Bracknell
+authority_code: bracknell
+platform: idox
+base_url: "https://planapp.bracknell-forest.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

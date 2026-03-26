@@ -1,0 +1,7 @@
+name: RibbleValley
+authority_code: ribblevalley
+platform: unsupported
+base_url: "https://www.ribblevalley.gov.uk/planningApplication/search"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

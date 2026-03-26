@@ -1,0 +1,7 @@
+name: CheshireEast
+authority_code: cheshireeast
+platform: unsupported
+base_url: "http://planning.cheshireeast.gov.uk"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

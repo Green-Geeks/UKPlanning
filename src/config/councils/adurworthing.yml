@@ -1,0 +1,7 @@
+name: AdurWorthing
+authority_code: adurworthing
+platform: idox
+base_url: "https://planning.adur-worthing.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false
+# Combined planning service covering Adur and Worthing

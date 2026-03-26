@@ -1,0 +1,7 @@
+name: CentralBedfordshire
+authority_code: centralbedfordshire
+platform: unsupported
+base_url: "http://www.centralbedfordshire.gov.uk/PLANTECH/DCWebPages"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

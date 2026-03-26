@@ -1,0 +1,7 @@
+name: Purbeck
+authority_code: purbeck
+platform: unsupported
+base_url: "https://planningsearch.purbeck-dc.gov.uk"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

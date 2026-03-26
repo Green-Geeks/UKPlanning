@@ -1,0 +1,6 @@
+name: Medway
+authority_code: medway
+platform: idox_endexc
+base_url: "https://publicaccess.medway.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

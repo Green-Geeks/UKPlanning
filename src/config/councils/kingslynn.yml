@@ -1,0 +1,6 @@
+name: KingsLynn
+authority_code: kingslynn
+platform: idox
+base_url: "http://online.west-norfolk.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

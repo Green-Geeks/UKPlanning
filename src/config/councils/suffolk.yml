@@ -1,0 +1,7 @@
+name: Suffolk
+authority_code: suffolk
+platform: unsupported
+base_url: "http://atrium.suffolkcc.gov.uk/ePlanning"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

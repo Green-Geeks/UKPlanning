@@ -1,0 +1,7 @@
+name: Ealing
+authority_code: ealing
+platform: idox
+base_url: "https://pam.ealing.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false
+# was AppSearchServ up to end Jan 2016

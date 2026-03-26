@@ -1,0 +1,6 @@
+name: NewcastleUponTyne
+authority_code: newcastleupontyne
+platform: idox
+base_url: "https://publicaccessapplications.newcastle.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

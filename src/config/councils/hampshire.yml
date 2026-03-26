@@ -1,0 +1,7 @@
+name: Hampshire
+authority_code: hampshire
+platform: unsupported
+base_url: "https://planning.hants.gov.uk"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

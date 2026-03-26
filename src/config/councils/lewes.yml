@@ -1,0 +1,6 @@
+name: Lewes
+authority_code: lewes
+platform: idox
+base_url: "http://planningpa.lewes.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

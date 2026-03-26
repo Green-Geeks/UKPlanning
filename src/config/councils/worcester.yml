@@ -1,0 +1,7 @@
+name: Worcester
+authority_code: worcester
+platform: unsupported
+base_url: "http://planning.worcester.gov.uk/OcellaWeb"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

@@ -1,0 +1,7 @@
+name: Rugby
+authority_code: rugby
+platform: unsupported
+base_url: "http://www.planningportal.rugby.gov.uk"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

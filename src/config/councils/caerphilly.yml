@@ -1,0 +1,6 @@
+name: Caerphilly
+authority_code: caerphilly
+platform: idox
+base_url: "http://publicaccess.caerphilly.gov.uk/PublicAccess"
+schedule: "0 3 * * *"
+requires_js: false

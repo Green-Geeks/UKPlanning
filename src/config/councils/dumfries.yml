@@ -1,0 +1,6 @@
+name: Dumfries
+authority_code: dumfries
+platform: idox
+base_url: "https://eaccess.dumgal.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

@@ -1,0 +1,6 @@
+name: Uttlesford
+authority_code: uttlesford
+platform: idox
+base_url: "http://publicaccess.uttlesford.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

@@ -1,0 +1,6 @@
+name: NorthYorkMoors
+authority_code: northyorkmoors
+platform: planning_explorer
+base_url: "http://planning.northyorkmoors.org.uk/Northgate/PlanningExplorer"
+schedule: "0 3 * * *"
+requires_js: false

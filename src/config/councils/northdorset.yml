@@ -1,0 +1,6 @@
+name: NorthDorset
+authority_code: northdorset
+platform: idox
+base_url: "http://planning.north-dorset.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

@@ -1,0 +1,6 @@
+name: Oxford
+authority_code: oxford
+platform: idox
+base_url: "http://public.oxford.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

@@ -1,0 +1,6 @@
+name: NorthTyneside
+authority_code: northtyneside
+platform: idox
+base_url: "http://idoxpublicaccess.northtyneside.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

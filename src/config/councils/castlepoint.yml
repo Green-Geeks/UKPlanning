@@ -1,0 +1,7 @@
+name: CastlePoint
+authority_code: castlepoint
+platform: idox
+base_url: "http://planning.castlepoint.gov.uk/portal/page/portal/CASTLEPOINT"
+schedule: "0 3 * * *"
+requires_js: false
+# Was Ocella up to April 2014

@@ -1,0 +1,7 @@
+name: Allerdale
+authority_code: allerdale
+platform: unsupported
+base_url: "http://planning.allerdale.gov.uk/portal/servlets"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

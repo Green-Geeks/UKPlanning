@@ -1,0 +1,6 @@
+name: Fenland
+authority_code: fenland
+platform: idox
+base_url: "http://www.fenland.gov.uk/publicaccess/tdc/DcApplication"
+schedule: "0 3 * * *"
+requires_js: false

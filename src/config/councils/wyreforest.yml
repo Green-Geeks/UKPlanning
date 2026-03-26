@@ -1,0 +1,7 @@
+name: WyreForest
+authority_code: wyreforest
+platform: unsupported
+base_url: "http://www.wyreforest.gov.uk/fastweb"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

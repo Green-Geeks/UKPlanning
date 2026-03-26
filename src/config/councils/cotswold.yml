@@ -1,0 +1,6 @@
+name: Cotswold
+authority_code: cotswold
+platform: idox
+base_url: "http://publicaccess.cotswold.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

@@ -1,0 +1,7 @@
+name: Erewash
+authority_code: erewash
+platform: unsupported
+base_url: "https://myservice.erewash.gov.uk/PlanningLive/lg"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

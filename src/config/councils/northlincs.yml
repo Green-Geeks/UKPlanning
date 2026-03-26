@@ -1,0 +1,8 @@
+name: NorthLincs
+authority_code: northlincs
+platform: unsupported
+base_url: "http://www.planning.northlincs.gov.uk/plan/search"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false
+# Was date scraper up to April 2016

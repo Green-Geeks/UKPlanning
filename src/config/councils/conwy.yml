@@ -1,0 +1,6 @@
+name: Conwy
+authority_code: conwy
+platform: planning_explorer
+base_url: "http://npe.conwy.gov.uk/Northgate/EnglishPlanningExplorer"
+schedule: "0 3 * * *"
+requires_js: false

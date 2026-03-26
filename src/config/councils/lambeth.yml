@@ -1,0 +1,6 @@
+name: Lambeth
+authority_code: lambeth
+platform: idox
+base_url: "https://planning.lambeth.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

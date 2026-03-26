@@ -1,0 +1,6 @@
+name: Greenwich
+authority_code: greenwich
+platform: idox_endexc
+base_url: "https://planning.royalgreenwich.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

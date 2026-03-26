@@ -1,0 +1,7 @@
+name: Aberdeen
+authority_code: aberdeen
+platform: idox
+base_url: "https://publicaccess.aberdeencity.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false
+# was Custom Scraper

@@ -1,0 +1,8 @@
+name: BlaenauGwent
+authority_code: blaenaugwent
+platform: None
+base_url: "http://www.blaenau-gwent.gov.uk/resident/planning/recent-applications"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false
+# No scraper - site has PDFs only

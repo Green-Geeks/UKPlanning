@@ -1,0 +1,7 @@
+name: Kent
+authority_code: kent
+platform: unsupported
+base_url: "http://host1.atriumsoft.com/ePlanningOPSkent"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

@@ -1,0 +1,7 @@
+name: Rochford
+authority_code: rochford
+platform: unsupported
+base_url: "http://maps.rochford.gov.uk"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

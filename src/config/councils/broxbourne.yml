@@ -1,0 +1,7 @@
+name: Broxbourne
+authority_code: broxbourne
+platform: unsupported
+base_url: "http://planning.broxbourne.gov.uk/Planning/lg"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

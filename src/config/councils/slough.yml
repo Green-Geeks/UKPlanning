@@ -1,0 +1,6 @@
+name: Slough
+authority_code: slough
+platform: swiftlg
+base_url: "http://www2.slough.gov.uk/swiftlg/apas/run"
+schedule: "0 3 * * *"
+requires_js: false

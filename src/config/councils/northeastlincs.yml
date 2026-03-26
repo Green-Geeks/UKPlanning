@@ -1,0 +1,6 @@
+name: NorthEastLincs
+authority_code: northeastlincs
+platform: idox
+base_url: "http://planninganddevelopment.nelincs.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

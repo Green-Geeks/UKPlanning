@@ -1,0 +1,8 @@
+name: Northampton
+authority_code: northampton
+platform: unsupported
+base_url: "http://planning.northamptonboroughcouncil.com/planning"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false
+# Was Civica

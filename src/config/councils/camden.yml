@@ -1,0 +1,6 @@
+name: Camden
+authority_code: camden
+platform: planning_explorer
+base_url: "http://planningrecords.camden.gov.uk/Northgate/PlanningExplorer17"
+schedule: "0 3 * * *"
+requires_js: false

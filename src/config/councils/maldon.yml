@@ -1,0 +1,7 @@
+name: Maldon
+authority_code: maldon
+platform: idox
+base_url: "https://publicaccess.maldon.gov.uk//online-applications"
+schedule: "0 3 * * *"
+requires_js: false
+# was Civica - note from 2004 onwards

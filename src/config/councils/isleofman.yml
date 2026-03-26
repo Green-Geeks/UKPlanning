@@ -1,0 +1,7 @@
+name: IsleOfMan
+authority_code: isleofman
+platform: unsupported
+base_url: "https://www.gov.im/planningapplication/services/planning"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

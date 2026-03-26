@@ -1,0 +1,6 @@
+name: ForestOfDean
+authority_code: forestofdean
+platform: idox
+base_url: "https://publicaccess.fdean.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

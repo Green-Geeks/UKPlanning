@@ -1,0 +1,6 @@
+name: StHelens
+authority_code: sthelens
+platform: idox
+base_url: "http://publicaccess.sthelens.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

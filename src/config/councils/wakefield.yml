@@ -1,0 +1,6 @@
+name: Wakefield
+authority_code: wakefield
+platform: idox
+base_url: "https://planning.wakefield.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

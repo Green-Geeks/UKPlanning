@@ -1,0 +1,7 @@
+name: Wigan
+authority_code: wigan
+platform: unsupported
+base_url: "http://kinnear.wigan.gov.uk/planapps"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

@@ -1,0 +1,6 @@
+name: Chiltern
+authority_code: chiltern
+platform: idox
+base_url: "https://isa.chiltern.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

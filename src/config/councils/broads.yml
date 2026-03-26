@@ -1,0 +1,6 @@
+name: Broads
+authority_code: broads
+platform: idox_crumb
+base_url: "http://planning.broads-authority.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

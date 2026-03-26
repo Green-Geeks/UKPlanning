@@ -1,0 +1,7 @@
+name: Bournemouth
+authority_code: bournemouth
+platform: unsupported
+base_url: "http://planning.bournemouth.gov.uk/RealTimeRegister"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

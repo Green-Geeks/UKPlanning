@@ -1,0 +1,6 @@
+name: Hull
+authority_code: hull
+platform: idox
+base_url: "https://www.hullcc.gov.uk/padcbc/publicaccess-live"
+schedule: "0 3 * * *"
+requires_js: false

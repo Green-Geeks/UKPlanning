@@ -1,0 +1,6 @@
+name: Moray
+authority_code: moray
+platform: idox
+base_url: "http://public.moray.gov.uk/eplanning"
+schedule: "0 3 * * *"
+requires_js: false

@@ -1,0 +1,7 @@
+name: BromsgroveRedditch
+authority_code: bromsgroveredditch
+platform: idox
+base_url: "https://publicaccess.bromsgroveandredditch.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false
+# Combined planning service covering Bromsgrove and Redditch

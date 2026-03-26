@@ -1,0 +1,7 @@
+name: Sedgemoor
+authority_code: sedgemoor
+platform: unsupported
+base_url: "http://www.sedgemoor.gov.uk/planning%20online"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

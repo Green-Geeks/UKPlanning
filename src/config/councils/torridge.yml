@@ -1,0 +1,6 @@
+name: Torridge
+authority_code: torridge
+platform: idox
+base_url: "http://publicaccess.torridge.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

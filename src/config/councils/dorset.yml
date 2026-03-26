@@ -1,0 +1,7 @@
+name: Dorset
+authority_code: dorset
+platform: unsupported
+base_url: "http://countyplanning.dorsetforyou.com/ePlanningOPS"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

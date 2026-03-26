@@ -1,0 +1,7 @@
+name: Crawley
+authority_code: crawley
+platform: unsupported
+base_url: "http://www.crawley.gov.uk/pw/Planning_and_Development/Planning_Permission___Applications/Planning_Applications_Search"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

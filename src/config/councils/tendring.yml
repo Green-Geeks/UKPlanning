@@ -1,0 +1,6 @@
+name: Tendring
+authority_code: tendring
+platform: idox
+base_url: "https://idox.tendringdc.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

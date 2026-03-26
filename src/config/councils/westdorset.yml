@@ -1,0 +1,7 @@
+name: WestDorset
+authority_code: westdorset
+platform: unsupported
+base_url: ""
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

@@ -1,0 +1,7 @@
+name: Kettering
+authority_code: kettering
+platform: unsupported
+base_url: "http://www.kettering.gov.uk/site/scripts"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

@@ -1,0 +1,6 @@
+name: Charnwood
+authority_code: charnwood
+platform: planning_explorer
+base_url: "https://portal.charnwood.gov.uk/Northgate/PlanningExplorerAA"
+schedule: "0 3 * * *"
+requires_js: false

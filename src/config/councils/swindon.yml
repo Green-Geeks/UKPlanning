@@ -1,0 +1,6 @@
+name: Swindon
+authority_code: swindon
+platform: idox
+base_url: "http://195.89.201.121/PublicAccess77/tdc/DcApplication"
+schedule: "0 3 * * *"
+requires_js: false

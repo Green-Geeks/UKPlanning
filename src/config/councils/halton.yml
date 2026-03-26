@@ -1,0 +1,7 @@
+name: Halton
+authority_code: halton
+platform: unsupported
+base_url: "https://webapp.halton.gov.uk/PlanningApps"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

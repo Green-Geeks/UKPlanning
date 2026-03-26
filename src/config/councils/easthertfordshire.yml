@@ -1,0 +1,6 @@
+name: EastHertfordshire
+authority_code: easthertfordshire
+platform: idox
+base_url: "https://publicaccess.eastherts.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

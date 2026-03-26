@@ -1,0 +1,7 @@
+name: Norfolk
+authority_code: norfolk
+platform: unsupported
+base_url: "http://eplanning.norfolk.gov.uk"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

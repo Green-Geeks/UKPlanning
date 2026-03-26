@@ -1,0 +1,7 @@
+name: TauntonDeane
+authority_code: tauntondeane
+platform: unsupported
+base_url: "http://www1.tauntondeane.gov.uk/tdbcsites/plan"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

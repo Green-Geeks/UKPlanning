@@ -1,0 +1,6 @@
+name: Epsom
+authority_code: epsom
+platform: idox_crumb
+base_url: "http://eplanning.epsom-ewell.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

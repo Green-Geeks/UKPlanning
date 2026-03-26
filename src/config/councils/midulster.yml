@@ -1,0 +1,6 @@
+name: MidUlster
+authority_code: midulster
+platform: idox_ni
+base_url: "http://epicpublic.planningni.gov.uk/publicaccess"
+schedule: "0 3 * * *"
+requires_js: false

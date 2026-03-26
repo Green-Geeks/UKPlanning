@@ -1,0 +1,6 @@
+name: EastDunbartonshire
+authority_code: eastdunbartonshire
+platform: idox
+base_url: "http://planning.eastdunbarton.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

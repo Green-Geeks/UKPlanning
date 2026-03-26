@@ -1,0 +1,7 @@
+name: SouthHolland
+authority_code: southholland
+platform: unsupported
+base_url: "http://planning.sholland.gov.uk/OcellaWeb"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

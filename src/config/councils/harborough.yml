@@ -1,0 +1,6 @@
+name: Harborough
+authority_code: harborough
+platform: idox
+base_url: "https://pa2.harborough.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

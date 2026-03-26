@@ -1,0 +1,7 @@
+name: Windsor
+authority_code: windsor
+platform: idox
+base_url: "http://publicaccess.rbwm.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false
+# Was Custom Date scraper

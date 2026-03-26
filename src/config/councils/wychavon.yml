@@ -1,0 +1,8 @@
+name: Wychavon
+authority_code: wychavon
+platform: unsupported
+base_url: "https://plan.wychavon.gov.uk"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false
+# was month based PeriodScraper

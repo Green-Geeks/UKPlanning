@@ -1,0 +1,6 @@
+name: NewForest
+authority_code: newforest
+platform: idox_endexc
+base_url: "http://planning.newforest.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

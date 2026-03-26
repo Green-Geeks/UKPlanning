@@ -1,0 +1,6 @@
+name: Northumberland
+authority_code: northumberland
+platform: idox
+base_url: "https://publicaccess.northumberland.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

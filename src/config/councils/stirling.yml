@@ -1,0 +1,6 @@
+name: Stirling
+authority_code: stirling
+platform: idox
+base_url: "http://pabs.stirling.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

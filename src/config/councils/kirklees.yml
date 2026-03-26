@@ -1,0 +1,7 @@
+name: Kirklees
+authority_code: kirklees
+platform: unsupported
+base_url: "http://www.kirklees.gov.uk/beta/planning-applications/search-for-planning-applications"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

@@ -1,0 +1,6 @@
+name: Oxfordshire
+authority_code: oxfordshire
+platform: swiftlg
+base_url: "http://myeplanning.oxfordshire.gov.uk/swiftlg/apas/run"
+schedule: "0 3 * * *"
+requires_js: false

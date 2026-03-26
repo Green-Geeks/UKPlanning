@@ -1,0 +1,7 @@
+name: WestLindsey
+authority_code: westlindsey
+platform: unsupported
+base_url: "https://www.west-lindsey.gov.uk/my-services/planning-and-building/view-applications-decisions-and-appeals/search-our-planning-application-database"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

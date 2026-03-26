@@ -1,0 +1,6 @@
+name: Angus
+authority_code: angus
+platform: idox
+base_url: "https://planning.angus.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

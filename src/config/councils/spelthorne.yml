@@ -1,0 +1,7 @@
+name: Spelthorne
+authority_code: spelthorne
+platform: unsupported
+base_url: "http://my.spelthorne.gov.uk/planning"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

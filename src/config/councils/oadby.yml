@@ -1,0 +1,6 @@
+name: Oadby
+authority_code: oadby
+platform: idox
+base_url: "http://pa.owbc.net/PublicAccess/tdc/DcApplication"
+schedule: "0 3 * * *"
+requires_js: false

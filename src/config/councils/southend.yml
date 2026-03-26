@@ -1,0 +1,6 @@
+name: Southend
+authority_code: southend
+platform: idox_crumb
+base_url: "http://planning.southend.gov.uk/PublicAccess/tdc/DcApplication"
+schedule: "0 3 * * *"
+requires_js: false

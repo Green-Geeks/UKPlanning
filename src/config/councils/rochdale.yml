@@ -1,0 +1,6 @@
+name: Rochdale
+authority_code: rochdale
+platform: idox_crumb
+base_url: "http://publicaccess.rochdale.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

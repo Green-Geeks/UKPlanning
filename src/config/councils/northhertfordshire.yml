@@ -1,0 +1,6 @@
+name: NorthHertfordshire
+authority_code: northhertfordshire
+platform: idox_endexc
+base_url: "http://pa.north-herts.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

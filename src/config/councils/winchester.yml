@@ -1,0 +1,6 @@
+name: Winchester
+authority_code: winchester
+platform: idox
+base_url: "http://planningapps.winchester.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

@@ -1,0 +1,7 @@
+name: GreatYarmouth
+authority_code: greatyarmouth
+platform: unsupported
+base_url: "http://planning.great-yarmouth.gov.uk/OcellaWeb"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

@@ -1,0 +1,7 @@
+name: StAlbans
+authority_code: stalbans
+platform: unsupported
+base_url: "http://planning.stalbans.gov.uk/Planning/lg"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

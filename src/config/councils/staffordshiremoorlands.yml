@@ -1,0 +1,8 @@
+name: StaffordshireMoorlands
+authority_code: staffordshiremoorlands
+platform: unsupported
+base_url: "http://publicaccess.staffsmoorlands.gov.uk/publicaccess/tdc/DcApplication"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false
+# Was PublicAccess

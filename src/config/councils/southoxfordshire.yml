@@ -1,0 +1,7 @@
+name: SouthOxfordshire
+authority_code: southoxfordshire
+platform: unsupported
+base_url: "http://www.southoxon.gov.uk/ccm/support"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

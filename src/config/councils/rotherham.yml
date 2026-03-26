@@ -1,0 +1,8 @@
+name: Rotherham
+authority_code: rotherham
+platform: unsupported
+base_url: "http://planning.rotherham.gov.uk/fastweblive"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false
+# was custom scraper

@@ -1,0 +1,6 @@
+name: Poole
+authority_code: poole
+platform: idox_endexc
+base_url: "https://boppa.poole.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

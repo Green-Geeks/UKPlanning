@@ -1,0 +1,6 @@
+name: Wandsworth
+authority_code: wandsworth
+platform: planning_explorer
+base_url: "https://planning1.wandsworth.gov.uk/Northgate/PlanningExplorer"
+schedule: "0 3 * * *"
+requires_js: false

@@ -1,0 +1,7 @@
+name: IsleOfWight
+authority_code: isleofwight
+platform: unsupported
+base_url: "https://www.iwight.com/planning"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

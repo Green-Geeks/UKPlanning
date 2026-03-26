@@ -1,0 +1,7 @@
+name: Rossendale
+authority_code: rossendale
+platform: idox
+base_url: "https://publicaccess.rossendale.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false
+# Was ListScraper

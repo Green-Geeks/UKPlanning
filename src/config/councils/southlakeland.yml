@@ -1,0 +1,7 @@
+name: SouthLakeland
+authority_code: southlakeland
+platform: unsupported
+base_url: "http://applications.southlakeland.gov.uk/planningapplications"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

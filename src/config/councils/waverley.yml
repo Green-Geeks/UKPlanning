@@ -1,0 +1,7 @@
+name: Waverley
+authority_code: waverley
+platform: unsupported
+base_url: "http://planning.waverley.gov.uk/live/wbc/pwl.nsf"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

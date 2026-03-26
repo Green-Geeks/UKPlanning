@@ -1,0 +1,7 @@
+name: Barnet
+authority_code: barnet
+platform: idox
+base_url: "https://publicaccess.barnet.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false
+# was AcolNet

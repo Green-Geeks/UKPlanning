@@ -1,0 +1,6 @@
+name: Barking
+authority_code: barking
+platform: idox
+base_url: "http://paplan.lbbd.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

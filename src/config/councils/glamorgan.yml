@@ -1,0 +1,7 @@
+name: Glamorgan
+authority_code: glamorgan
+platform: unsupported
+base_url: "http://vogonline.planning-register.co.uk"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

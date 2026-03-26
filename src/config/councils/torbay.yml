@@ -1,0 +1,6 @@
+name: Torbay
+authority_code: torbay
+platform: idox
+base_url: "http://www.torbay.gov.uk/newpublicaccess"
+schedule: "0 3 * * *"
+requires_js: false

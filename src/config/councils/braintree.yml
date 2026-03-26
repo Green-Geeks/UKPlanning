@@ -1,0 +1,6 @@
+name: Braintree
+authority_code: braintree
+platform: idox
+base_url: "https://publicaccess.braintree.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

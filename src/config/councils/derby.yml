@@ -1,0 +1,6 @@
+name: Derby
+authority_code: derby
+platform: idox_endexc
+base_url: "http://eplanning.derby.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

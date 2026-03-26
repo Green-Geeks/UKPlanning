@@ -1,0 +1,6 @@
+name: Tonbridge
+authority_code: tonbridge
+platform: idox
+base_url: "https://publicaccess2.tmbc.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

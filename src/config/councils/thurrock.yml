@@ -1,0 +1,6 @@
+name: Thurrock
+authority_code: thurrock
+platform: idox
+base_url: "http://regs.thurrock.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

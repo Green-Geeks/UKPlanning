@@ -1,0 +1,6 @@
+name: Fife
+authority_code: fife
+platform: idox
+base_url: "http://planning.fife.gov.uk/online"
+schedule: "0 3 * * *"
+requires_js: false

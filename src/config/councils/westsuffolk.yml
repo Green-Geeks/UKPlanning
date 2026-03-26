@@ -1,0 +1,7 @@
+name: WestSuffolk
+authority_code: westsuffolk
+platform: idox
+base_url: "https://planning.westsuffolk.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false
+# Combined planning service covering Forest Heath and St Edmundsbury

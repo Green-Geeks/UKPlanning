@@ -1,0 +1,6 @@
+name: SouthAyrshire
+authority_code: southayrshire
+platform: idox
+base_url: "http://publicaccess.south-ayrshire.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

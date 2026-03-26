@@ -1,0 +1,6 @@
+name: Cardiff
+authority_code: cardiff
+platform: idox_endexc
+base_url: "http://planning.cardiff.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

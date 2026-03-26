@@ -1,0 +1,7 @@
+name: Hertfordshire
+authority_code: hertfordshire
+platform: unsupported
+base_url: "https://www.hertsdirect.org/ePlanningOPS"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

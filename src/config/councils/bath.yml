@@ -1,0 +1,7 @@
+name: Bath
+authority_code: bath
+platform: unsupported
+base_url: "http://isharemaps.bathnes.gov.uk/projects/bathnes/developmentcontrol"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

@@ -1,0 +1,7 @@
+name: AmberValley
+authority_code: ambervalley
+platform: unsupported
+base_url: "http://www.ambervalley.gov.uk/environment-and-planning/planning/development-management/planning-applications"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

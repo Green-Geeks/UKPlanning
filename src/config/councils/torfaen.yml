@@ -1,0 +1,6 @@
+name: Torfaen
+authority_code: torfaen
+platform: idox
+base_url: "https://planningonline.torfaen.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

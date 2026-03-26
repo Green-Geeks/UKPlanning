@@ -1,0 +1,7 @@
+name: Carmarthenshire
+authority_code: carmarthenshire
+platform: unsupported
+base_url: "http://online.carmarthenshire.gov.uk/eaccessv2"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

@@ -1,0 +1,7 @@
+name: Rother
+authority_code: rother
+platform: unsupported
+base_url: "http://planweb01.rother.gov.uk/OcellaWeb"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

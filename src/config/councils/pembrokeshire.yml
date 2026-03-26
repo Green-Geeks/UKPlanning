@@ -1,0 +1,6 @@
+name: Pembrokeshire
+authority_code: pembrokeshire
+platform: swiftlg
+base_url: "http://planning.pembrokeshire.gov.uk/swiftlg/apas/run"
+schedule: "0 3 * * *"
+requires_js: false

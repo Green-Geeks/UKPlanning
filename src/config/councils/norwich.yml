@@ -1,0 +1,6 @@
+name: Norwich
+authority_code: norwich
+platform: idox_crumb
+base_url: "https://planning.norwich.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

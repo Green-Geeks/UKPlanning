@@ -1,0 +1,6 @@
+name: Rushcliffe
+authority_code: rushcliffe
+platform: idox
+base_url: "https://planningon-line.rushcliffe.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

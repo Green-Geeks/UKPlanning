@@ -1,0 +1,6 @@
+name: Cornwall
+authority_code: cornwall
+platform: idox
+base_url: "http://planning.cornwall.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

@@ -1,0 +1,6 @@
+name: Chelmsford
+authority_code: chelmsford
+platform: idox
+base_url: "https://publicaccess.chelmsford.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

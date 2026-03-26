@@ -1,0 +1,6 @@
+name: Lancaster
+authority_code: lancaster
+platform: idox
+base_url: "https://planning.lancaster.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

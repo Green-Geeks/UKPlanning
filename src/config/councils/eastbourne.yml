@@ -1,0 +1,7 @@
+name: Eastbourne
+authority_code: eastbourne
+platform: unsupported
+base_url: "http://planning.eastbourne.gov.uk/lg"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

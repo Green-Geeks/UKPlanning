@@ -1,0 +1,6 @@
+name: Cairngorms
+authority_code: cairngorms
+platform: idox
+base_url: "http://www.eplanningcnpa.co.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

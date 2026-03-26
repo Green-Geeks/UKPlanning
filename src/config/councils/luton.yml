@@ -1,0 +1,7 @@
+name: Luton
+authority_code: luton
+platform: idox_crumb
+base_url: "http://www.eplan.luton.gov.uk/PublicAccess/tdc/DcApplication"
+schedule: "0 3 * * *"
+requires_js: false
+# Was Public Access

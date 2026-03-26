@@ -1,0 +1,8 @@
+name: Alderney
+authority_code: alderney
+platform: None
+base_url: "http://www.alderney.gov.gg/article/103482"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false
+# No scraper - site has PDFs only

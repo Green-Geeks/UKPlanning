@@ -1,0 +1,7 @@
+name: ScillyIsles
+authority_code: scillyisles
+platform: unsupported
+base_url: "http://www.scilly.gov.uk/planning-development"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

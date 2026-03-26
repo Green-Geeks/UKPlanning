@@ -1,0 +1,6 @@
+name: ScottishBorders
+authority_code: scottishborders
+platform: idox
+base_url: "https://eplanning.scotborders.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

@@ -1,0 +1,6 @@
+name: NorthAyrshire
+authority_code: northayrshire
+platform: idox
+base_url: "http://www.eplanning.north-ayrshire.gov.uk/OnlinePlanning"
+schedule: "0 3 * * *"
+requires_js: false

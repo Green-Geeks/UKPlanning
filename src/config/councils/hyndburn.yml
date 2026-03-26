@@ -1,0 +1,7 @@
+name: Hyndburn
+authority_code: hyndburn
+platform: unsupported
+base_url: "http://planning.hyndburnbc.gov.uk/WAM/searchsubmit"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

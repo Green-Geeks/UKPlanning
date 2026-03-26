@@ -1,0 +1,7 @@
+name: Walsall
+authority_code: walsall
+platform: swiftlg
+base_url: "http://planning.walsall.gov.uk/swift/apas/run"
+schedule: "0 3 * * *"
+requires_js: false
+# was Custom

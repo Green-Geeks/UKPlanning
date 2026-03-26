@@ -1,0 +1,7 @@
+name: SouthKesteven
+authority_code: southkesteven
+platform: unsupported
+base_url: "http://www.southkesteven.gov.uk"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

@@ -1,0 +1,7 @@
+name: Breckland
+authority_code: breckland
+platform: unsupported
+base_url: "http://planning.breckland.gov.uk/OcellaWeb"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

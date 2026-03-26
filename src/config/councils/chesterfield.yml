@@ -1,0 +1,7 @@
+name: Chesterfield
+authority_code: chesterfield
+platform: idox
+base_url: "https://publicaccess.chesterfield.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false
+# Was custom date scraper up to May 2016

@@ -1,0 +1,6 @@
+name: Gloucester
+authority_code: gloucester
+platform: idox
+base_url: "http://glcstrplnng12.co.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

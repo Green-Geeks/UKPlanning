@@ -1,0 +1,7 @@
+name: Burnley
+authority_code: burnley
+platform: unsupported
+base_url: "http://www.burnley.gov.uk/custom/plnapps"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

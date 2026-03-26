@@ -1,0 +1,7 @@
+name: Hereford
+authority_code: hereford
+platform: unsupported
+base_url: "https://www.herefordshire.gov.uk/planning-and-building-control/development-control"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

@@ -1,0 +1,6 @@
+name: Portsmouth
+authority_code: portsmouth
+platform: idox
+base_url: "http://publicaccess.portsmouth.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

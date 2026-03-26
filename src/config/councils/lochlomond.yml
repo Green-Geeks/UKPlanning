@@ -1,0 +1,6 @@
+name: LochLomond
+authority_code: lochlomond
+platform: idox
+base_url: "http://eplanning.lochlomond-trossachs.org/OnlinePlanning"
+schedule: "0 3 * * *"
+requires_js: false

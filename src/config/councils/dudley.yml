@@ -1,0 +1,6 @@
+name: Dudley
+authority_code: dudley
+platform: swiftlg
+base_url: "https://www5.dudley.gov.uk/swiftlg/apas/run"
+schedule: "0 3 * * *"
+requires_js: false

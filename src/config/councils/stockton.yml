@@ -1,0 +1,6 @@
+name: Stockton
+authority_code: stockton
+platform: idox
+base_url: "http://www.developmentmanagement.stockton.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

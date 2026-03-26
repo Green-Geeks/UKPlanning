@@ -1,0 +1,7 @@
+name: Stroud
+authority_code: stroud
+platform: unsupported
+base_url: "http://www.stroud.gov.uk/apps"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

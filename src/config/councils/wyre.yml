@@ -1,0 +1,7 @@
+name: Wyre
+authority_code: wyre
+platform: idox
+base_url: "https://publicaccess.wyre.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false
+# Was custom annual scraper up to July 2016

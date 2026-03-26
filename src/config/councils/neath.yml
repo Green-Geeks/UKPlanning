@@ -1,0 +1,7 @@
+name: Neath
+authority_code: neath
+platform: unsupported
+base_url: "http://planning.npt.gov.uk"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

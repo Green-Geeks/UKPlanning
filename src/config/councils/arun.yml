@@ -1,0 +1,7 @@
+name: Arun
+authority_code: arun
+platform: unsupported
+base_url: "http://www1.arun.gov.uk/aplanning/OcellaWeb"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

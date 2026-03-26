@@ -1,0 +1,6 @@
+name: Aberdeenshire
+authority_code: aberdeenshire
+platform: idox
+base_url: "https://upa.aberdeenshire.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

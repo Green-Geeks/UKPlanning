@@ -1,0 +1,6 @@
+name: Richmondshire
+authority_code: richmondshire
+platform: idox
+base_url: "https://planning.richmondshire.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

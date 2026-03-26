@@ -1,0 +1,6 @@
+name: Knowsley
+authority_code: knowsley
+platform: idox_crumb
+base_url: "http://publicaccess.knowsley.gov.uk/PublicAccess/tdc/DcApplication"
+schedule: "0 3 * * *"
+requires_js: false

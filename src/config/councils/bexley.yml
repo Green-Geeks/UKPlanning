@@ -1,0 +1,6 @@
+name: Bexley
+authority_code: bexley
+platform: idox
+base_url: "http://pa.bexley.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

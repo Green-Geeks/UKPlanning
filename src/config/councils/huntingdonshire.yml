@@ -1,0 +1,6 @@
+name: Huntingdonshire
+authority_code: huntingdonshire
+platform: idox
+base_url: "http://publicaccess.huntsdc.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

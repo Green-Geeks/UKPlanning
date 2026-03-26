@@ -1,0 +1,6 @@
+name: Gloucestershire
+authority_code: gloucestershire
+platform: idox
+base_url: "http://planning.gloucestershire.gov.uk/publicaccess"
+schedule: "0 3 * * *"
+requires_js: false

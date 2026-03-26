@@ -1,0 +1,7 @@
+name: SouthNorthamptonshire
+authority_code: southnorthamptonshire
+platform: unsupported
+base_url: "http://snc.planning-register.co.uk"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

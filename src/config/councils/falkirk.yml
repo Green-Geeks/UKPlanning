@@ -1,0 +1,6 @@
+name: Falkirk
+authority_code: falkirk
+platform: idox
+base_url: "http://edevelopment.falkirk.gov.uk/online"
+schedule: "0 3 * * *"
+requires_js: false

@@ -1,0 +1,7 @@
+name: Wokingham
+authority_code: wokingham
+platform: unsupported
+base_url: "https://www2.wokingham.gov.uk/environment/planning/planning-applications"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

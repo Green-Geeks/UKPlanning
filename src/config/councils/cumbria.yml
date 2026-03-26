@@ -1,0 +1,7 @@
+name: Cumbria
+authority_code: cumbria
+platform: unsupported
+base_url: "http://onlineplanning.cumbria.gov.uk/ePlanningOPS"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

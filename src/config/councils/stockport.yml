@@ -1,0 +1,6 @@
+name: Stockport
+authority_code: stockport
+platform: idox
+base_url: "http://planning.stockport.gov.uk/PlanningData-live"
+schedule: "0 3 * * *"
+requires_js: false

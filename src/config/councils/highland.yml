@@ -1,0 +1,6 @@
+name: Highland
+authority_code: highland
+platform: idox
+base_url: "http://wam.highland.gov.uk/wam"
+schedule: "0 3 * * *"
+requires_js: false

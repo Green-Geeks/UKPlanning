@@ -1,0 +1,7 @@
+name: Nottinghamshire
+authority_code: nottinghamshire
+platform: unsupported
+base_url: "http://www.nottinghamshire.gov.uk/planningsearch"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

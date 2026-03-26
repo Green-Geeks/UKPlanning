@@ -1,0 +1,6 @@
+name: Lichfield
+authority_code: lichfield
+platform: idox
+base_url: "https://planning.lichfielddc.gov.uk/online-applications"
+schedule: "0 3 * * *"
+requires_js: false

@@ -1,0 +1,7 @@
+name: Hartlepool
+authority_code: hartlepool
+platform: unsupported
+base_url: "http://eforms.hartlepool.gov.uk:7777/portal/servlets"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

@@ -1,0 +1,7 @@
+name: Islington
+authority_code: islington
+platform: planning_explorer
+base_url: "http://planning.islington.gov.uk/Northgate/PlanningExplorer"
+schedule: "0 3 * * *"
+requires_js: false
+# Was SwiftLG

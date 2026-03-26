@@ -1,0 +1,6 @@
+name: Daventry
+authority_code: daventry
+platform: swiftlg
+base_url: "http://selfservice.daventrydc.gov.uk/swiftlg/apas/run"
+schedule: "0 3 * * *"
+requires_js: false

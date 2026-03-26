@@ -1,0 +1,7 @@
+name: Kingston
+authority_code: kingston
+platform: unsupported
+base_url: "https://maps.kingston.gov.uk/propertyServices/planning"
+schedule: "0 3 * * *"
+requires_js: false
+enabled: false

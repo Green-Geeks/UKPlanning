@@ -1,0 +1,6 @@
+name: Dundee
+authority_code: dundee
+platform: idox
+base_url: "http://idoxwam.dundeecity.gov.uk/idoxpa-web"
+schedule: "0 3 * * *"
+requires_js: false

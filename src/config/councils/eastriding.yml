@@ -1,0 +1,6 @@
+name: EastRiding
+authority_code: eastriding
+platform: idox
+base_url: "https://newplanningaccess.eastriding.gov.uk/newplanningaccess"
+schedule: "0 3 * * *"
+requires_js: false
