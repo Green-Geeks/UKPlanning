@@ -1,7 +1,7 @@
 name: EastDorset
 authority_code: eastdorset
-platform: unsupported
-base_url: ""
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://publicaccess.dorsetcouncil.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

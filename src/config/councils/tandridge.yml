@@ -1,7 +1,7 @@
 name: Tandridge
 authority_code: tandridge
-platform: unsupported
-base_url: "http://tdcws01.tandridge.gov.uk"
-schedule: "0 3 * * *"
+platform: swiftlg
+base_url: https://www.tandridge.gov.uk
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

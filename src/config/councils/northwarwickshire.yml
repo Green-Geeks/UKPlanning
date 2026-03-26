@@ -1,7 +1,7 @@
 name: NorthWarwickshire
 authority_code: northwarwickshire
-platform: unsupported
-base_url: "http://planning.northwarks.gov.uk/portal/servlets"
-schedule: "0 3 * * *"
+platform: swiftlg
+base_url: https://planning.northwarks.gov.uk
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

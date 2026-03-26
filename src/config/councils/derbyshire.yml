@@ -1,7 +1,7 @@
 name: Derbyshire
 authority_code: derbyshire
-platform: unsupported
-base_url: "https://www.derbyshire.gov.uk/environment/planning/planning_applications"
-schedule: "0 3 * * *"
+platform: planning_explorer
+base_url: https://planning.derbyshire.gov.uk
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

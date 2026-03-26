@@ -1,7 +1,7 @@
 name: Havering
 authority_code: havering
-platform: unsupported
-base_url: "http://development.havering.gov.uk/OcellaWeb"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://development.havering.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

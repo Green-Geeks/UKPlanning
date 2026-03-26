@@ -1,7 +1,7 @@
 name: Dudley
 authority_code: dudley
-platform: swiftlg
-base_url: "https://www5.dudley.gov.uk/swiftlg/apas/run"
-schedule: "0 3 * * *"
+platform: planning_explorer
+base_url: https://www5.dudley.gov.uk
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

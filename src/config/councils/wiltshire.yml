@@ -1,7 +1,7 @@
 name: Wiltshire
 authority_code: wiltshire
-platform: planning_explorer
-base_url: "http://planning.wiltshire.gov.uk/Northgate/PlanningExplorer"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://development.wiltshire.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

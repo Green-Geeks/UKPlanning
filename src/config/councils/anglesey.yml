@@ -1,8 +1,7 @@
 name: Anglesey
 authority_code: anglesey
-platform: None
-base_url: "http://www.anglesey.gov.uk/planning-and-waste/planning-control/view-list-of-current-and-previous-planning-applications"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://www.angleseyidoxcloud.wales/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
-# No scraper - site has PDFs only
+enabled: true

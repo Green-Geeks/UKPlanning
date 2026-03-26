@@ -1,8 +1,7 @@
 name: Northamptonshire
 authority_code: northamptonshire
-platform: unsupported
-base_url: "http://www.northamptonshire.gov.uk/en/councilservices/Environ/planning/planapps/Pages"
-schedule: "0 3 * * *"
+platform: defunct
+base_url: ''
+schedule: 0 3 * * *
 requires_js: false
 enabled: false
-# Current planning applications only - not historical

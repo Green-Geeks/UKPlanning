@@ -1,8 +1,7 @@
 name: Essex
 authority_code: essex
-platform: unsupported
-base_url: "https://planning.essex.gov.uk"
-schedule: "0 3 * * *"
+platform: planning_explorer
+base_url: https://planning.essex.gov.uk
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
-# Was SwiftLG
+enabled: true

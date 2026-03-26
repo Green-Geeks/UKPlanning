@@ -1,7 +1,7 @@
 name: WestLancashire
 authority_code: westlancashire
 platform: idox
-base_url: "http://publicaccess.westlancsdc.gov.uk/PublicAccess/tdc/DcApplication"
-schedule: "0 3 * * *"
+base_url: https://publicaccess.westlancs.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

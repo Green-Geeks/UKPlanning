@@ -1,8 +1,7 @@
 name: Northampton
 authority_code: northampton
-platform: unsupported
-base_url: "http://planning.northamptonboroughcouncil.com/planning"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://publicaccess.westnorthants.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
-# Was Civica
+enabled: true

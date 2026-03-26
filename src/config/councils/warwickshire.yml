@@ -1,7 +1,7 @@
 name: Warwickshire
 authority_code: warwickshire
-platform: swiftlg
-base_url: "https://planning.warwickshire.gov.uk/swiftlg/apas/run"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://planning.warwickshire.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

@@ -1,7 +1,7 @@
 name: Bath
 authority_code: bath
 platform: unsupported
-base_url: "http://isharemaps.bathnes.gov.uk/projects/bathnes/developmentcontrol"
-schedule: "0 3 * * *"
+base_url: https://app.bathnes.gov.uk/webforms/planning/search.html
+schedule: 0 3 * * *
 requires_js: false
 enabled: false

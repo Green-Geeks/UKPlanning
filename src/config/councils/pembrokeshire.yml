@@ -1,7 +1,7 @@
 name: Pembrokeshire
 authority_code: pembrokeshire
-platform: swiftlg
-base_url: "http://planning.pembrokeshire.gov.uk/swiftlg/apas/run"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://www.pembrokeshireidoxcloud.wales/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

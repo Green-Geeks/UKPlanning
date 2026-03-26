@@ -1,7 +1,7 @@
 name: Lincolnshire
 authority_code: lincolnshire
-platform: unsupported
-base_url: "http://eplanning.lincolnshire.gov.uk/ePlanning"
-schedule: "0 3 * * *"
+platform: planning_explorer
+base_url: https://eplanning.lincolnshire.gov.uk
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

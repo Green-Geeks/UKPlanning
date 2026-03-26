@@ -1,7 +1,7 @@
 name: Flintshire
 authority_code: flintshire
-platform: unsupported
-base_url: "https://digital.flintshire.gov.uk/FCC_Planning"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://www.flintshireidoxcloud.wales/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

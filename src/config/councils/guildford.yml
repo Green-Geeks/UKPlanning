@@ -1,7 +1,7 @@
 name: Guildford
 authority_code: guildford
-platform: idox_endexc
-base_url: "http://www2.guildford.gov.uk/DLDC_Version_2"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://www3.guildford.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

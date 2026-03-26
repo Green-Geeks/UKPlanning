@@ -1,8 +1,7 @@
 name: Eastleigh
 authority_code: eastleigh
-platform: None
-base_url: "https://planning.eastleigh.gov.uk/s"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://planning.eastleigh.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
-# Was Fastweb - no scraper now - new site has complicated hidden JSON/Javascript implementation
+enabled: true

@@ -1,7 +1,7 @@
 name: Wealden
 authority_code: wealden
-platform: unsupported
-base_url: "http://www.planning.wealden.gov.uk"
-schedule: "0 3 * * *"
+platform: planning_explorer
+base_url: https://planning.wealden.gov.uk
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

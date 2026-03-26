@@ -1,7 +1,7 @@
 name: Richmond
 authority_code: richmond
 platform: unsupported
-base_url: "http://www2.richmond.gov.uk/PlanData2"
-schedule: "0 3 * * *"
+base_url: https://planning.richmond.gov.uk/richmond/search-applications/
+schedule: 0 3 * * *
 requires_js: false
 enabled: false

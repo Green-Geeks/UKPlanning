@@ -1,7 +1,7 @@
 name: Somerset
 authority_code: somerset
-platform: unsupported
-base_url: "http://schpwebapppln.somerset.gov.uk/ePlanning"
-schedule: "0 3 * * *"
+platform: planning_explorer
+base_url: https://planning.somerset.gov.uk
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

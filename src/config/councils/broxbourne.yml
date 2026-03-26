@@ -1,7 +1,7 @@
 name: Broxbourne
 authority_code: broxbourne
-platform: unsupported
-base_url: "http://planning.broxbourne.gov.uk/Planning/lg"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://planning.broxbourne.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

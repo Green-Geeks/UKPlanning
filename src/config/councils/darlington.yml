@@ -1,7 +1,7 @@
 name: Darlington
 authority_code: darlington
-platform: unsupported
-base_url: "http://msp.darlington.gov.uk/Planning/lg"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://publicaccess.darlington.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

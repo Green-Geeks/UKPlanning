@@ -1,7 +1,7 @@
 name: Harrow
 authority_code: harrow
-platform: unsupported
-base_url: "http://www.harrow.gov.uk/planningsearch/lg"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://planningsearch.harrow.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

@@ -1,7 +1,7 @@
 name: CannockChase
 authority_code: cannockchase
-platform: swiftlg
-base_url: "http://planning.cannockchasedc.com/swiftlg/apas/run"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://www.cannockchasedc.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

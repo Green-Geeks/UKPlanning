@@ -1,8 +1,7 @@
 name: MalvernHills
 authority_code: malvernhills
-platform: unsupported
-base_url: "https://plan.malvernhills.gov.uk"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://plan.malvernhills.gov.uk
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
-# was EAccessScraper
+enabled: true

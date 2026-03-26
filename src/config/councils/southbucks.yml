@@ -1,7 +1,7 @@
 name: SouthBucks
 authority_code: southbucks
 platform: idox
-base_url: "http://sbdc-paweb.southbucks.gov.uk/publicaccess/tdc/DcApplication"
-schedule: "0 3 * * *"
+base_url: https://publicaccess.buckinghamshire.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

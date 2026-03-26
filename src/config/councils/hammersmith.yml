@@ -1,7 +1,7 @@
 name: Hammersmith
 authority_code: hammersmith
 platform: idox
-base_url: "http://www.apps.lbhf.gov.uk/PublicAccess/tdc/DcApplication"
-schedule: "0 3 * * *"
+base_url: https://public-access.lbhf.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

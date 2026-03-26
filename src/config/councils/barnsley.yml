@@ -1,7 +1,7 @@
 name: Barnsley
 authority_code: barnsley
-platform: planning_explorer
-base_url: "https://wwwapplications.barnsley.gov.uk/PlanningExplorerMVC/Home"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://planning.barnsley.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

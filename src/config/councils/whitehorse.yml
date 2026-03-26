@@ -1,7 +1,7 @@
 name: WhiteHorse
 authority_code: whitehorse
-platform: unsupported
-base_url: "http://www.whitehorsedc.gov.uk/java/support"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://planning.whitehorsedc.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

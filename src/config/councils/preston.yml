@@ -1,8 +1,7 @@
 name: Preston
 authority_code: preston
-platform: swiftlg
-base_url: "http://publicaccess.preston.gov.uk/swift/apas/run"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://planningpa.preston.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-# Was AppSearchServ
-enabled: false
+enabled: true

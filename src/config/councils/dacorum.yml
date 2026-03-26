@@ -1,7 +1,7 @@
 name: Dacorum
 authority_code: dacorum
-platform: idox_endexc
-base_url: "https://site.dacorum.gov.uk/publicaccess"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://planning.dacorum.gov.uk/publicaccess
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

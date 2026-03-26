@@ -1,7 +1,7 @@
 name: MoleValley
 authority_code: molevalley
-platform: swiftlg
-base_url: "http://www.molevalley.gov.uk/swiftlg/apas/run"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://planning.molevalley.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

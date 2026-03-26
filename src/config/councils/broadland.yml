@@ -1,7 +1,7 @@
 name: Broadland
 authority_code: broadland
 platform: planning_explorer
-base_url: "https://secure.broadland.gov.uk/Northgate/PlanningExplorer"
-schedule: "0 3 * * *"
+base_url: https://secure.broadland.gov.uk
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

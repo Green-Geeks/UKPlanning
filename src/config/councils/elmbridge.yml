@@ -1,7 +1,7 @@
 name: Elmbridge
 authority_code: elmbridge
-platform: unsupported
-base_url: "http://emaps.elmbridge.gov.uk"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://emaps.elmbridge.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

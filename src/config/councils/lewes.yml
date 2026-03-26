@@ -1,7 +1,7 @@
 name: Lewes
 authority_code: lewes
 platform: idox
-base_url: "http://planningpa.lewes.gov.uk/online-applications"
-schedule: "0 3 * * *"
+base_url: https://planning.lewes-eastbourne.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

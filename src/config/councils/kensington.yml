@@ -1,7 +1,7 @@
 name: Kensington
 authority_code: kensington
 platform: unsupported
-base_url: "https://www.rbkc.gov.uk/Planning/searches"
-schedule: "0 3 * * *"
+base_url: https://www.rbkc.gov.uk/Planning/searches/
+schedule: 0 3 * * *
 requires_js: false
 enabled: false

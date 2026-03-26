@@ -1,7 +1,7 @@
 name: Ceredigion
 authority_code: ceredigion
-platform: unsupported
-base_url: "http://forms.ceredigion.gov.uk/ufs"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://www.ceredigionidoxcloud.wales/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

@@ -1,8 +1,7 @@
 name: WelwynHatfield
 authority_code: welwynhatfield
-platform: unsupported
-base_url: "http://planning.welhat.gov.uk"
-schedule: "0 3 * * *"
+platform: planning_explorer
+base_url: https://planning.welhat.gov.uk
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
-# was Fastweb
+enabled: true

@@ -1,7 +1,7 @@
 name: Suffolk
 authority_code: suffolk
-platform: unsupported
-base_url: "http://atrium.suffolkcc.gov.uk/ePlanning"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://planning.suffolk.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

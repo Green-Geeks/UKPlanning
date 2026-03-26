@@ -1,7 +1,7 @@
 name: Leicestershire
 authority_code: leicestershire
-platform: unsupported
-base_url: "https://cloud2.atriumsoft.com/LCCePlanning"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://planning.leics.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

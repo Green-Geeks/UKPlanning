@@ -1,7 +1,7 @@
 name: Oadby
 authority_code: oadby
 platform: idox
-base_url: "http://pa.owbc.net/PublicAccess/tdc/DcApplication"
-schedule: "0 3 * * *"
+base_url: https://pa.oadby-wigston.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

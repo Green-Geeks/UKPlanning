@@ -1,8 +1,7 @@
 name: Wirral
 authority_code: wirral
 platform: idox
-base_url: "http://www.wirral.gov.uk/planning/DC"
-schedule: "0 3 * * *"
+base_url: https://planning.wirral.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-# was AcolNet
-enabled: false
+enabled: true

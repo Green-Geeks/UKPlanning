@@ -1,7 +1,7 @@
 name: Harrogate
 authority_code: harrogate
 platform: idox
-base_url: "https://uniformonline.harrogate.gov.uk/online-applications"
-schedule: "0 3 * * *"
+base_url: https://publicaccess.northyorks.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

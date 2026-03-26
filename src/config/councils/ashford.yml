@@ -1,7 +1,7 @@
 name: Ashford
 authority_code: ashford
-platform: unsupported
-base_url: "http://planning.ashford.gov.uk/Planning"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://planning.ashford.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

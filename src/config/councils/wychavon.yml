@@ -1,8 +1,7 @@
 name: Wychavon
 authority_code: wychavon
-platform: unsupported
-base_url: "https://plan.wychavon.gov.uk"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://publicaccess.wychavon.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
-# was month based PeriodScraper
+enabled: true

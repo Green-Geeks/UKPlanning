@@ -1,7 +1,7 @@
 name: Fenland
 authority_code: fenland
 platform: idox
-base_url: "http://www.fenland.gov.uk/publicaccess/tdc/DcApplication"
-schedule: "0 3 * * *"
+base_url: https://www.publicaccess.fenland.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

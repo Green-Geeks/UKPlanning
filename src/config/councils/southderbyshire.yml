@@ -1,7 +1,7 @@
 name: SouthDerbyshire
 authority_code: southderbyshire
-platform: unsupported
-base_url: "http://www.planning.south-derbys.gov.uk"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://publicaccess.southderbyshire.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

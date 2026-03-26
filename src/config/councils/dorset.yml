@@ -1,7 +1,7 @@
 name: Dorset
 authority_code: dorset
-platform: unsupported
-base_url: "http://countyplanning.dorsetforyou.com/ePlanningOPS"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://planning.dorset.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

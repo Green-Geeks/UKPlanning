@@ -1,7 +1,7 @@
 name: NorthumberlandPark
 authority_code: northumberlandpark
-platform: unsupported
-base_url: "http://nnpa.planning-register.co.uk"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://publicaccess.nnpa.org.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

@@ -1,8 +1,7 @@
 name: Dartmoor
 authority_code: dartmoor
-platform: unsupported
-base_url: "http://www.dartmoor.gov.uk/planning"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://publicaccess.dartmoor.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
-# was custom ListScraper up to Aug 2016
+enabled: true

@@ -1,7 +1,7 @@
 name: Gloucestershire
 authority_code: gloucestershire
 platform: idox
-base_url: "http://planning.gloucestershire.gov.uk/publicaccess"
-schedule: "0 3 * * *"
+base_url: https://planning.gloucestershire.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

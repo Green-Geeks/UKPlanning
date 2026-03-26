@@ -1,7 +1,7 @@
 name: Croydon
 authority_code: croydon
 platform: idox
-base_url: "http://publicaccess2.croydon.gov.uk/online-applications"
-schedule: "0 3 * * *"
+base_url: https://publicaccess3.croydon.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

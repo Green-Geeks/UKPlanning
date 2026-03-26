@@ -1,7 +1,7 @@
 name: Breckland
 authority_code: breckland
-platform: unsupported
-base_url: "http://planning.breckland.gov.uk/OcellaWeb"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://publicaccess.breckland.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true
