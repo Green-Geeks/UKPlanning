@@ -4,4 +4,4 @@ platform: agile
 base_url: https://planning.agileapplications.co.uk/rugby/search-applications/
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true
