@@ -4,7 +4,7 @@ Idox is the dominant planning portal platform, used by ~250 UK councils.
 This module defines the default selectors and the scraper class.
 """
 
-from datetime import date
+from datetime import date, timedelta
 from urllib.parse import urljoin
 
 from src.core.browser import HttpClient
@@ -165,3 +165,91 @@ class IdoxScraper(BaseScraper):
             return dateutil_parser.parse(date_str, dayfirst=True).date()
         except (ValueError, TypeError):
             return None
+
+
+class IdoxEndExcScraper(IdoxScraper):
+    """Variant for Idox servers with exclusive end dates.
+
+    Some Idox installations treat the end date as exclusive (not included
+    in results). This variant adds 1 day to compensate.
+    """
+
+    async def gather_ids(self, date_from: date, date_to: date) -> list:
+        adjusted_to = date_to + timedelta(days=1)
+        return await super().gather_ids(date_from, adjusted_to)
+
+
+class IdoxNIScraper(IdoxScraper):
+    """Variant for Northern Ireland Idox councils.
+
+    NI councils require searching by case reference prefix in addition
+    to date range. Each council has specific prefixes (e.g. Belfast: LA04, Z/20).
+    """
+
+    REF_FIELD = "searchCriteria.reference"
+
+    def __init__(self, config: CouncilConfig, case_prefixes=None):
+        super().__init__(config)
+        self._case_prefixes = case_prefixes or []
+
+    async def gather_ids(self, date_from: date, date_to: date) -> list:
+        if not self._case_prefixes:
+            return await super().gather_ids(date_from, date_to)
+
+        all_results = []
+        seen_uids = set()
+        for prefix in self._case_prefixes:
+            results = await self._gather_ids_with_prefix(date_from, date_to, prefix)
+            for app in results:
+                if app.uid not in seen_uids:
+                    seen_uids.add(app.uid)
+                    all_results.append(app)
+        return all_results
+
+    async def _gather_ids_with_prefix(self, date_from: date, date_to: date, prefix: str) -> list:
+        """Search with a specific case prefix."""
+        search_url = self.config.base_url + self.SEARCH_PATH
+        await self._client.get_html(search_url)
+
+        results_url = self.config.base_url + self.RESULTS_PATH
+        form_data = {
+            self.DATE_FROM_FIELD: date_from.strftime(self.DATE_FORMAT),
+            self.DATE_TO_FIELD: date_to.strftime(self.DATE_FORMAT),
+            self.SEARCH_TYPE_FIELD: self.SEARCH_TYPE_VALUE,
+            self.REF_FIELD: prefix,
+        }
+        response = await self._client.post(results_url, data=form_data)
+        html = response.text
+
+        applications = []
+        while True:
+            page_apps = self._parse_search_results(html)
+            applications.extend(page_apps)
+            next_el = self._parser.select_one(html, self._search_selectors["next_page"])
+            if next_el is None:
+                break
+            next_url = urljoin(self.config.base_url, next_el["href"])
+            html = await self._client.get_html(next_url)
+
+        return applications
+
+
+IDOX_CRUMB_SELECTORS = {
+    "reference": "span.caseNumber",
+    "address": "span.address",
+    "description": "span.description",
+    "status": "th:-soup-contains('Status') + td",
+    "alt_reference": "th:-soup-contains('Alternative Reference') + td",
+}
+
+
+class IdoxCrumbScraper(IdoxScraper):
+    """Variant for Idox portals using breadcrumb-style layout."""
+
+    def __init__(self, config: CouncilConfig):
+        super().__init__(config)
+        self._summary_selectors = {**IDOX_CRUMB_SELECTORS}
+        if config.selectors:
+            for key, val in config.selectors.items():
+                if key in self._summary_selectors:
+                    self._summary_selectors[key] = val
