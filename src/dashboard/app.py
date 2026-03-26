@@ -16,6 +16,10 @@ def create_app():
     app = FastAPI(title="UK Planning Dashboard")
     templates = Jinja2Templates(directory=str(TEMPLATES_DIR))
 
+    def render(request, name, context):
+        context["request"] = request
+        return templates.TemplateResponse(request, name, context)
+
     @app.get("/")
     async def index():
         return RedirectResponse(url="/search")
@@ -50,8 +54,8 @@ def create_app():
             list_query.order_by(Application.first_scraped_at.desc()).offset(offset).limit(per_page)
         ).scalars().all()
         councils = db.execute(select(Council).order_by(Council.name)).scalars().all()
-        return templates.TemplateResponse("search.html", {
-            "request": request, "applications": applications, "councils": councils,
+        return render(request, "search.html", {
+            "applications": applications, "councils": councils,
             "q": q, "selected_council": council, "page": page,
             "total": total, "per_page": per_page,
         })
@@ -61,26 +65,26 @@ def create_app():
         councils = db.execute(select(Council).order_by(Council.name)).scalars().all()
         stats = {}
         for c in councils:
-            app_count = db.execute(select(func.count()).where(Application.council_id == c.id)).scalar()
+            app_count = db.execute(select(func.count(Application.id)).where(Application.council_id == c.id)).scalar()
             last_run = db.execute(
                 select(ScrapeRun).where(ScrapeRun.council_id == c.id).order_by(ScrapeRun.id.desc()).limit(1)
             ).scalar_one_or_none()
             stats[c.id] = {"app_count": app_count, "last_run": last_run}
-        return templates.TemplateResponse("councils.html", {
-            "request": request, "councils": councils, "stats": stats,
+        return render(request, "councils.html", {
+            "councils": councils, "stats": stats,
         })
 
     @app.get("/councils/{authority_code}")
     async def council_detail(request: Request, authority_code: str, page: int = 1, db: Session = Depends(get_db)):
         council = db.execute(select(Council).where(Council.authority_code == authority_code)).scalar_one_or_none()
         if not council:
-            return templates.TemplateResponse("council.html", {
-                "request": request, "council": None, "applications": [], "runs": [],
+            return render(request, "council.html", {
+                "council": None, "applications": [], "runs": [],
                 "page": 1, "total": 0, "per_page": 50,
             })
         per_page = 50
         offset = (page - 1) * per_page
-        total = db.execute(select(func.count()).where(Application.council_id == council.id)).scalar()
+        total = db.execute(select(func.count(Application.id)).where(Application.council_id == council.id)).scalar()
         applications = db.execute(
             select(Application).where(Application.council_id == council.id)
             .order_by(Application.first_scraped_at.desc()).offset(offset).limit(per_page)
@@ -88,8 +92,8 @@ def create_app():
         runs = db.execute(
             select(ScrapeRun).where(ScrapeRun.council_id == council.id).order_by(ScrapeRun.id.desc()).limit(20)
         ).scalars().all()
-        return templates.TemplateResponse("council.html", {
-            "request": request, "council": council, "applications": applications,
+        return render(request, "council.html", {
+            "council": council, "applications": applications,
             "runs": runs, "page": page, "total": total, "per_page": per_page,
         })
 
@@ -99,8 +103,8 @@ def create_app():
         council = None
         if application:
             council = db.execute(select(Council).where(Council.id == application.council_id)).scalar_one_or_none()
-        return templates.TemplateResponse("application.html", {
-            "request": request, "application": application, "council": council,
+        return render(request, "application.html", {
+            "application": application, "council": council,
         })
 
     return app
