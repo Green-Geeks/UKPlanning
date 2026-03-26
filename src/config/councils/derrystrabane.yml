@@ -5,3 +5,5 @@ base_url: "http://epicpublic.planningni.gov.uk/publicaccess"
 schedule: "0 3 * * *"
 requires_js: false
 enabled: false
+enabled: false
+# NI portal migrated to planningregister.planningsystemni.gov.uk - needs custom scraper
