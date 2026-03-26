@@ -4,3 +4,5 @@ platform: swiftlg
 base_url: "http://planning.redbridge.gov.uk/swiftlg/apas/run"
 schedule: "0 3 * * *"
 requires_js: false
+enabled: false
+# SwiftLG URL returns 404 - likely migrated platform

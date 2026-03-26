@@ -4,3 +4,4 @@ platform: idox
 base_url: "http://idoxpa.westminster.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
+rate_limit_delay: 3.0

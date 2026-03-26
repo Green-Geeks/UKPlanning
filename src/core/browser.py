@@ -33,16 +33,25 @@ class HttpClient:
 
     async def get(self, url: str, **kwargs: Any) -> httpx.Response:
         await self._rate_limit()
-        return await self._client.get(url, **kwargs)
+        return await self._retry_on_429(self._client.get, url, **kwargs)
 
     async def post(self, url: str, data: Optional[Dict] = None, **kwargs: Any) -> httpx.Response:
         await self._rate_limit()
-        return await self._client.post(url, data=data, **kwargs)
+        return await self._retry_on_429(self._client.post, url, data=data, **kwargs)
 
     async def get_html(self, url: str) -> str:
         response = await self.get(url)
         response.raise_for_status()
         return response.text
+
+    async def _retry_on_429(self, method, *args, max_retries: int = 3, **kwargs) -> httpx.Response:
+        for attempt in range(max_retries + 1):
+            response = await method(*args, **kwargs)
+            if response.status_code != 429 or attempt == max_retries:
+                return response
+            wait = min(2 ** (attempt + 1), 30)
+            await asyncio.sleep(wait)
+        return response
 
     async def __aenter__(self):
         return self

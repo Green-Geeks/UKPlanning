@@ -4,4 +4,5 @@ platform: idox_endexc
 base_url: "https://development.towerhamlets.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-# was WeeklyWAM up to end Sep 2015
+enabled: false
+# DNS failure - domain no longer resolves
