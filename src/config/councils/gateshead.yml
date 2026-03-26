@@ -1,7 +1,6 @@
 name: Gateshead
 authority_code: gateshead
 platform: idox_crumb
-base_url: "http://public.gateshead.gov.uk/online-applications"
+base_url: "https://public.gateshead.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

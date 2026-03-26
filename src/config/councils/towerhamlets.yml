@@ -4,5 +4,4 @@ platform: idox_endexc
 base_url: "https://development.towerhamlets.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false
 # DNS failure - domain no longer resolves

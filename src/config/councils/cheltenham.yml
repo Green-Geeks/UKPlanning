@@ -1,7 +1,6 @@
 name: Cheltenham
 authority_code: cheltenham
 platform: idox_crumb
-base_url: "http://publicaccess.cheltenham.gov.uk/idoxpa17"
+base_url: "https://publicaccess.cheltenham.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

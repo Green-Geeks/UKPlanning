@@ -1,7 +1,6 @@
 name: Perth
 authority_code: perth
 platform: idox
-base_url: "http://planningapps.pkc.gov.uk/online-applications"
+base_url: "https://planningapps.pkc.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

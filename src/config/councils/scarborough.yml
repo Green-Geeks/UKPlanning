@@ -1,7 +1,6 @@
 name: Scarborough
 authority_code: scarborough
 platform: idox
-base_url: "http://planning.scarborough.gov.uk/online-applications"
+base_url: "https://planning.scarborough.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

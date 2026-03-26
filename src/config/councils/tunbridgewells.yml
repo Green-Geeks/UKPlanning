@@ -1,8 +1,7 @@
 name: TunbridgeWells
 authority_code: tunbridgewells
 platform: idox
-base_url: "http://twbcpa.midkent.gov.uk/online-applications/"
+base_url: "https://twbcpa.midkent.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
 # was part of Mid Kent Planning Support Service (with Maidstone and Swale) but separated out in July 2016
-enabled: false

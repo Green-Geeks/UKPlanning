@@ -1,7 +1,6 @@
 name: Dartford
 authority_code: dartford
 platform: idox
-base_url: "http://publicaccess.dartford.gov.uk/online-applications"
+base_url: "https://publicaccess.dartford.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

@@ -1,7 +1,6 @@
 name: Wolverhampton
 authority_code: wolverhampton
 platform: idox
-base_url: "http://planningonline.wolverhampton.gov.uk:2707/online-applications"
+base_url: "https://planningonline.wolverhampton.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

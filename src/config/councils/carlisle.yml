@@ -1,8 +1,7 @@
 name: Carlisle
 authority_code: carlisle
 platform: idox_endexc
-base_url: "http://publicaccess.carlisle.gov.uk/online-applications"
+base_url: "https://publicaccess.carlisle.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
 # was AcolNet
-enabled: false

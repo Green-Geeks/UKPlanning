@@ -1,7 +1,6 @@
 name: Bedford
 authority_code: bedford
 platform: idox
-base_url: "http://www.publicaccess.bedford.gov.uk/online-applications"
+base_url: "https://publicaccess.bedford.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

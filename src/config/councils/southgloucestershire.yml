@@ -1,7 +1,6 @@
 name: SouthGloucestershire
 authority_code: southgloucestershire
 platform: idox
-base_url: "http://developments.southglos.gov.uk/online-applications"
+base_url: "https://developments.southglos.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

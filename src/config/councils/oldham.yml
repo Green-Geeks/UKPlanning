@@ -1,7 +1,6 @@
 name: Oldham
 authority_code: oldham
 platform: idox_endexc
-base_url: "http://planningpa.oldham.gov.uk/online-applications"
+base_url: "https://planningpa.oldham.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

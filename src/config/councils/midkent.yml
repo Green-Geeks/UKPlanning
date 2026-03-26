@@ -1,8 +1,7 @@
 name: MidKent
 authority_code: midkent
 platform: idox
-base_url: "http://pa.midkent.gov.uk/online-applications"
+base_url: "https://pa.midkent.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
 # Combined planning service covering Maidstone and Swale - bu now excluding Tunbridge Wells
-enabled: false

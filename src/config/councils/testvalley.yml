@@ -1,7 +1,6 @@
 name: TestValley
 authority_code: testvalley
 platform: idox
-base_url: "http://view-applications.testvalley.gov.uk/online-applications"
+base_url: "https://view-applications.testvalley.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

@@ -1,7 +1,6 @@
 name: Woking
 authority_code: woking
 platform: idox_crumb
-base_url: "http://caps.woking.gov.uk/online-applications"
+base_url: "https://caps.woking.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

@@ -1,7 +1,6 @@
 name: Warwick
 authority_code: warwick
 platform: idox_endexc
-base_url: "http://planningdocuments.warwickdc.gov.uk/online-applications"
+base_url: "https://planningdocuments.warwickdc.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

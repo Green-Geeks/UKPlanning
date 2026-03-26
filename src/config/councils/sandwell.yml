@@ -1,7 +1,6 @@
 name: Sandwell
 authority_code: sandwell
 platform: idox
-base_url: "http://webcaps.sandwell.gov.uk/PublicAccess/tdc/DcApplication"
+base_url: "https://webcaps.sandwell.gov.uk/publicaccess"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false
