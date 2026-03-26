@@ -20,10 +20,13 @@ class TestIdoxSelectors:
 
     def test_search_results_uids(self):
         html = (FIXTURES / "idox_search_results.html").read_text()
-        uids = self.parser.extract_list(html, IDOX_SEARCH_SELECTORS["result_uids"])
-        assert len(uids) == 2
-        assert uids[0] == "24/00001/FUL"
-        assert uids[1] == "24/00002/HOU"
+        from src.platforms.idox import IdoxScraper
+        config = CouncilConfig(name="Test", authority_code="test", platform="idox", base_url="https://example.com")
+        scraper = IdoxScraper(config=config)
+        results = scraper._parse_search_results(html)
+        assert len(results) == 2
+        assert results[0].uid == "24/00001/FUL"
+        assert results[1].uid == "24/00002/HOU"
 
     def test_search_next_page(self):
         html = (FIXTURES / "idox_search_results.html").read_text()
@@ -76,15 +79,15 @@ SEARCH_RESULTS_LAST_PAGE = """
 </p>
 <ul id="searchresults">
   <li class="searchresult">
-    <a href="/online-applications/applicationDetails.do?activeTab=summary&amp;keyVal=GHI789">
-      <span>View</span>
+    <a href="/online-applications/applicationDetails.do?keyVal=GHI789&amp;activeTab=summary">
+      Listed building consent for window replacement
     </a>
-    <p class="metainfo">
-      No: <span>24/00003/LBC</span> |
-      Received: <span>Fri 19 Jan 2024</span>
-    </p>
     <p class="address">789 Church Lane, Testbury</p>
-    <p class="description">Listed building consent for window replacement</p>
+    <p class="metaInfo">
+      Ref. No: 24/00003/LBC
+      <span class="divider">|</span>
+      Validated: Fri 19 Jan 2024
+    </p>
   </li>
 </ul>
 </body></html>
@@ -98,16 +101,22 @@ IDOX_CONFIG = CouncilConfig(
 )
 
 
+def _mock_response(text, url="https://example.com/online-applications/search.do?action=advanced"):
+    """Create a mock HTTP response."""
+    resp = MagicMock()
+    resp.text = text
+    resp.url = url
+    resp.status_code = 200
+    return resp
+
+
 class TestIdoxGatherIds:
     async def test_gather_ids_single_page(self):
         scraper = IdoxScraper(config=IDOX_CONFIG)
         mock_client = AsyncMock()
+        mock_client.get = AsyncMock(return_value=_mock_response(SEARCH_RESULTS_LAST_PAGE))
         mock_client.get_html = AsyncMock(return_value=SEARCH_RESULTS_LAST_PAGE)
-        mock_client.post = AsyncMock(return_value=MagicMock(
-            status_code=200,
-            text=SEARCH_RESULTS_LAST_PAGE,
-            headers={},
-        ))
+        mock_client.post = AsyncMock(return_value=_mock_response(SEARCH_RESULTS_LAST_PAGE))
         scraper._client = mock_client
 
         results = await scraper.gather_ids(date(2024, 1, 1), date(2024, 1, 14))
@@ -120,15 +129,9 @@ class TestIdoxGatherIds:
         scraper = IdoxScraper(config=IDOX_CONFIG)
         mock_client = AsyncMock()
 
-        mock_client.post = AsyncMock(return_value=MagicMock(
-            status_code=200,
-            text=SEARCH_RESULTS_HTML,
-            headers={},
-        ))
-        mock_client.get_html = AsyncMock(side_effect=[
-            SEARCH_RESULTS_HTML,       # search page load
-            SEARCH_RESULTS_LAST_PAGE,  # page 2
-        ])
+        mock_client.get = AsyncMock(return_value=_mock_response(SEARCH_RESULTS_HTML))
+        mock_client.post = AsyncMock(return_value=_mock_response(SEARCH_RESULTS_HTML))
+        mock_client.get_html = AsyncMock(return_value=SEARCH_RESULTS_LAST_PAGE)
         scraper._client = mock_client
 
         results = await scraper.gather_ids(date(2024, 1, 1), date(2024, 1, 14))
@@ -138,11 +141,8 @@ class TestIdoxGatherIds:
         scraper = IdoxScraper(config=IDOX_CONFIG)
         mock_client = AsyncMock()
         empty_html = '<html><body><ul id="searchresults"></ul></body></html>'
-        mock_client.post = AsyncMock(return_value=MagicMock(
-            status_code=200,
-            text=empty_html,
-            headers={},
-        ))
+        mock_client.get = AsyncMock(return_value=_mock_response(empty_html))
+        mock_client.post = AsyncMock(return_value=_mock_response(empty_html))
         mock_client.get_html = AsyncMock(return_value=empty_html)
         scraper._client = mock_client
 
@@ -212,17 +212,13 @@ class TestIdoxFullPipeline:
         scraper = IdoxScraper(config=IDOX_CONFIG)
         mock_client = AsyncMock()
 
+        mock_client.get = AsyncMock(return_value=_mock_response(SEARCH_RESULTS_LAST_PAGE))
         mock_client.get_html = AsyncMock(side_effect=[
-            SEARCH_RESULTS_LAST_PAGE,  # search page load (gather_ids)
             SUMMARY_HTML,              # fetch_detail for app 1
             DATES_HTML,
             INFO_HTML,
         ])
-        mock_client.post = AsyncMock(return_value=MagicMock(
-            status_code=200,
-            text=SEARCH_RESULTS_LAST_PAGE,
-            headers={},
-        ))
+        mock_client.post = AsyncMock(return_value=_mock_response(SEARCH_RESULTS_LAST_PAGE))
         scraper._client = mock_client
 
         result = await scraper.scrape(date(2024, 1, 1), date(2024, 1, 14))
@@ -235,6 +231,7 @@ class TestIdoxFullPipeline:
         """Test that scrape catches exceptions and returns error result."""
         scraper = IdoxScraper(config=IDOX_CONFIG)
         mock_client = AsyncMock()
+        mock_client.get = AsyncMock(side_effect=Exception("Connection refused"))
         mock_client.get_html = AsyncMock(side_effect=Exception("Connection refused"))
         mock_client.post = AsyncMock(side_effect=Exception("Connection refused"))
         scraper._client = mock_client

@@ -32,6 +32,8 @@ class TestIdoxEndExcScraper:
         scraper = IdoxEndExcScraper(config=ENDEXC_CONFIG)
         mock_client = AsyncMock()
         empty_html = '<html><body><ul id="searchresults"></ul></body></html>'
+        mock_resp = MagicMock(text=empty_html, url="https://example.com/search.do?action=advanced", status_code=200)
+        mock_client.get = AsyncMock(return_value=mock_resp)
         mock_client.get_html = AsyncMock(return_value=empty_html)
         mock_client.post = AsyncMock(return_value=MagicMock(
             status_code=200, text=empty_html, headers={},

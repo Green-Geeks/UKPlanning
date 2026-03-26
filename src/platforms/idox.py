@@ -14,7 +14,7 @@ from src.core.scraper import ApplicationDetail, ApplicationSummary, BaseScraper,
 
 IDOX_SEARCH_SELECTORS = {
     "result_links": "ul#searchresults li.searchresult > a",
-    "result_uids": "ul#searchresults li.searchresult p.metainfo > span:first-child",
+    "result_meta": "ul#searchresults li.searchresult p.metaInfo",
     "next_page": "a.next",
     "dates_tab": "a#subtab_dates",
     "info_tab": "a#subtab_details",
@@ -81,14 +81,23 @@ class IdoxScraper(BaseScraper):
     async def gather_ids(self, date_from: date, date_to: date) -> list[ApplicationSummary]:
         """Search Idox portal for applications in date range, handling pagination."""
         search_url = self.config.base_url + self.SEARCH_PATH
-        await self._client.get_html(search_url)
 
-        results_url = self.config.base_url + self.RESULTS_PATH
+        # Load search page to get CSRF token, session cookies, and real base URL (after redirects)
+        response = await self._client.get(search_url)
+        search_html = response.text
+        real_base = str(response.url).split("/search.do")[0]
+        csrf_token = self._extract_csrf(search_html)
+
+        # Build form data with CSRF token
         form_data = {
             self.DATE_FROM_FIELD: date_from.strftime(self.DATE_FORMAT),
             self.DATE_TO_FIELD: date_to.strftime(self.DATE_FORMAT),
             self.SEARCH_TYPE_FIELD: self.SEARCH_TYPE_VALUE,
         }
+        if csrf_token:
+            form_data["_csrf"] = csrf_token
+
+        results_url = real_base + self.RESULTS_PATH
         response = await self._client.post(results_url, data=form_data)
         html = response.text
 
@@ -105,17 +114,41 @@ class IdoxScraper(BaseScraper):
 
         return applications
 
+    def _extract_csrf(self, html: str) -> str:
+        """Extract CSRF token from Idox search page."""
+        el = self._parser.select_one(html, 'input[name="_csrf"]')
+        if el:
+            return el.get("value", "")
+        return ""
+
     def _parse_search_results(self, html: str) -> list[ApplicationSummary]:
         """Extract application summaries from a single results page."""
-        links = self._parser.extract_list(html, self._search_selectors["result_links"], attr="href")
-        uids = self._parser.extract_list(html, self._search_selectors["result_uids"])
+        import re
+        from bs4 import BeautifulSoup
 
+        soup = BeautifulSoup(html, "lxml")
         results = []
-        for i, link in enumerate(links):
-            uid = uids[i] if i < len(uids) else None
+
+        for li in soup.select("ul#searchresults li.searchresult"):
+            link_el = li.select_one("a")
+            meta_el = li.select_one("p.metaInfo") or li.select_one("p.metainfo")
+
+            if not link_el:
+                continue
+
+            href = link_el.get("href", "")
+            abs_url = urljoin(self.config.base_url + "/", href)
+
+            uid = None
+            if meta_el:
+                meta_text = meta_el.get_text(" ", strip=True)
+                ref_match = re.search(r"Ref\.?\s*No:?\s*(\S+)", meta_text)
+                if ref_match:
+                    uid = ref_match.group(1).strip()
+
             if uid:
-                abs_url = urljoin(self.config.base_url, link)
                 results.append(ApplicationSummary(uid=uid, url=abs_url))
+
         return results
 
     async def fetch_detail(self, application: ApplicationSummary) -> ApplicationDetail:
