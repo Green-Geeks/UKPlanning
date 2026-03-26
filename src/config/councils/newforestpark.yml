@@ -1,7 +1,7 @@
 name: NewForestPark
 authority_code: newforestpark
 platform: idox
-base_url: https://publicaccess.newforestnpa.gov.uk/online-applications
+base_url: https://planning.newforest.gov.uk/online-applications
 schedule: 0 3 * * *
 requires_js: false
 enabled: true

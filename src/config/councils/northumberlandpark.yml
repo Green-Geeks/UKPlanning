@@ -1,7 +1,7 @@
 name: NorthumberlandPark
 authority_code: northumberlandpark
 platform: idox
-base_url: https://publicaccess.nnpa.org.uk/online-applications
+base_url: https://publicaccess.northumberland.gov.uk/online-applications
 schedule: 0 3 * * *
 requires_js: false
 enabled: true
