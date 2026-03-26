@@ -30,17 +30,24 @@ def create_app():
     ):
         per_page = 50
         offset = (page - 1) * per_page
-        query = select(Application).join(Council)
+        filters = []
         if q:
-            query = query.where(
+            filters.append(
                 Application.description.ilike(f"%{q}%")
                 | Application.address.ilike(f"%{q}%")
             )
         if council:
-            query = query.where(Council.authority_code == council)
-        total = db.execute(select(func.count()).select_from(query.subquery())).scalar()
+            filters.append(Council.authority_code == council)
+
+        count_query = select(func.count(Application.id)).join(Council)
+        list_query = select(Application).join(Council)
+        for f in filters:
+            count_query = count_query.where(f)
+            list_query = list_query.where(f)
+
+        total = db.execute(count_query).scalar()
         applications = db.execute(
-            query.order_by(Application.first_scraped_at.desc()).offset(offset).limit(per_page)
+            list_query.order_by(Application.first_scraped_at.desc()).offset(offset).limit(per_page)
         ).scalars().all()
         councils = db.execute(select(Council).order_by(Council.name)).scalars().all()
         return templates.TemplateResponse("search.html", {
