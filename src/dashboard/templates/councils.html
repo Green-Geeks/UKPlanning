@@ -2,8 +2,12 @@
 {% block title %}Councils - UK Planning Dashboard{% endblock %}
 {% block content %}
 <h1>Councils</h1>
+<div style="margin-bottom:1rem;">
+    <button onclick="scrapeAll()" class="search-form button" style="padding:0.5rem 1.5rem;background:#2b6cb0;color:white;border:none;border-radius:4px;cursor:pointer;font-size:1rem;">Scrape All Enabled</button>
+    <span id="scrape-all-status" style="margin-left:1rem;"></span>
+</div>
 <table>
-    <thead><tr><th>Name</th><th>Platform</th><th>Applications</th><th>Last Run</th><th>Status</th></tr></thead>
+    <thead><tr><th>Name</th><th>Platform</th><th>Applications</th><th>Last Run</th><th>Status</th><th>Action</th></tr></thead>
     <tbody>
     {% for c in councils %}
     <tr>
@@ -17,8 +21,44 @@
             {% elif stats[c.id].last_run and stats[c.id].last_run.status == "success" %}<span class="badge badge-success">Healthy</span>
             {% else %}<span class="badge badge-info">Pending</span>{% endif %}
         </td>
+        <td>
+            {% if c.enabled %}
+            <button onclick="scrapeCouncil('{{ c.authority_code }}', this)" style="padding:0.3rem 0.8rem;background:#2b6cb0;color:white;border:none;border-radius:3px;cursor:pointer;font-size:0.85rem;">Scrape</button>
+            {% endif %}
+        </td>
     </tr>
     {% endfor %}
     </tbody>
 </table>
+<script>
+async function scrapeCouncil(code, btn) {
+    btn.disabled = true;
+    btn.textContent = 'Starting...';
+    try {
+        const resp = await fetch('/api/scrape/' + code, {method: 'POST'});
+        const data = await resp.json();
+        if (resp.ok) {
+            btn.textContent = 'Running';
+            btn.style.background = '#38a169';
+        } else {
+            btn.textContent = data.error || 'Error';
+            btn.style.background = '#e53e3e';
+        }
+    } catch(e) {
+        btn.textContent = 'Error';
+        btn.style.background = '#e53e3e';
+    }
+}
+async function scrapeAll() {
+    const status = document.getElementById('scrape-all-status');
+    status.textContent = 'Starting...';
+    try {
+        const resp = await fetch('/api/scrape-all', {method: 'POST'});
+        const data = await resp.json();
+        status.textContent = 'Queued ' + data.councils_queued + ' councils';
+    } catch(e) {
+        status.textContent = 'Error';
+    }
+}
+</script>
 {% endblock %}

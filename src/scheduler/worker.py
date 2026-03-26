@@ -20,7 +20,7 @@ async def run_council_scrape(
     session,
     lookback_days=DEFAULT_LOOKBACK_DAYS,
 ):
-    """Run a single scrape job for one council."""
+    """Run a single scrape job for one council. Streams results to DB as they arrive."""
     council = session.execute(
         select(Council).where(Council.authority_code == config.authority_code)
     ).scalar_one()
@@ -43,27 +43,37 @@ async def run_council_scrape(
     session.commit()
 
     scraper = registry.create_scraper(config)
-    result = await scraper.scrape(date_from, date_to)
+    apps_found = 0
+    apps_updated = 0
 
-    if result.is_success:
-        apps_found = len(result.applications)
-        apps_updated = 0
-        for detail in result.applications:
-            apps_updated += _upsert_application(session, council.id, detail)
-        session.commit()
+    try:
+        # Step 1: Gather IDs
+        summaries = await scraper.gather_ids(date_from, date_to)
+        apps_found = len(summaries)
+        logger.info("Scrape %s: found %d applications, fetching details...", config.authority_code, apps_found)
+
+        # Step 2: Fetch detail and insert each one immediately
+        for summary in summaries:
+            try:
+                detail = await scraper.fetch_detail(summary)
+                apps_updated += _upsert_application(session, council.id, detail)
+                session.commit()
+            except Exception as e:
+                logger.warning("Error fetching %s/%s: %s", config.authority_code, summary.uid, e)
+                session.rollback()
 
         scrape_run.status = "success"
         scrape_run.applications_found = apps_found
         scrape_run.applications_updated = apps_updated
         council.last_successful_at = now
         logger.info(
-            "Scrape %s: found=%d updated=%d",
+            "Scrape %s complete: found=%d updated=%d",
             config.authority_code, apps_found, apps_updated,
         )
-    else:
+    except Exception as e:
         scrape_run.status = "failed"
-        scrape_run.error_message = result.error
-        logger.warning("Scrape %s failed: %s", config.authority_code, result.error)
+        scrape_run.error_message = str(e)
+        logger.warning("Scrape %s failed: %s", config.authority_code, e)
 
     scrape_run.completed_at = datetime.now(timezone.utc)
     council.last_scraped_at = now

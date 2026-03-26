@@ -2,7 +2,11 @@
 {% block title %}{{ council.name if council else "Not Found" }} - UK Planning Dashboard{% endblock %}
 {% block content %}
 {% if council %}
-<h1>{{ council.name }}</h1>
+<h1>{{ council.name }}
+{% if council.enabled %}
+<button id="scrape-btn" onclick="scrapeThis()" style="padding:0.4rem 1rem;background:#2b6cb0;color:white;border:none;border-radius:4px;cursor:pointer;font-size:0.9rem;margin-left:1rem;vertical-align:middle;">Scrape Now</button>
+{% endif %}
+</h1>
 <dl class="detail-grid">
     <dt>Platform</dt><dd>{{ council.platform }}</dd>
     <dt>Base URL</dt><dd><a href="{{ council.base_url }}" target="_blank">{{ council.base_url }}</a></dd>
@@ -43,4 +47,25 @@
 {% else %}
 <h1>Council not found</h1>
 {% endif %}
+<script>
+async function scrapeThis() {
+    const btn = document.getElementById('scrape-btn');
+    btn.disabled = true;
+    btn.textContent = 'Starting...';
+    try {
+        const resp = await fetch('/api/scrape/{{ council.authority_code }}', {method: 'POST'});
+        const data = await resp.json();
+        if (resp.ok) {
+            btn.textContent = 'Running...';
+            btn.style.background = '#38a169';
+        } else {
+            btn.textContent = data.error || 'Error';
+            btn.style.background = '#e53e3e';
+        }
+    } catch(e) {
+        btn.textContent = 'Error';
+        btn.style.background = '#e53e3e';
+    }
+}
+</script>
 {% endblock %}
