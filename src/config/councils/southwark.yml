@@ -4,3 +4,4 @@ platform: idox_endexc
 base_url: "http://planbuild.southwark.gov.uk:8190/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
+enabled: false

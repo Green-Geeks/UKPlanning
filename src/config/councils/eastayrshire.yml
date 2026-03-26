@@ -4,3 +4,4 @@ platform: idox
 base_url: "http://eplanning.east-ayrshire.gov.uk/online"
 schedule: "0 3 * * *"
 requires_js: false
+enabled: false

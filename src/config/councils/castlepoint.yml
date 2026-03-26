@@ -5,3 +5,4 @@ base_url: "http://planning.castlepoint.gov.uk/portal/page/portal/CASTLEPOINT"
 schedule: "0 3 * * *"
 requires_js: false
 # Was Ocella up to April 2014
+enabled: false

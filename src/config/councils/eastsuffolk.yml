@@ -5,3 +5,4 @@ base_url: "http://planningpublicaccess.waveney.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
 # Combined planning service covering Suffolk Coastal and Waveney
+enabled: false

@@ -5,3 +5,4 @@ base_url: "http://e-planning.bury.gov.uk/DCWebPages"
 schedule: "0 3 * * *"
 requires_js: false
 # was AcolNet
+enabled: false

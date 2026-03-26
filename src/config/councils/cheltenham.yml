@@ -4,3 +4,4 @@ platform: idox_crumb
 base_url: "http://publicaccess.cheltenham.gov.uk/idoxpa17"
 schedule: "0 3 * * *"
 requires_js: false
+enabled: false

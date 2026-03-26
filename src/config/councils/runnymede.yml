@@ -4,3 +4,4 @@ platform: planning_explorer
 base_url: "http://planning.runnymede.gov.uk/Northgate/PlanningExplorer"
 schedule: "0 3 * * *"
 requires_js: false
+enabled: false

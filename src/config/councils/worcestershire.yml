@@ -5,3 +5,4 @@ base_url: "http://www.worcestershire.gov.uk/PublicAccess/tdc/DcApplication"
 schedule: "0 3 * * *"
 requires_js: false
 # Was PublicAccess
+enabled: false

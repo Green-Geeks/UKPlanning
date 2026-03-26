@@ -4,3 +4,4 @@ platform: idox
 base_url: "http://publicaccess.melton.gov.uk/PALiveSystem77/tdc/DcApplication"
 schedule: "0 3 * * *"
 requires_js: false
+enabled: false

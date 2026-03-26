@@ -4,3 +4,4 @@ platform: idox_endexc
 base_url: "https://site.dacorum.gov.uk/publicaccess"
 schedule: "0 3 * * *"
 requires_js: false
+enabled: false

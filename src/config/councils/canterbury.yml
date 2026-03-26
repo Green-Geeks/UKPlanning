@@ -5,3 +5,4 @@ base_url: "https://publicaccess.canterbury.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
 # was AcolNet
+enabled: false

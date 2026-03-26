@@ -4,3 +4,4 @@ platform: idox
 base_url: "https://www.planningpa.bolton.gov.uk/online-applications-17"
 schedule: "0 3 * * *"
 requires_js: false
+enabled: false

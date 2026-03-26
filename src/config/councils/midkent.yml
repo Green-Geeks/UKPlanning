@@ -5,3 +5,4 @@ base_url: "http://pa.midkent.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
 # Combined planning service covering Maidstone and Swale - bu now excluding Tunbridge Wells
+enabled: false

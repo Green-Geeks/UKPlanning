@@ -4,3 +4,4 @@ platform: planning_explorer
 base_url: "https://wwwapplications.barnsley.gov.uk/PlanningExplorerMVC/Home"
 schedule: "0 3 * * *"
 requires_js: false
+enabled: false

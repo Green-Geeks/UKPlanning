@@ -5,3 +5,4 @@ base_url: "http://planapps2.cambridgeshire.gov.uk/DCWebPages"
 schedule: "0 3 * * *"
 requires_js: false
 # was AcolNet
+enabled: false

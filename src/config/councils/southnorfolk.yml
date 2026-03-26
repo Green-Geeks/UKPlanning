@@ -5,3 +5,4 @@ base_url: "https://info.south-norfolk.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
 # Was PlanningExplorer
+enabled: false

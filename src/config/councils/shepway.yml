@@ -4,3 +4,4 @@ platform: idox
 base_url: "https://searchplanapps.shepway.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
+enabled: false

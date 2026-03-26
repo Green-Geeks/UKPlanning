@@ -5,3 +5,4 @@ base_url: "http://pawebsrv.wellingborough.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
 # Was AppSearchServ up to Mar 2014
+enabled: false

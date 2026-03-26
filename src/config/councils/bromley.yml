@@ -4,3 +4,4 @@ platform: idox
 base_url: "https://searchapplications.bromley.gov.uk/onlineapplications"
 schedule: "0 3 * * *"
 requires_js: false
+enabled: false

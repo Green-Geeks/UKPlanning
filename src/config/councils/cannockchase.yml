@@ -4,3 +4,4 @@ platform: swiftlg
 base_url: "http://planning.cannockchasedc.com/swiftlg/apas/run"
 schedule: "0 3 * * *"
 requires_js: false
+enabled: false

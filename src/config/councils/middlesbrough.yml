@@ -5,3 +5,4 @@ base_url: "https://publicaccess.middlesbrough.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
 # was Ocella
+enabled: false

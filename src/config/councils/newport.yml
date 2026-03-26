@@ -4,3 +4,4 @@ platform: swiftlg
 base_url: "http://planning.newport.gov.uk/swift/apas/run"
 schedule: "0 3 * * *"
 requires_js: false
+enabled: false
