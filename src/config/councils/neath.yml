@@ -1,7 +1,6 @@
 name: Neath
 authority_code: neath
-platform: unsupported
-base_url: "http://planning.npt.gov.uk"
+platform: idox
+base_url: "https://planningonline.npt.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

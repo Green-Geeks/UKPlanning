@@ -1,7 +1,6 @@
 name: Newport
 authority_code: newport
-platform: swiftlg
-base_url: "http://planning.newport.gov.uk/swift/apas/run"
+platform: idox
+base_url: "https://publicaccess.newport.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

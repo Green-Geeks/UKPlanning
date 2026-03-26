@@ -1,8 +1,7 @@
 name: Bury
 authority_code: bury
-platform: idox_endexc
-base_url: "http://e-planning.bury.gov.uk/DCWebPages"
+platform: idox
+base_url: "https://planning.bury.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
 # was AcolNet
-enabled: false

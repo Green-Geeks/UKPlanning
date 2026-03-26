@@ -1,7 +1,6 @@
 name: Wigan
 authority_code: wigan
-platform: unsupported
-base_url: "http://kinnear.wigan.gov.uk/planapps"
+platform: idox
+base_url: "https://planning.wigan.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

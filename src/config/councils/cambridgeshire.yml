@@ -1,8 +1,7 @@
 name: Cambridgeshire
 authority_code: cambridgeshire
-platform: swiftlg
-base_url: "http://planapps2.cambridgeshire.gov.uk/DCWebPages"
+platform: idox
+base_url: "https://planning.cambridgeshire.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
 # was AcolNet
-enabled: false

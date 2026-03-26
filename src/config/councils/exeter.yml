@@ -1,7 +1,6 @@
 name: Exeter
 authority_code: exeter
-platform: unsupported
-base_url: "http://pub.exeter.gov.uk/scripts/acolnet/planning"
+platform: idox
+base_url: "https://publicaccess.exeter.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

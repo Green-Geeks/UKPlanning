@@ -1,7 +1,6 @@
 name: NorthYorkshire
 authority_code: northyorkshire
-platform: unsupported
-base_url: "https://onlineplanningregister.northyorks.gov.uk/register"
+platform: idox
+base_url: "https://publicaccess.northyorks.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

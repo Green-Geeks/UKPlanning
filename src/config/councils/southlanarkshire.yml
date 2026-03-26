@@ -1,7 +1,6 @@
 name: SouthLanarkshire
 authority_code: southlanarkshire
-platform: planning_explorer
-base_url: "http://pbsportal.southlanarkshire.gov.uk/Northgate/PlanningExplorer"
+platform: idox
+base_url: "https://publicaccess.southlanarkshire.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

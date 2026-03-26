@@ -1,7 +1,6 @@
 name: Halton
 authority_code: halton
-platform: unsupported
-base_url: "https://webapp.halton.gov.uk/PlanningApps"
+platform: idox
+base_url: "https://pa.halton.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

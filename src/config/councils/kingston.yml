@@ -1,7 +1,6 @@
 name: Kingston
 authority_code: kingston
-platform: unsupported
-base_url: "https://maps.kingston.gov.uk/propertyServices/planning"
+platform: idox
+base_url: "https://publicaccess.kingston.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

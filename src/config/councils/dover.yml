@@ -1,7 +1,6 @@
 name: Dover
 authority_code: dover
-platform: idox_endexc
-base_url: "https://planning.dover.gov.uk/online-applications"
+platform: idox
+base_url: "https://publicaccess.dover.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

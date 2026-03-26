@@ -1,7 +1,6 @@
 name: Broxtowe
 authority_code: broxtowe
-platform: unsupported
-base_url: "http://planning.broxtowe.gov.uk"
+platform: idox
+base_url: "https://publicaccess.broxtowe.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

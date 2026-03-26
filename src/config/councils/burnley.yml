@@ -1,7 +1,6 @@
 name: Burnley
 authority_code: burnley
-platform: unsupported
-base_url: "http://www.burnley.gov.uk/custom/plnapps"
+platform: idox
+base_url: "https://publicaccess.burnley.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

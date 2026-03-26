@@ -1,7 +1,6 @@
 name: SouthStaffordshire
 authority_code: southstaffordshire
 platform: idox
-base_url: "http://www2.sstaffs.gov.uk:81/online-applications"
+base_url: "https://planning.sstaffs.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

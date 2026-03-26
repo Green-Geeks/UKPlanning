@@ -1,8 +1,7 @@
 name: Lincoln
 authority_code: lincoln
 platform: idox
-base_url: "https://development.lincoln.gov.uk/online-applications"
+base_url: "https://planning.lincoln.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
 # was Planning Explorer
-enabled: false

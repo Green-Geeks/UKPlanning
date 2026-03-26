@@ -1,7 +1,6 @@
 name: Spelthorne
 authority_code: spelthorne
-platform: unsupported
-base_url: "http://my.spelthorne.gov.uk/planning"
+platform: idox
+base_url: "https://publicaccess.spelthorne.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

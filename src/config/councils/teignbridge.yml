@@ -1,7 +1,6 @@
 name: Teignbridge
 authority_code: teignbridge
-platform: unsupported
-base_url: "http://gis.teignbridge.gov.uk/TeignbridgePlanningOnline"
+platform: idox
+base_url: "https://publicaccess.teignbridge.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

@@ -1,8 +1,7 @@
 name: EastSuffolk
 authority_code: eastsuffolk
 platform: idox
-base_url: "http://planningpublicaccess.waveney.gov.uk/online-applications"
+base_url: "https://publicaccess.eastsuffolk.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
 # Combined planning service covering Suffolk Coastal and Waveney
-enabled: false

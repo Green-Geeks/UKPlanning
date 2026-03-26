@@ -1,7 +1,6 @@
 name: Powys
 authority_code: powys
-platform: unsupported
-base_url: "http://planning.powys.gov.uk/portal/servlets"
+platform: idox
+base_url: "https://pa.powys.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

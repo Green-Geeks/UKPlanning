@@ -1,7 +1,6 @@
 name: Southend
 authority_code: southend
-platform: idox_crumb
-base_url: "http://planning.southend.gov.uk/PublicAccess/tdc/DcApplication"
+platform: idox
+base_url: "https://publicaccess.southend.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false

@@ -1,7 +1,6 @@
 name: NorthSomerset
 authority_code: northsomerset
-platform: unsupported
-base_url: "http://wam.n-somerset.gov.uk/MULTIWAM/searchsubmit"
+platform: idox
+base_url: "https://planning.n-somerset.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
-enabled: false
