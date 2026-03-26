@@ -62,3 +62,89 @@ class TestIdoxSelectors:
         assert "activeTab=dates" in dates_link["href"]
         assert info_link is not None
         assert "activeTab=details" in info_link["href"]
+
+
+from datetime import date
+from unittest.mock import AsyncMock, MagicMock
+from src.platforms.idox import IdoxScraper
+from src.core.scraper import ApplicationSummary
+
+SEARCH_RESULTS_LAST_PAGE = """
+<html><body>
+<p class="pager top">
+  <span class="showing">Showing 11-12 of 12</span>
+</p>
+<ul id="searchresults">
+  <li class="searchresult">
+    <a href="/online-applications/applicationDetails.do?activeTab=summary&amp;keyVal=GHI789">
+      <span>View</span>
+    </a>
+    <p class="metainfo">
+      No: <span>24/00003/LBC</span> |
+      Received: <span>Fri 19 Jan 2024</span>
+    </p>
+    <p class="address">789 Church Lane, Testbury</p>
+    <p class="description">Listed building consent for window replacement</p>
+  </li>
+</ul>
+</body></html>
+"""
+
+IDOX_CONFIG = CouncilConfig(
+    name="Hart",
+    authority_code="hart",
+    platform="idox",
+    base_url="https://publicaccess.hart.gov.uk/online-applications",
+)
+
+
+class TestIdoxGatherIds:
+    async def test_gather_ids_single_page(self):
+        scraper = IdoxScraper(config=IDOX_CONFIG)
+        mock_client = AsyncMock()
+        mock_client.get_html = AsyncMock(return_value=SEARCH_RESULTS_LAST_PAGE)
+        mock_client.post = AsyncMock(return_value=MagicMock(
+            status_code=200,
+            text=SEARCH_RESULTS_LAST_PAGE,
+            headers={},
+        ))
+        scraper._client = mock_client
+
+        results = await scraper.gather_ids(date(2024, 1, 1), date(2024, 1, 14))
+        assert len(results) == 1
+        assert results[0].uid == "24/00003/LBC"
+        assert "GHI789" in results[0].url
+
+    async def test_gather_ids_with_pagination(self):
+        SEARCH_RESULTS_HTML = (FIXTURES / "idox_search_results.html").read_text()
+        scraper = IdoxScraper(config=IDOX_CONFIG)
+        mock_client = AsyncMock()
+
+        mock_client.post = AsyncMock(return_value=MagicMock(
+            status_code=200,
+            text=SEARCH_RESULTS_HTML,
+            headers={},
+        ))
+        mock_client.get_html = AsyncMock(side_effect=[
+            SEARCH_RESULTS_HTML,       # search page load
+            SEARCH_RESULTS_LAST_PAGE,  # page 2
+        ])
+        scraper._client = mock_client
+
+        results = await scraper.gather_ids(date(2024, 1, 1), date(2024, 1, 14))
+        assert len(results) == 3  # 2 from page 1 + 1 from page 2
+
+    async def test_gather_ids_empty_results(self):
+        scraper = IdoxScraper(config=IDOX_CONFIG)
+        mock_client = AsyncMock()
+        empty_html = '<html><body><ul id="searchresults"></ul></body></html>'
+        mock_client.post = AsyncMock(return_value=MagicMock(
+            status_code=200,
+            text=empty_html,
+            headers={},
+        ))
+        mock_client.get_html = AsyncMock(return_value=empty_html)
+        scraper._client = mock_client
+
+        results = await scraper.gather_ids(date(2024, 1, 1), date(2024, 1, 14))
+        assert results == []
