@@ -204,3 +204,41 @@ class TestIdoxFetchDetail:
         assert detail.reference == "24/00001/FUL"
         assert detail.address == "123 High Street"
         assert detail.application_type is None
+
+
+class TestIdoxFullPipeline:
+    async def test_scrape_end_to_end(self):
+        """Test the full scrape pipeline: gather_ids -> fetch_detail for each."""
+        scraper = IdoxScraper(config=IDOX_CONFIG)
+        mock_client = AsyncMock()
+
+        mock_client.get_html = AsyncMock(side_effect=[
+            SEARCH_RESULTS_LAST_PAGE,  # search page load (gather_ids)
+            SUMMARY_HTML,              # fetch_detail for app 1
+            DATES_HTML,
+            INFO_HTML,
+        ])
+        mock_client.post = AsyncMock(return_value=MagicMock(
+            status_code=200,
+            text=SEARCH_RESULTS_LAST_PAGE,
+            headers={},
+        ))
+        scraper._client = mock_client
+
+        result = await scraper.scrape(date(2024, 1, 1), date(2024, 1, 14))
+        assert result.is_success
+        assert len(result.applications) == 1
+        assert result.applications[0].reference == "24/00001/FUL"
+        assert result.applications[0].application_type == "Full Planning Permission"
+
+    async def test_scrape_handles_error(self):
+        """Test that scrape catches exceptions and returns error result."""
+        scraper = IdoxScraper(config=IDOX_CONFIG)
+        mock_client = AsyncMock()
+        mock_client.get_html = AsyncMock(side_effect=Exception("Connection refused"))
+        mock_client.post = AsyncMock(side_effect=Exception("Connection refused"))
+        scraper._client = mock_client
+
+        result = await scraper.scrape(date(2024, 1, 1), date(2024, 1, 14))
+        assert not result.is_success
+        assert "Connection refused" in result.error
