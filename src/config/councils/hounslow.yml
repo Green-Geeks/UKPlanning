@@ -1,7 +1,7 @@
 name: Hounslow
 authority_code: hounslow
-platform: idox
-base_url: https://planning.hounslow.gov.uk/online-applications
+platform: bespoke
+base_url: https://planning.hounslow.gov.uk/
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

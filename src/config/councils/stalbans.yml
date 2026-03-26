@@ -1,7 +1,7 @@
 name: StAlbans
 authority_code: stalbans
-platform: idox
-base_url: https://planning.stalbans.gov.uk/online-applications
+platform: bespoke
+base_url: https://planningapplications.stalbans.gov.uk/planning
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

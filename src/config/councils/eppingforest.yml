@@ -1,6 +1,6 @@
 name: EppingForest
 authority_code: eppingforest
-platform: unsupported
+platform: salesforce
 base_url: https://eppingforestdc.my.site.com/pr/s/register-view
 schedule: 0 3 * * *
 requires_js: false

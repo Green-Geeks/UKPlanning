@@ -1,6 +1,6 @@
 name: CheshireEast
 authority_code: cheshireeast
-platform: unsupported
+platform: bespoke
 base_url: https://planning.cheshireeast.gov.uk/
 schedule: 0 3 * * *
 requires_js: false

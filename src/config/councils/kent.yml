@@ -1,7 +1,7 @@
 name: Kent
 authority_code: kent
-platform: idox
-base_url: https://planning.kent.gov.uk/online-applications
+platform: bespoke
+base_url: https://www.kentplanningapplications.co.uk/
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

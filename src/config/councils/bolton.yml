@@ -1,7 +1,7 @@
 name: Bolton
 authority_code: bolton
 platform: idox
-base_url: https://www.planningpa.bolton.gov.uk/online-applications
+base_url: https://paplanning.bolton.gov.uk/online-applications
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

@@ -1,7 +1,7 @@
 name: Hyndburn
 authority_code: hyndburn
-platform: idox
-base_url: https://publicaccess.hyndburnbc.gov.uk/online-applications
+platform: bespoke
+base_url: https://www.hyndburnbc.gov.uk/planning-application-search/
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

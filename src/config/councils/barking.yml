@@ -1,7 +1,7 @@
 name: Barking
 authority_code: barking
-platform: idox
-base_url: https://befirst.bfreg.co.uk/online-applications
+platform: tascomi
+base_url: https://online-befirst.lbbd.gov.uk/planning/index.html
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

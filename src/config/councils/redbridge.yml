@@ -4,4 +4,4 @@ platform: swiftlg
 base_url: https://planning.redbridge.gov.uk
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

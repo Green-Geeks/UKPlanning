@@ -1,7 +1,7 @@
 name: Dartmoor
 authority_code: dartmoor
-platform: idox
-base_url: https://publicaccess.dartmoor.gov.uk/online-applications
+platform: tascomi
+base_url: https://dartmoor-online.tascomi.com/planning/index.html
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

@@ -1,6 +1,6 @@
 name: Reading
 authority_code: reading
-platform: unsupported
+platform: bespoke
 base_url: https://planning.reading.gov.uk/fastweb_PL/search.asp
 schedule: 0 3 * * *
 requires_js: false

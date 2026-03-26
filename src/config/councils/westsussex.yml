@@ -1,6 +1,6 @@
 name: WestSussex
 authority_code: westsussex
-platform: unsupported
+platform: planning_register
 base_url: https://westsussex.planning-register.co.uk/
 schedule: 0 3 * * *
 requires_js: false

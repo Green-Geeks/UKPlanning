@@ -1,7 +1,7 @@
 name: NorthYorkMoors
 authority_code: northyorkmoors
-platform: idox
-base_url: https://publicaccess.northyorkmoors.org.uk/online-applications
+platform: bespoke
+base_url: http://planning.northyorkmoors.org.uk/Northgate/PlanningExplorer/ApplicationSearch.aspx
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

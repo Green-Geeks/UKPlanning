@@ -1,7 +1,7 @@
 name: SouthLakeland
 authority_code: southlakeland
-platform: idox
-base_url: https://publicaccess.westmorlandandfurness.gov.uk/online-applications
+platform: planning_register
+base_url: https://planningregister.westmorlandandfurness.gov.uk/
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

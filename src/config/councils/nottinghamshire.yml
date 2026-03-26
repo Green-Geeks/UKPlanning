@@ -1,7 +1,7 @@
 name: Nottinghamshire
 authority_code: nottinghamshire
-platform: idox
-base_url: https://planning.nottinghamshire.gov.uk/online-applications
+platform: bespoke
+base_url: https://www.nottinghamshire.gov.uk/planningsearch/planappsrch.aspx
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

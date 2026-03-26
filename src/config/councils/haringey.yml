@@ -1,7 +1,7 @@
 name: Haringey
 authority_code: haringey
-platform: idox
-base_url: https://publicaccess.haringey.gov.uk/online-applications
+platform: salesforce
+base_url: https://publicregister.haringey.gov.uk/pr/s/register-view
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

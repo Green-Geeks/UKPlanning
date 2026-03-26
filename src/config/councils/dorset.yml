@@ -1,7 +1,7 @@
 name: Dorset
 authority_code: dorset
 platform: idox
-base_url: https://planning.dorset.gov.uk/online-applications
+base_url: https://planning.dorset.gov.uk/public-access
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

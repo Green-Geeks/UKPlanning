@@ -1,7 +1,7 @@
 name: Staffordshire
 authority_code: staffordshire
-platform: idox
-base_url: https://planning.staffordshire.gov.uk/online-applications
+platform: agile
+base_url: https://planning.agileapplications.co.uk/staffordshire
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

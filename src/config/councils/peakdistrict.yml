@@ -1,7 +1,7 @@
 name: PeakDistrict
 authority_code: peakdistrict
-platform: swiftlg
-base_url: https://planning.peakdistrict.gov.uk
+platform: bespoke
+base_url: https://portal.peakdistrict.gov.uk/
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

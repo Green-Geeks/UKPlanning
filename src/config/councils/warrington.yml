@@ -1,7 +1,7 @@
 name: Warrington
 authority_code: warrington
-platform: idox
-base_url: https://publicaccess.warrington.gov.uk/online-applications
+platform: swiftlg
+base_url: https://planning.warrington.gov.uk/swiftlg/apas/run/wphappcriteria.display
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

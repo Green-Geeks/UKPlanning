@@ -1,7 +1,7 @@
 name: Lancashire
 authority_code: lancashire
-platform: idox
-base_url: https://planning.lancashire.gov.uk/online-applications
+platform: bespoke
+base_url: https://planningregister.lancashire.gov.uk/
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

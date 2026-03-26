@@ -1,6 +1,6 @@
 name: SouthWestDevon
 authority_code: southwestdevon
-platform: unsupported
+platform: bespoke
 base_url: https://apps.southhams.gov.uk/PlanningSearchMVC/Home/
 schedule: 0 3 * * *
 requires_js: false

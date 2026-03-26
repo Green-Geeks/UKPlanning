@@ -1,7 +1,7 @@
 name: Anglesey
 authority_code: anglesey
-platform: idox
-base_url: https://www.angleseyidoxcloud.wales/online-applications
+platform: salesforce
+base_url: https://ioacc.my.site.com/s/pr-english
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

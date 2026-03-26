@@ -1,7 +1,7 @@
 name: Carmarthenshire
 authority_code: carmarthenshire
-platform: idox
-base_url: https://www.carmarthenshireidoxcloud.wales/online-applications
+platform: salesforce
+base_url: https://carmarthenshire.my.site.com/en/s/
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

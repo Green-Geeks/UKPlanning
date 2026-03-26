@@ -1,7 +1,7 @@
 name: NorthDorset
 authority_code: northdorset
 platform: idox
-base_url: https://publicaccess.dorsetcouncil.gov.uk/online-applications
+base_url: https://planning.dorset.gov.uk/public-access
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

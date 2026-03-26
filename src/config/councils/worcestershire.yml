@@ -1,7 +1,7 @@
 name: Worcestershire
 authority_code: worcestershire
-platform: idox
-base_url: https://planning.worcestershire.gov.uk/online-applications
+platform: swiftlg
+base_url: https://e-planning.worcestershire.gov.uk/swift/apas/run/wchvarylogin.display
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

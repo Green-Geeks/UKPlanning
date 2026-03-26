@@ -1,7 +1,7 @@
 name: Fareham
 authority_code: fareham
-platform: idox
-base_url: https://planning.fareham.gov.uk/online-applications
+platform: bespoke
+base_url: https://www.fareham.gov.uk/casetrackerplanning/applicationsearch.aspx
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

@@ -1,7 +1,7 @@
 name: YorkshireDales
 authority_code: yorkshiredales
-platform: idox
-base_url: https://publicaccess.yorkshiredales.org.uk/online-applications
+platform: agile
+base_url: https://planning.agileapplications.co.uk/yorkshiredales/search-applications/
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

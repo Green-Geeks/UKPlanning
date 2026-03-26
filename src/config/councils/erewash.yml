@@ -1,7 +1,7 @@
 name: Erewash
 authority_code: erewash
-platform: idox
-base_url: https://publicaccess.erewash.gov.uk/online-applications
+platform: bespoke
+base_url: https://myservice.erewash.gov.uk/Planning/lg/plansearch.page
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

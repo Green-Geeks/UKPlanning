@@ -1,7 +1,7 @@
 name: Kirklees
 authority_code: kirklees
-platform: planning_explorer
-base_url: https://www.kirklees.gov.uk/error/pagenotfound.html?aspxerrorpath=
+platform: bespoke
+base_url: https://www.kirklees.gov.uk/beta/planning-applications/search-for-planning-applications/default.aspx
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

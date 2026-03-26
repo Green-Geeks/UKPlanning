@@ -1,7 +1,7 @@
 name: Ashfield
 authority_code: ashfield
-platform: idox
-base_url: https://publicaccess.ashfield-dc.gov.uk/online-applications
+platform: bespoke
+base_url: https://planning.ashfield.gov.uk/planning-applications/search-applications/
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

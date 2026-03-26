@@ -1,7 +1,7 @@
 name: Islington
 authority_code: islington
-platform: idox
-base_url: https://planning.islington.gov.uk/online-applications
+platform: agile
+base_url: https://planning.agileapplications.co.uk/islington
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

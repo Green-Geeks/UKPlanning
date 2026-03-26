@@ -1,7 +1,7 @@
 name: Medway
 authority_code: medway
 platform: idox
-base_url: https://publicaccess.medway.gov.uk/online-applications
+base_url: https://publicaccess1.medway.gov.uk/online-applications
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

@@ -1,7 +1,7 @@
 name: Preston
 authority_code: preston
-platform: idox
-base_url: https://planningpa.preston.gov.uk/online-applications
+platform: bespoke
+base_url: https://selfservice.preston.gov.uk/service/planning/ApplicationSearch.aspx
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

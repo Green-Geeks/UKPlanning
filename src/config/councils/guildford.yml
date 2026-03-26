@@ -1,7 +1,7 @@
 name: Guildford
 authority_code: guildford
 platform: idox
-base_url: https://www3.guildford.gov.uk/online-applications
+base_url: https://publicaccess.guildford.gov.uk/online-applications
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

@@ -1,7 +1,7 @@
 name: Christchurch
 authority_code: christchurch
 platform: idox
-base_url: https://publicaccess.bcpcouncil.gov.uk/online-applications
+base_url: https://boppa.poole.gov.uk/online-applications
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

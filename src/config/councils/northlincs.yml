@@ -1,7 +1,7 @@
 name: NorthLincs
 authority_code: northlincs
-platform: idox
-base_url: https://planning.northlincs.gov.uk/online-applications
+platform: bespoke
+base_url: https://apps.northlincs.gov.uk/
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

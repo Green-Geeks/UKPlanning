@@ -1,7 +1,7 @@
 name: Crawley
 authority_code: crawley
-platform: idox
-base_url: https://publicaccess.crawley.gov.uk/online-applications
+platform: planning_register
+base_url: https://planningregister.crawley.gov.uk/
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

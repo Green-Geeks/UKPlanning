@@ -1,7 +1,7 @@
 name: Nuneaton
 authority_code: nuneaton
-platform: idox
-base_url: https://apps.nuneatonandbedworth.gov.uk/online-applications
+platform: bespoke
+base_url: https://customer.nuneatonandbedworth.gov.uk
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

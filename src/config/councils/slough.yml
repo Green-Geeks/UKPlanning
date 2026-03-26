@@ -1,7 +1,7 @@
 name: Slough
 authority_code: slough
-platform: idox
-base_url: https://publicaccess.slough.gov.uk/online-applications
+platform: agile
+base_url: https://planning.agileapplications.co.uk/slough
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

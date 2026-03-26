@@ -1,7 +1,7 @@
 name: Wrexham
 authority_code: wrexham
-platform: idox
-base_url: https://www.wrexhamidoxcloud.wales/online-applications
+platform: bespoke
+base_url: https://planning.wrexham.gov.uk/planning/search-applications
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

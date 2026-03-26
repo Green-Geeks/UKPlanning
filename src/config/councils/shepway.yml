@@ -1,7 +1,7 @@
 name: Shepway
 authority_code: shepway
-platform: idox
-base_url: https://publicaccess.folkestone-hythe.gov.uk/online-applications
+platform: salesforce
+base_url: https://folkestonehythedc.my.site.com/PR3/s/be-register-view
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

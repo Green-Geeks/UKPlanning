@@ -1,7 +1,7 @@
 name: Flintshire
 authority_code: flintshire
-platform: idox
-base_url: https://www.flintshireidoxcloud.wales/online-applications
+platform: agile
+base_url: https://planning.agileapplications.co.uk/flintshire
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

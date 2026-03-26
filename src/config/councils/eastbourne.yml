@@ -1,7 +1,7 @@
 name: Eastbourne
 authority_code: eastbourne
 platform: idox
-base_url: https://planning.lewes-eastbourne.gov.uk/online-applications
+base_url: https://planningpa.lewes-eastbourne.gov.uk/online-applications
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

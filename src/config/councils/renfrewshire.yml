@@ -1,7 +1,7 @@
 name: Renfrewshire
 authority_code: renfrewshire
 platform: idox
-base_url: https://publicaccess.renfrewshire.gov.uk/online-applications
+base_url: https://pl-bs.renfrewshire.gov.uk/online-applications
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

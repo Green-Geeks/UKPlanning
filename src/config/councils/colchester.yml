@@ -1,7 +1,7 @@
 name: Colchester
 authority_code: colchester
-platform: unsupported
-base_url: https://www.colchester.gov.uk/planning-search/
+platform: bespoke
+base_url: https://www.colchester.gov.uk/planning-search-results/
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

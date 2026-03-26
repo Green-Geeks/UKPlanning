@@ -1,7 +1,7 @@
 name: WestDunbartonshire
 authority_code: westdunbartonshire
-platform: idox
-base_url: https://publicaccess.west-dunbarton.gov.uk/online-applications
+platform: bespoke
+base_url: https://apps.west-dunbarton.gov.uk/dcsearch_simple.asp
 schedule: 0 3 * * *
 requires_js: false
 enabled: false
