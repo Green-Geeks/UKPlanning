@@ -4,4 +4,4 @@ platform: tascomi
 base_url: https://online-befirst.lbbd.gov.uk/planning/index.html
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

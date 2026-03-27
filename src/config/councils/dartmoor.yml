@@ -4,4 +4,4 @@ platform: tascomi
 base_url: https://dartmoor-online.tascomi.com/planning/index.html
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

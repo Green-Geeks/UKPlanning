@@ -10,6 +10,7 @@ from src.platforms.planning_explorer import PlanningExplorerScraper
 from src.platforms.planning_register import PlanningRegisterScraper
 from src.platforms.salesforce_arcus import SalesforceArcusScraper
 from src.platforms.swiftlg import SwiftLGScraper, SwiftLGLabelScraper
+from src.platforms.tascomi import TascomiScraper
 
 
 class ScraperRegistry:
@@ -31,6 +32,7 @@ class ScraperRegistry:
             "northlincs": NorthLincsScraper,
             "salesforce": SalesforceArcusScraper,
             "planning_register": PlanningRegisterScraper,
+            "tascomi": TascomiScraper,
         }
 
     def get_scraper_class(self, platform):
