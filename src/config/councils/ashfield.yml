@@ -1,7 +1,7 @@
 name: Ashfield
 authority_code: ashfield
-platform: bespoke
+platform: civica
 base_url: https://planning.ashfield.gov.uk/planning-applications/search-applications/
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true
