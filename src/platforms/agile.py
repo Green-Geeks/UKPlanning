@@ -29,6 +29,7 @@ COUNCIL_CONFIG = {
     "slough": {"client": "SLOUGH", "prefix": "P/"},
     "staffordshire": {"client": "STAFFORDSHIRE", "prefix": "SS."},
     "yorkshiredales": {"client": "YORKSHIREDALES", "prefix": "C/"},
+    "richmond": {"client": "RICHMONDUPONTHAMES", "prefix": "PA"},
 }
 
 
