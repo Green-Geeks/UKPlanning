@@ -4,4 +4,4 @@ platform: agile
 base_url: https://planning.agileapplications.co.uk/pcnpa
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true
