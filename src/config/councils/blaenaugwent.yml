@@ -1,7 +1,7 @@
 name: BlaenauGwent
 authority_code: blaenaugwent
-platform: bespoke
-base_url: https://www.blaenau-gwent.gov.uk/en/resident/planning/recent-applications/
+platform: tascomi
+base_url: https://developmentservices.blaenau-gwent.gov.uk
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

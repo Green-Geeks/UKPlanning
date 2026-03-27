@@ -1,7 +1,7 @@
 name: Ceredigion
 authority_code: ceredigion
-platform: bespoke
-base_url: https://forms.ceredigion.gov.uk/ebase
+platform: tascomi
+base_url: https://ceredigion-online.tascomi.com
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

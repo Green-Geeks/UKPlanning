@@ -19,6 +19,8 @@ from src.core.scraper import ApplicationDetail, ApplicationSummary, BaseScraper
 COUNCIL_URLS = {
     "dartmoor": "https://dartmoor-online.tascomi.com",
     "barking": "https://online-befirst.lbbd.gov.uk",
+    "blaenaugwent": "https://developmentservices.blaenau-gwent.gov.uk",
+    "ceredigion": "https://ceredigion-online.tascomi.com",
     "denbighshire": "https://developments.denbighshire.gov.uk",
 }
 

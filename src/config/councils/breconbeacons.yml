@@ -1,7 +1,7 @@
 name: BreconBeacons
 authority_code: breconbeacons
-platform: bespoke
-base_url: https://beacons-npa.gov.uk/planning/applications/applications-online/apps-online/
+platform: idox_crumb
+base_url: https://planningonline.beacons-npa.gov.uk/online-applications
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

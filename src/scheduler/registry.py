@@ -1,6 +1,7 @@
 from src.core.config import CouncilConfig
 from src.core.scraper import BaseScraper
 from src.platforms.agile import AgileApplicationsScraper
+from src.platforms.ambervalley import AmberValleyScraper
 from src.platforms.barnsley import BarnsleyScraper
 from src.platforms.bath import BathScraper
 from src.platforms.fareham import FarehamScraper
@@ -30,6 +31,7 @@ class ScraperRegistry:
             "swiftlg_label": SwiftLGLabelScraper,
             "ni_portal": NIPortalScraper,
             "agile": AgileApplicationsScraper,
+            "ambervalley": AmberValleyScraper,
             "barnsley": BarnsleyScraper,
             "bath": BathScraper,
             "fareham": FarehamScraper,
