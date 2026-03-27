@@ -29,6 +29,7 @@ COUNCIL_CONFIG = {
     "haringey": ("https://publicregister.haringey.gov.uk", "/pr", "Arcus_BE_Public_Register"),
     "shepway": ("https://folkestonehythedc.my.site.com", "/PR3", "Arcus_BE_Public_Register"),
     "southderbyshire": ("https://southderbyshire.my.site.com", "", "Arcus_BE_Public_Register"),
+    "wrexham": ("https://register.wrexham.gov.uk", "/pr", "Arcus_BE_Public_Register"),
 }
 
 

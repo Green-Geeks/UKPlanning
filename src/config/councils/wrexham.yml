@@ -1,7 +1,7 @@
 name: Wrexham
 authority_code: wrexham
-platform: bespoke
-base_url: https://planning.wrexham.gov.uk/planning/search-applications
+platform: salesforce
+base_url: https://register.wrexham.gov.uk/pr/s/register-view?c__r=Arcus_BE_Public_Register&language=en_GB
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true
