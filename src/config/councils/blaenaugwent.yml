@@ -1,7 +1,7 @@
 name: BlaenauGwent
 authority_code: blaenaugwent
-platform: idox
-base_url: https://www.blaenaugwentidoxcloud.wales/online-applications
+platform: bespoke
+base_url: https://www.blaenau-gwent.gov.uk/en/resident/planning/recent-applications/
 schedule: 0 3 * * *
 requires_js: false
 enabled: false

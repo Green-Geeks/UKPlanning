@@ -1,7 +1,7 @@
 name: Leicestershire
 authority_code: leicestershire
-platform: idox
-base_url: https://planning.leics.gov.uk/online-applications
+platform: bespoke
+base_url: https://www.leicestershire.gov.uk/environment-and-planning/planning
 schedule: 0 3 * * *
 requires_js: false
 enabled: false
