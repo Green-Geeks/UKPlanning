@@ -21,6 +21,7 @@ COUNCIL_URLS = {
     "barking": "https://online-befirst.lbbd.gov.uk",
     "blaenaugwent": "https://developmentservices.blaenau-gwent.gov.uk",
     "ceredigion": "https://ceredigion-online.tascomi.com",
+    "cheshireeast": "https://pa.cheshireeast.gov.uk",
     "denbighshire": "https://developments.denbighshire.gov.uk",
 }
 

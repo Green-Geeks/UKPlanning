@@ -1,11 +1,7 @@
 name: CheshireEast
 authority_code: cheshireeast
-platform: idox
-base_url: https://pa.cheshireeast.gov.uk/planning/
+platform: tascomi
+base_url: https://pa.cheshireeast.gov.uk
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
-# Idox "Citizen Portal" variant, NOT standard PublicAccess.
-# Uses index.html?fa=search instead of search.do - scraper needs adaptation.
-# Has date-based search (valid/received/committee/decision dates).
-# Old URL planning.cheshireeast.gov.uk redirects to main council site.
+enabled: true
