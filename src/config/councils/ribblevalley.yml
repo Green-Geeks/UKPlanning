@@ -1,7 +1,7 @@
 name: RibbleValley
 authority_code: ribblevalley
-platform: bespoke
+platform: ribblevalley
 base_url: https://webportal.ribblevalley.gov.uk/planningApplication/search/advanced
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

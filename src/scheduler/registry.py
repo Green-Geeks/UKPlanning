@@ -13,6 +13,9 @@ from src.platforms.planning_register import PlanningRegisterScraper
 from src.platforms.salesforce_arcus import SalesforceArcusScraper
 from src.platforms.swiftlg import SwiftLGScraper, SwiftLGLabelScraper
 from src.platforms.civica import CivicaScraper
+from src.platforms.hereford import HerefordScraper
+from src.platforms.nottinghamshire import NottinghamshireScraper
+from src.platforms.ribblevalley import RibbleValleyScraper
 from src.platforms.tascomi import TascomiScraper
 from src.platforms.westdunbarton import WestDunbartonScraper
 
@@ -38,6 +41,9 @@ class ScraperRegistry:
             "northlincs": NorthLincsScraper,
             "salesforce": SalesforceArcusScraper,
             "civica": CivicaScraper,
+            "hereford": HerefordScraper,
+            "nottinghamshire": NottinghamshireScraper,
+            "ribblevalley": RibbleValleyScraper,
             "planning_register": PlanningRegisterScraper,
             "tascomi": TascomiScraper,
             "westdunbarton": WestDunbartonScraper,
