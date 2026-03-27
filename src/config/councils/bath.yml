@@ -1,7 +1,7 @@
 name: Bath
 authority_code: bath
-platform: bespoke
-base_url: https://app.bathnes.gov.uk/webforms/planning/search.html
+platform: bath
+base_url: https://api.bathnes.gov.uk/webapi/api/PlanningAPI/v2
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true
