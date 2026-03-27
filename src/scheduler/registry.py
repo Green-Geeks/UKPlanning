@@ -12,7 +12,9 @@ from src.platforms.planning_explorer import PlanningExplorerScraper
 from src.platforms.planning_register import PlanningRegisterScraper
 from src.platforms.salesforce_arcus import SalesforceArcusScraper
 from src.platforms.swiftlg import SwiftLGScraper, SwiftLGLabelScraper
+from src.platforms.acolnet import CentralBedfordshireScraper
 from src.platforms.civica import CivicaScraper
+from src.platforms.rochford import RochfordScraper
 from src.platforms.stratfordonavon import StratfordOnAvonScraper
 from src.platforms.telford import TelfordScraper
 from src.platforms.hereford import HerefordScraper
@@ -44,7 +46,9 @@ class ScraperRegistry:
             "fareham": FarehamScraper,
             "northlincs": NorthLincsScraper,
             "salesforce": SalesforceArcusScraper,
+            "acolnet": CentralBedfordshireScraper,
             "civica": CivicaScraper,
+            "rochford": RochfordScraper,
             "hereford": HerefordScraper,
             "nottinghamshire": NottinghamshireScraper,
             "ribblevalley": RibbleValleyScraper,

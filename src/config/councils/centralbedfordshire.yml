@@ -1,7 +1,7 @@
 name: CentralBedfordshire
 authority_code: centralbedfordshire
-platform: bespoke
-base_url: https://cbc.aifusion.io/planning/publicSearch.html
+platform: acolnet
+base_url: https://plantech.centralbedfordshire.gov.uk/PLANTECH/DCWebPages/acolnetcgi.gov
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true
