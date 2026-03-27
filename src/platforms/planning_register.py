@@ -32,6 +32,7 @@ COUNCIL_URLS = {
     "lancashire": "https://planningregister.lancashire.gov.uk",
     "redcar": "https://planning.redcar-cleveland.gov.uk",
     "wychavon": "https://plan.wychavon.gov.uk",
+    "kent": "https://www.kentplanningapplications.co.uk",
 }
 
 

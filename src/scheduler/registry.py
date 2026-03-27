@@ -4,6 +4,7 @@ from src.platforms.agile import AgileApplicationsScraper
 from src.platforms.fareham import FarehamScraper
 from src.platforms.idox import IdoxScraper, IdoxEndExcScraper, IdoxNIScraper, IdoxCrumbScraper
 from src.platforms.ni_portal import NIPortalScraper
+from src.platforms.northlincs import NorthLincsScraper
 from src.platforms.planning_explorer import PlanningExplorerScraper
 from src.platforms.planning_register import PlanningRegisterScraper
 from src.platforms.salesforce_arcus import SalesforceArcusScraper
@@ -25,6 +26,7 @@ class ScraperRegistry:
             "ni_portal": NIPortalScraper,
             "agile": AgileApplicationsScraper,
             "fareham": FarehamScraper,
+            "northlincs": NorthLincsScraper,
             "salesforce": SalesforceArcusScraper,
             "planning_register": PlanningRegisterScraper,
         }

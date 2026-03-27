@@ -1,7 +1,7 @@
 name: NorthLincs
 authority_code: northlincs
-platform: bespoke
-base_url: https://apps.northlincs.gov.uk/
+platform: northlincs
+base_url: https://apps.northlincs.gov.uk
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true
