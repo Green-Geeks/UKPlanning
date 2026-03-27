@@ -1,7 +1,7 @@
 name: Hyndburn
 authority_code: hyndburn
-platform: bespoke
-base_url: https://www.hyndburnbc.gov.uk/planning-application-search/
+platform: northgate_assure
+base_url: https://planning.hyndburnbc.gov.uk/Northgate/ES/Presentation
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

@@ -24,6 +24,8 @@ from src.platforms.tascomi import TascomiScraper
 from src.platforms.kirklees import KirkleesScraper
 from src.platforms.southoxon import SouthOxonScraper
 from src.platforms.westdunbarton import WestDunbartonScraper
+from src.platforms.breckland import BrecklandScraper
+from src.platforms.hyndburn import NorthgateAssureScraper
 
 
 class ScraperRegistry:
@@ -60,6 +62,8 @@ class ScraperRegistry:
             "southoxon": SouthOxonScraper,
             "whitehorse": SouthOxonScraper,
             "westdunbarton": WestDunbartonScraper,
+            "breckland": BrecklandScraper,
+            "northgate_assure": NorthgateAssureScraper,
         }
 
     def get_scraper_class(self, platform):
