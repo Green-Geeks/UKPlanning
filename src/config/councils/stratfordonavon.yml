@@ -1,7 +1,7 @@
 name: StratfordOnAvon
 authority_code: stratfordonavon
-platform: bespoke
+platform: stratfordonavon
 base_url: https://apps.stratford.gov.uk/eplanningv2
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

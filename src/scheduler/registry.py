@@ -13,10 +13,14 @@ from src.platforms.planning_register import PlanningRegisterScraper
 from src.platforms.salesforce_arcus import SalesforceArcusScraper
 from src.platforms.swiftlg import SwiftLGScraper, SwiftLGLabelScraper
 from src.platforms.civica import CivicaScraper
+from src.platforms.stratfordonavon import StratfordOnAvonScraper
+from src.platforms.telford import TelfordScraper
 from src.platforms.hereford import HerefordScraper
 from src.platforms.nottinghamshire import NottinghamshireScraper
 from src.platforms.ribblevalley import RibbleValleyScraper
 from src.platforms.tascomi import TascomiScraper
+from src.platforms.kirklees import KirkleesScraper
+from src.platforms.southoxon import SouthOxonScraper
 from src.platforms.westdunbarton import WestDunbartonScraper
 
 
@@ -44,8 +48,13 @@ class ScraperRegistry:
             "hereford": HerefordScraper,
             "nottinghamshire": NottinghamshireScraper,
             "ribblevalley": RibbleValleyScraper,
+            "stratfordonavon": StratfordOnAvonScraper,
+            "telford": TelfordScraper,
             "planning_register": PlanningRegisterScraper,
             "tascomi": TascomiScraper,
+            "kirklees": KirkleesScraper,
+            "southoxon": SouthOxonScraper,
+            "whitehorse": SouthOxonScraper,
             "westdunbarton": WestDunbartonScraper,
         }
 

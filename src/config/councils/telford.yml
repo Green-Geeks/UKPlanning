@@ -1,7 +1,7 @@
 name: Telford
 authority_code: telford
-platform: bespoke
-base_url: https://planning.telford.gov.uk/
+platform: telford
+base_url: https://secure.telford.gov.uk/planning/
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

@@ -1,7 +1,7 @@
 name: SouthOxfordshire
 authority_code: southoxfordshire
-platform: bespoke
-base_url: https://data.southoxon.gov.uk/ccm/planning/ApplicationCriteria.jsp
+platform: southoxon
+base_url: https://data.southoxon.gov.uk/ccm/support/Main.jsp
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

@@ -1,7 +1,7 @@
 name: WhiteHorse
 authority_code: whitehorse
-platform: bespoke
+platform: whitehorse
 base_url: https://data.whitehorsedc.gov.uk/java/support/Main.jsp
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true
