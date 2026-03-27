@@ -1,7 +1,7 @@
 name: Fareham
 authority_code: fareham
-platform: bespoke
-base_url: https://www.fareham.gov.uk/casetrackerplanning/applicationsearch.aspx
+platform: fareham
+base_url: https://www.fareham.gov.uk/casetrackerplanning
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true
