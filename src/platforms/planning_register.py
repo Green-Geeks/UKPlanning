@@ -29,6 +29,9 @@ COUNCIL_URLS = {
     "eden": "https://planningregister.westmorlandandfurness.gov.uk",
     "southlakeland": "https://planningregister.westmorlandandfurness.gov.uk",
     "crawley": "https://planningregister.crawley.gov.uk",
+    "lancashire": "https://planningregister.lancashire.gov.uk",
+    "redcar": "https://planning.redcar-cleveland.gov.uk",
+    "wychavon": "https://plan.wychavon.gov.uk",
 }
 
 
@@ -64,7 +67,7 @@ class PlanningRegisterScraper(BaseScraper):
         if self._disclaimer_accepted:
             return
         await self._client.post(
-            f"{self._base_url}/Disclaimer/Accept?returnUrl=%2F"
+            f"{self._base_url}/Disclaimer/Accept?returnUrl=%2FSearch%2FAdvanced"
         )
         self._disclaimer_accepted = True
 
@@ -86,40 +89,33 @@ class PlanningRegisterScraper(BaseScraper):
 
         resp = None
         for from_param, to_param in date_params:
-            url = f"{self._base_url}/Search/Standard?{from_param}={from_str}&{to_param}={to_str}"
+            url = (
+                f"{self._base_url}/Search/Standard"
+                f"?SearchType=Planning"
+                f"&{from_param}={from_str}&{to_param}={to_str}"
+            )
             resp = await self._client.get(url)
             resp.raise_for_status()
-            if "<table" in resp.text and "<tr" in resp.text:
+            if "/Planning/Display/" in resp.text:
                 break  # Found results
 
         soup = BeautifulSoup(resp.text, "html.parser")
         summaries = []
+        seen = set()
 
-        for table in soup.find_all("table"):
-            rows = table.find_all("tr")
-            if len(rows) < 2:
+        # Find all detail links regardless of page structure (table or div)
+        for link in soup.find_all("a", href=re.compile(r"/Planning/Display/")):
+            href = link.get("href", "")
+            if href in seen:
                 continue
+            seen.add(href)
 
-            for row in rows[1:]:
-                cells = row.find_all("td")
-                if not cells:
-                    continue
+            # Extract reference from the URL path
+            ref_match = re.search(r"/Planning/Display/(.+)$", href)
+            ref = ref_match.group(1) if ref_match else href
 
-                # Find the detail link
-                link = row.find("a", href=re.compile(r"/Planning/Display/"))
-                if not link:
-                    continue
-
-                href = link.get("href", "")
-                # Extract reference from the first cell text
-                ref_text = cells[0].get_text(strip=True)
-                # Clean up - the text often has the header embedded
-                ref = re.sub(r"^Reference No\.?\s*", "", ref_text).strip()
-
-                summaries.append(ApplicationSummary(
-                    uid=ref,
-                    url=f"{self._base_url}{href}" if href.startswith("/") else href,
-                ))
+            full_url = f"{self._base_url}{href}" if href.startswith("/") else href
+            summaries.append(ApplicationSummary(uid=ref, url=full_url))
 
         # Check for pagination
         next_link = soup.find("a", text=re.compile(r"Next|›"))
