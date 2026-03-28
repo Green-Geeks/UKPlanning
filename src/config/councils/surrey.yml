@@ -1,7 +1,7 @@
 name: Surrey
 authority_code: surrey
 platform: swiftlg
-base_url: https://planning.surreycc.gov.uk
+base_url: https://planning.surreycc.gov.uk/swiftlg/apas/run
 schedule: 0 3 * * *
 requires_js: false
 enabled: true

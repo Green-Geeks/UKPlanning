@@ -54,13 +54,39 @@ class SwiftLGScraper(BaseScraper):
                     if key in sel_dict:
                         sel_dict[key] = val
 
+    async def _accept_disclaimer(self, response):
+        """Handle disclaimer/login pages that some SwiftLG sites show first."""
+        from bs4 import BeautifulSoup
+        if response.status_code in (301, 302):
+            response = await self._client.get(str(response.headers.get("location", response.url)))
+        html = response.text
+        soup = BeautifulSoup(html, "lxml")
+        accept_form = soup.find("form", action=lambda a: a and "Disclaimer" in a)
+        if accept_form:
+            action = accept_form.get("action", "")
+            accept_url = urljoin(str(response.url), action)
+            response = await self._client.post(accept_url, data={})
+        return response
+
+    @staticmethod
+    def _extract_aspnet_fields(html):
+        from bs4 import BeautifulSoup
+        soup = BeautifulSoup(html, "lxml")
+        fields = {}
+        for name in ("__VIEWSTATE", "__VIEWSTATEGENERATOR", "__EVENTVALIDATION"):
+            el = soup.find("input", {"name": name})
+            if el:
+                fields[name] = el.get("value", "")
+        return fields
+
     async def gather_ids(self, date_from, date_to):
         search_url = self.config.base_url + self.SEARCH_PATH
-        await self._client.get_html(search_url)
-        form_data = {
-            self.DATE_FROM_FIELD: date_from.strftime(self.DATE_FORMAT),
-            self.DATE_TO_FIELD: date_to.strftime(self.DATE_FORMAT),
-        }
+        response = await self._client.get(search_url)
+        response = await self._accept_disclaimer(response)
+        search_html = response.text
+        form_data = self._extract_aspnet_fields(search_html)
+        form_data[self.DATE_FROM_FIELD] = date_from.strftime(self.DATE_FORMAT)
+        form_data[self.DATE_TO_FIELD] = date_to.strftime(self.DATE_FORMAT)
         response = await self._client.post(search_url, data=form_data)
         html = response.text
         applications = []

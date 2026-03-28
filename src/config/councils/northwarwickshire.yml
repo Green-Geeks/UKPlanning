@@ -1,7 +1,7 @@
 name: NorthWarwickshire
 authority_code: northwarwickshire
 platform: swiftlg
-base_url: https://planning.northwarks.gov.uk
+base_url: https://planning.northwarks.gov.uk/swiftlg/apas/run
 schedule: 0 3 * * *
 requires_js: false
 enabled: true

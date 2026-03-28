@@ -1,7 +1,7 @@
 name: Warrington
 authority_code: warrington
-platform: swiftlg
-base_url: https://planning.warrington.gov.uk/swiftlg/apas/run/wphappcriteria.display
+platform: tascomi
+base_url: https://online.warrington.gov.uk
 schedule: 0 3 * * *
 requires_js: false
 enabled: true

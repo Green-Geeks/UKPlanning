@@ -1,7 +1,7 @@
 name: NorthYorkMoors
 authority_code: northyorkmoors
-platform: bespoke
-base_url: http://planning.northyorkmoors.org.uk/Northgate/PlanningExplorer/ApplicationSearch.aspx
+platform: statmap
+base_url: https://northyorkmoors-publicportal.statmap.co.uk
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

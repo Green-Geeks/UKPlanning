@@ -12,6 +12,7 @@ from src.scheduler.registry import ScraperRegistry
 logger = logging.getLogger(__name__)
 
 DEFAULT_LOOKBACK_DAYS = 60
+MIN_LOOKBACK_DAYS = 7
 
 
 async def run_council_scrape(
@@ -30,6 +31,10 @@ async def run_council_scrape(
 
     if council.last_successful_at:
         date_from = council.last_successful_at.date()
+        # Always look back at least MIN_LOOKBACK_DAYS to catch late-registered apps
+        earliest_allowed = date_to - timedelta(days=MIN_LOOKBACK_DAYS)
+        if date_from > earliest_allowed:
+            date_from = earliest_allowed
     else:
         date_from = date_to - timedelta(days=lookback_days)
 
@@ -72,7 +77,8 @@ async def run_council_scrape(
         scrape_run.status = "success"
         scrape_run.applications_found = apps_found
         scrape_run.applications_updated = apps_inserted + apps_updated
-        council.last_successful_at = now
+        if apps_found > 0:
+            council.last_successful_at = now
         logger.info(
             "Scrape %s complete: found=%d inserted=%d updated=%d unchanged=%d failed=%d",
             config.authority_code, apps_found, apps_inserted, apps_updated,

@@ -1,9 +1,7 @@
 name: WyreForest
 authority_code: wyreforest
 platform: idox
-base_url: https://planningpa.wyreforestdc.gov.uk/online-applications/
+base_url: https://planningpa.wyreforestdc.gov.uk/online-applications
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
-# SSL certificate chain issue - "unable to verify the first certificate"
-# HTTP fallback also fails. Needs NODE_TLS_REJECT_UNAUTHORIZED=0 or council to fix cert.
+enabled: true

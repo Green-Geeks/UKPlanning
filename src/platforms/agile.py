@@ -22,13 +22,14 @@ PORTAL_BASE = "https://planning.agileapplications.co.uk"
 COUNCIL_CONFIG = {
     "exmoor": {"client": "EXMOOR", "prefix": "ENP"},
     "flintshire": {"client": "FLINTSHIRE", "prefix": "FUL"},
-    "islington": {"client": "ISLINGTON", "prefix": "P20"},
+    "islington": {"client": "IS", "prefix": "P20"},
     "middlesbrough": {"client": "MIDDLESBROUGH", "prefix": "M/"},
-    "pembrokecoast": {"client": "PCNPA", "prefix": "NP/"},
+    "pembrokecoast": {"client": "PEMBROKESHIRECOAST", "prefix": "NP/"},
     "rugby": {"client": "RUGBY", "prefix": "R"},
     "slough": {"client": "SLOUGH", "prefix": "P/"},
     "staffordshire": {"client": "STAFFORDSHIRE", "prefix": "SS."},
-    "yorkshiredales": {"client": "YORKSHIREDALES", "prefix": "C/"},
+    "yorkshiredales": {"client": "YD", "prefix": "C/"},
+    "redbridge": {"client": "REDBRIDGE", "prefix": ""},
     "richmond": {"client": "RICHMONDUPONTHAMES", "prefix": "PA"},
 }
 

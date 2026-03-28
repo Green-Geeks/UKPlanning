@@ -43,7 +43,7 @@ class PlanningExplorerScraper(BaseScraper):
     def __init__(self, config):
         super().__init__(config)
         self._parser = PageParser()
-        self._client = HttpClient(timeout=30, rate_limit_delay=config.rate_limit_delay)
+        self._client = HttpClient(timeout=120, rate_limit_delay=config.rate_limit_delay)
         self._search_selectors = {**PE_SEARCH_SELECTORS}
         self._detail_selectors = {**PE_DETAIL_SELECTORS}
         self._dates_selectors = {**PE_DATES_SELECTORS}
@@ -53,13 +53,28 @@ class PlanningExplorerScraper(BaseScraper):
                     if key in sel_dict:
                         sel_dict[key] = val
 
+    async def _accept_disclaimer(self, response):
+        """Handle disclaimer pages that some PE sites show before search."""
+        from bs4 import BeautifulSoup
+        html = response.text
+        soup = BeautifulSoup(html, "lxml")
+        accept_form = soup.find("form", action=lambda a: a and "Disclaimer" in a)
+        if accept_form:
+            action = accept_form.get("action", "")
+            accept_url = urljoin(str(response.url), action)
+            response = await self._client.post(accept_url, data={})
+        return response
+
     async def gather_ids(self, date_from, date_to):
         search_url = self.config.base_url + self.SEARCH_PATH
-        await self._client.get_html(search_url)
-        form_data = {
-            self.DATE_FROM_FIELD: date_from.strftime(self.DATE_FORMAT),
-            self.DATE_TO_FIELD: date_to.strftime(self.DATE_FORMAT),
-        }
+        response = await self._client.get(search_url)
+        response = await self._accept_disclaimer(response)
+        search_html = response.text
+        form_data = self._extract_aspnet_fields(search_html)
+        form_data[self.DATE_FROM_FIELD] = date_from.strftime(self.DATE_FORMAT)
+        form_data[self.DATE_TO_FIELD] = date_to.strftime(self.DATE_FORMAT)
+        form_data["cboSelectDateValue"] = "DATE_RECEIVED"
+        form_data["csbtnSearch"] = "Search"
         response = await self._client.post(search_url, data=form_data)
         html = response.text
         applications = []
@@ -107,6 +122,18 @@ class PlanningExplorerScraper(BaseScraper):
             case_officer=detail_data.get("case_officer"),
             raw_data=raw,
         )
+
+    @staticmethod
+    def _extract_aspnet_fields(html):
+        """Extract ASP.NET hidden fields (__VIEWSTATE, __EVENTVALIDATION, etc.)."""
+        from bs4 import BeautifulSoup
+        soup = BeautifulSoup(html, "lxml")
+        fields = {}
+        for name in ("__VIEWSTATE", "__VIEWSTATEGENERATOR", "__EVENTVALIDATION"):
+            el = soup.find("input", {"name": name})
+            if el:
+                fields[name] = el.get("value", "")
+        return fields
 
     def _extract_li_fields(self, html, selectors):
         from bs4 import BeautifulSoup

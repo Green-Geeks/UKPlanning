@@ -1,6 +1,6 @@
 name: Argyll
 authority_code: argyll
 platform: idox
-base_url: "http://publicaccess.argyll-bute.gov.uk/online-applications"
+base_url: "https://publicaccess.argyll-bute.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false

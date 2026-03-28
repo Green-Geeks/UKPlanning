@@ -1,6 +1,6 @@
 name: Redbridge
 authority_code: redbridge
-platform: swiftlg
+platform: agile
 base_url: https://planning.redbridge.gov.uk
 schedule: 0 3 * * *
 requires_js: false

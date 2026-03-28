@@ -1,7 +1,7 @@
 name: SouthNorfolk
 authority_code: southnorfolk
 platform: idox
-base_url: https://info.south-norfolk.gov.uk/online-applications
+base_url: https://info.southnorfolkandbroadland.gov.uk/online-applications
 schedule: 0 3 * * *
 requires_js: false
 enabled: true

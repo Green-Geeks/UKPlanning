@@ -14,9 +14,11 @@ import asyncio
 import logging
 import os
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 import uvicorn
+from sqlalchemy import select, func
 
 from src.core.config import load_all_councils
 from src.core.database import get_engine, get_session_factory
@@ -83,6 +85,8 @@ def run_server():
     configs_by_code = {c.authority_code: c for c in configs}
     # Track running scrapes to prevent duplicates
     running_scrapes: set[str] = set()
+    # Track asyncio tasks so they can be cancelled
+    scrape_tasks: set[asyncio.Task] = set()
 
     app = create_app()
 
@@ -121,13 +125,21 @@ def run_server():
             finally:
                 running_scrapes.discard(authority_code)
 
-        asyncio.create_task(do_scrape())
+        task = asyncio.create_task(do_scrape())
+        scrape_tasks.add(task)
+        task.add_done_callback(scrape_tasks.discard)
         return {"status": "started", "council": config.name, "authority_code": authority_code}
 
     @app.post("/api/scrape-all")
-    async def trigger_scrape_all(db: Session = Depends(get_db)):
-        """Trigger scrape for all enabled councils. Runs sequentially in background."""
+    async def trigger_scrape_all(concurrency: int = 8, db: Session = Depends(get_db)):
+        """Trigger scrape for all enabled councils. Runs concurrently in background.
+
+        Args:
+            concurrency: Number of scrapers to run in parallel (default 8, max 20).
+        """
         from src.scheduler.orchestrator import Orchestrator
+        concurrency = max(1, min(concurrency, 20))
+
         session = session_factory()
         orch = Orchestrator(configs=configs, session=session, registry=registry)
         enabled = orch.get_enabled_configs()
@@ -136,8 +148,10 @@ def run_server():
         already_running = [c.authority_code for c in enabled if c.authority_code in running_scrapes]
         to_scrape = [c for c in enabled if c.authority_code not in running_scrapes]
 
-        async def do_scrape_all():
-            for config in to_scrape:
+        semaphore = asyncio.Semaphore(concurrency)
+
+        async def scrape_one(config):
+            async with semaphore:
                 running_scrapes.add(config.authority_code)
                 try:
                     session = session_factory()
@@ -151,17 +165,58 @@ def run_server():
                 finally:
                     running_scrapes.discard(config.authority_code)
 
-        asyncio.create_task(do_scrape_all())
+        async def do_scrape_all():
+            await asyncio.gather(*(scrape_one(c) for c in to_scrape))
+
+        task = asyncio.create_task(do_scrape_all())
+        scrape_tasks.add(task)
+        task.add_done_callback(scrape_tasks.discard)
         return {
             "status": "started",
             "councils_queued": len(to_scrape),
+            "concurrency": concurrency,
             "already_running": already_running,
         }
 
+    @app.post("/api/scrape-stop")
+    async def stop_all_scrapes():
+        """Cancel all running/queued scrape tasks and clear stale DB records."""
+        cancelled = list(running_scrapes)
+        for task in list(scrape_tasks):
+            task.cancel()
+        scrape_tasks.clear()
+        running_scrapes.clear()
+
+        # Clear stale "running" ScrapeRun records in DB (e.g. from a Docker restart)
+        from src.core.models import ScrapeRun
+        session = session_factory()
+        stale = session.execute(
+            select(ScrapeRun).where(ScrapeRun.status == "running")
+        ).scalars().all()
+        for run in stale:
+            run.status = "failed"
+            run.error_message = "Cancelled by user"
+            run.completed_at = datetime.now(timezone.utc)
+        session.commit()
+        session.close()
+
+        logger.info("Stopped %d running scrapes, cleared %d stale DB records", len(cancelled), len(stale))
+        return {"status": "stopped", "cancelled": cancelled, "stale_cleared": len(stale)}
+
     @app.get("/api/scrape-status")
     async def scrape_status():
-        """Check which scrapes are currently running."""
-        return {"running": sorted(running_scrapes)}
+        """Check which scrapes are currently running (in-memory + DB)."""
+        from src.core.models import ScrapeRun
+        session = session_factory()
+        stale_count = session.execute(
+            select(func.count(ScrapeRun.id)).where(ScrapeRun.status == "running")
+        ).scalar()
+        session.close()
+        return {
+            "running": sorted(running_scrapes),
+            "count": len(running_scrapes),
+            "stale": max(0, stale_count - len(running_scrapes)),
+        }
 
     logger.info("Starting UK Planning Dashboard")
     logger.info("  Councils loaded: %d", len(configs))

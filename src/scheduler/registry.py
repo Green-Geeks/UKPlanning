@@ -25,7 +25,10 @@ from src.platforms.kirklees import KirkleesScraper
 from src.platforms.southoxon import SouthOxonScraper
 from src.platforms.westdunbarton import WestDunbartonScraper
 from src.platforms.breckland import BrecklandScraper
+from src.platforms.dorset import DorsetScraper
+from src.platforms.statmap import StatmapScraper
 from src.platforms.hyndburn import NorthgateAssureScraper
+from src.platforms.liverpool import LiverpoolScraper
 
 
 class ScraperRegistry:
@@ -63,6 +66,9 @@ class ScraperRegistry:
             "whitehorse": SouthOxonScraper,
             "westdunbarton": WestDunbartonScraper,
             "breckland": BrecklandScraper,
+            "dorset": DorsetScraper,
+            "statmap": StatmapScraper,
+            "liverpool": LiverpoolScraper,
             "northgate_assure": NorthgateAssureScraper,
         }
 

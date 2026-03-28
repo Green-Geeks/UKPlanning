@@ -1,7 +1,7 @@
 name: Tandridge
 authority_code: tandridge
 platform: swiftlg
-base_url: https://www.tandridge.gov.uk
+base_url: https://www.tandridge.gov.uk/swiftlg/apas/run
 schedule: 0 3 * * *
 requires_js: false
 enabled: true

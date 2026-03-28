@@ -2,9 +2,12 @@
 {% block title %}Councils - UK Planning Dashboard{% endblock %}
 {% block content %}
 <h1>Councils</h1>
-<div style="margin-bottom:1rem;">
-    <button onclick="scrapeAll()" class="search-form button" style="padding:0.5rem 1.5rem;background:#2b6cb0;color:white;border:none;border-radius:4px;cursor:pointer;font-size:1rem;">Scrape All Enabled</button>
-    <span id="scrape-all-status" style="margin-left:1rem;"></span>
+<div style="margin-bottom:1rem;display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
+    <label for="concurrency-input" style="font-size:0.9rem;font-weight:600;">Concurrency:</label>
+    <input id="concurrency-input" type="number" min="1" max="20" value="8" style="width:60px;padding:0.4rem;border:1px solid #ccc;border-radius:4px;font-size:0.9rem;">
+    <button onclick="scrapeAll()" style="padding:0.5rem 1.5rem;background:#2b6cb0;color:white;border:none;border-radius:4px;cursor:pointer;font-size:1rem;">Scrape All Enabled</button>
+    <button id="stop-btn" onclick="stopAll()" style="padding:0.5rem 1.5rem;background:#e53e3e;color:white;border:none;border-radius:4px;cursor:pointer;font-size:1rem;">Stop All Scrapes</button>
+    <span id="scrape-all-status" style="margin-left:0.5rem;"></span>
 </div>
 <table>
     <thead><tr><th>Name</th><th>Platform</th><th>Applications</th><th>Last Run</th><th>Status</th><th>Action</th></tr></thead>
@@ -51,14 +54,49 @@ async function scrapeCouncil(code, btn) {
 }
 async function scrapeAll() {
     const status = document.getElementById('scrape-all-status');
+    const concurrency = parseInt(document.getElementById('concurrency-input').value) || 8;
     status.textContent = 'Starting...';
     try {
-        const resp = await fetch('/api/scrape-all', {method: 'POST'});
+        const resp = await fetch('/api/scrape-all?concurrency=' + concurrency, {method: 'POST'});
         const data = await resp.json();
-        status.textContent = 'Queued ' + data.councils_queued + ' councils';
+        status.textContent = 'Queued ' + data.councils_queued + ' councils (' + data.concurrency + ' parallel)';
     } catch(e) {
         status.textContent = 'Error';
     }
 }
+async function stopAll() {
+    const status = document.getElementById('scrape-all-status');
+    const stopBtn = document.getElementById('stop-btn');
+    stopBtn.disabled = true;
+    stopBtn.textContent = 'Stopping...';
+    try {
+        const resp = await fetch('/api/scrape-stop', {method: 'POST'});
+        const data = await resp.json();
+        status.textContent = 'Stopped ' + data.cancelled.length + ' running, cleared ' + data.stale_cleared + ' stale';
+    } catch(e) {
+        status.textContent = 'Error stopping';
+    }
+    stopBtn.disabled = false;
+    stopBtn.textContent = 'Stop All Scrapes';
+}
+// Poll status on page load and continuously
+(function pollStatus() {
+    const status = document.getElementById('scrape-all-status');
+    async function check() {
+        try {
+            const resp = await fetch('/api/scrape-status');
+            const data = await resp.json();
+            if (data.count > 0) {
+                status.textContent = data.count + ' scrapers running... (' + data.running.slice(0, 3).join(', ') + (data.count > 3 ? ', ...' : '') + ')';
+            } else if (data.stale > 0) {
+                status.textContent = data.stale + ' stale runs in DB (hit Stop to clear)';
+            } else if (!status.textContent.startsWith('Queued') && !status.textContent.startsWith('Stopped')) {
+                status.textContent = '';
+            }
+        } catch(e) {}
+    }
+    check();
+    setInterval(check, 5000);
+})();
 </script>
 {% endblock %}

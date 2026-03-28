@@ -19,7 +19,7 @@ class CouncilConfig(BaseModel):
     fields: Dict[str, str] = {}
     scraper_class: Optional[str] = None
     variant: Optional[str] = None
-    rate_limit_delay: float = 1.0
+    rate_limit_delay: float = 2.0
     batch_size_days: int = 14
 
 

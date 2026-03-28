@@ -1,7 +1,7 @@
 name: Rother
 authority_code: rother
-platform: swiftlg
-base_url: https://planweb01.rother.gov.uk
+platform: liverpool
+base_url: https://online.rother.gov.uk
 schedule: 0 3 * * *
 requires_js: false
 enabled: true

@@ -4,4 +4,4 @@ platform: swiftlg
 base_url: https://www.molevalley.gov.uk/swiftlg/apas/run/wphappcriteria.display
 schedule: 0 3 * * *
 requires_js: false
-enabled: true
+enabled: false

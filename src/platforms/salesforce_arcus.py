@@ -62,6 +62,7 @@ class SalesforceArcusScraper(BaseScraper):
             headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"},
             follow_redirects=True,
             timeout=30,
+            verify=False,
         )
 
     async def _init_aura_context(self):

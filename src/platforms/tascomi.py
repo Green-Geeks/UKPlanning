@@ -23,6 +23,7 @@ COUNCIL_URLS = {
     "ceredigion": "https://ceredigion-online.tascomi.com",
     "cheshireeast": "https://pa.cheshireeast.gov.uk",
     "denbighshire": "https://developments.denbighshire.gov.uk",
+    "warrington": "https://online.warrington.gov.uk",
 }
 
 

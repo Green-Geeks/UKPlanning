@@ -1,7 +1,32 @@
 import asyncio
+import logging
+import random
 from typing import Any, Dict, Optional
+from urllib.parse import urlparse
 
 import httpx
+
+logger = logging.getLogger(__name__)
+
+# Per-domain semaphores to prevent hammering shared infrastructure
+_domain_semaphores: Dict[str, asyncio.Semaphore] = {}
+_domain_lock = asyncio.Lock()
+
+BROWSER_USER_AGENTS = [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:133.0) Gecko/20100101 Firefox/133.0",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.2 Safari/605.1.15",
+]
+
+
+async def _get_domain_semaphore(url: str, max_concurrent: int = 2) -> asyncio.Semaphore:
+    """Get or create a per-domain semaphore to limit concurrent requests."""
+    domain = urlparse(url).netloc
+    async with _domain_lock:
+        if domain not in _domain_semaphores:
+            _domain_semaphores[domain] = asyncio.Semaphore(max_concurrent)
+        return _domain_semaphores[domain]
 
 
 class HttpClient:
@@ -10,13 +35,18 @@ class HttpClient:
     def __init__(
         self,
         timeout: float = 30,
-        rate_limit_delay: float = 1.0,
+        rate_limit_delay: float = 2.0,
         headers: Optional[Dict[str, str]] = None,
+        max_retries: int = 5,
     ):
         default_headers = {
-            "User-Agent": "UKPlanningScraper/2.0 (+https://github.com)",
-            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-            "Accept-Language": "en-GB,en;q=0.5",
+            "User-Agent": random.choice(BROWSER_USER_AGENTS),
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+            "Accept-Language": "en-GB,en;q=0.9",
+            "Accept-Encoding": "gzip, deflate, br",
+            "DNT": "1",
+            "Connection": "keep-alive",
+            "Upgrade-Insecure-Requests": "1",
         }
         if headers:
             default_headers.update(headers)
@@ -24,34 +54,64 @@ class HttpClient:
             timeout=timeout,
             headers=default_headers,
             follow_redirects=True,
+            verify=False,
         )
         self._rate_limit_delay = rate_limit_delay
+        self._max_retries = max_retries
 
     async def _rate_limit(self) -> None:
         if self._rate_limit_delay > 0:
-            await asyncio.sleep(self._rate_limit_delay)
+            jitter = random.uniform(0.5, 1.5)
+            await asyncio.sleep(self._rate_limit_delay * jitter)
 
     async def get(self, url: str, **kwargs: Any) -> httpx.Response:
-        await self._rate_limit()
-        return await self._retry_on_429(self._client.get, url, **kwargs)
+        sem = await _get_domain_semaphore(url)
+        async with sem:
+            await self._rate_limit()
+            return await self._retry_on_error(self._client.get, url, **kwargs)
 
     async def post(self, url: str, data: Optional[Dict] = None, **kwargs: Any) -> httpx.Response:
-        await self._rate_limit()
-        return await self._retry_on_429(self._client.post, url, data=data, **kwargs)
+        sem = await _get_domain_semaphore(url)
+        async with sem:
+            await self._rate_limit()
+            return await self._retry_on_error(self._client.post, url, data=data, **kwargs)
 
     async def get_html(self, url: str) -> str:
         response = await self.get(url)
         response.raise_for_status()
         return response.text
 
-    async def _retry_on_429(self, method, *args, max_retries: int = 3, **kwargs) -> httpx.Response:
-        for attempt in range(max_retries + 1):
-            response = await method(*args, **kwargs)
-            if response.status_code != 429 or attempt == max_retries:
+    async def _retry_on_error(self, method, *args, **kwargs) -> httpx.Response:
+        last_exc = None
+        for attempt in range(self._max_retries + 1):
+            try:
+                response = await method(*args, **kwargs)
+                if response.status_code == 429:
+                    if attempt == self._max_retries:
+                        return response
+                    retry_after = response.headers.get("Retry-After")
+                    if retry_after and retry_after.isdigit():
+                        wait = min(int(retry_after), 120)
+                    else:
+                        wait = min(2 ** (attempt + 2), 120)
+                    jitter = random.uniform(0.5, 1.5)
+                    logger.info("429 on attempt %d, waiting %.0fs", attempt + 1, wait * jitter)
+                    await asyncio.sleep(wait * jitter)
+                    continue
+                if response.status_code >= 500 and attempt < self._max_retries:
+                    wait = min(2 ** (attempt + 1), 60)
+                    logger.info("Server %d on attempt %d, retrying in %ds", response.status_code, attempt + 1, wait)
+                    await asyncio.sleep(wait)
+                    continue
                 return response
-            wait = min(2 ** (attempt + 1), 30)
-            await asyncio.sleep(wait)
-        return response
+            except (httpx.ConnectError, httpx.ReadTimeout, httpx.ConnectTimeout) as e:
+                last_exc = e
+                if attempt == self._max_retries:
+                    raise
+                wait = min(2 ** (attempt + 1), 60)
+                logger.info("Connection error on attempt %d: %s, retrying in %ds", attempt + 1, type(e).__name__, wait)
+                await asyncio.sleep(wait)
+        raise last_exc
 
     async def __aenter__(self):
         return self
