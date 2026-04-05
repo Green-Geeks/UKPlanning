@@ -4,4 +4,4 @@ platform: civica
 base_url: https://msp.havering.gov.uk/planning/search-applications
 schedule: 0 3 * * *
 requires_js: false
-enabled: true
+enabled: false
