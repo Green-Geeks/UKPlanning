@@ -1,6 +1,6 @@
 name: Wealden
 authority_code: wealden
-platform: planning_explorer
+platform: northgate
 base_url: https://planning.wealden.gov.uk
 schedule: 0 3 * * *
 requires_js: false

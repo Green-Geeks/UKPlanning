@@ -1,6 +1,6 @@
 name: Somerset
 authority_code: somerset
-platform: planning_explorer
+platform: northgate
 base_url: https://planning.somerset.gov.uk
 schedule: 0 3 * * *
 requires_js: false

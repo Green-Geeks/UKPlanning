@@ -1,6 +1,6 @@
 name: Lincolnshire
 authority_code: lincolnshire
-platform: planning_explorer
+platform: northgate
 base_url: https://eplanning.lincolnshire.gov.uk
 schedule: 0 3 * * *
 requires_js: false

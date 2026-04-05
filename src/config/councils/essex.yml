@@ -1,6 +1,6 @@
 name: Essex
 authority_code: essex
-platform: planning_explorer
+platform: northgate
 base_url: https://planning.essex.gov.uk
 schedule: 0 3 * * *
 requires_js: false

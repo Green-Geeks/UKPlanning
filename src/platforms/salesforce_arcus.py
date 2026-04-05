@@ -175,33 +175,53 @@ class SalesforceArcusScraper(BaseScraper):
         return action.get("returnValue", {})
 
     async def gather_ids(self, date_from: date, date_to: date) -> List[ApplicationSummary]:
-        """Search for planning applications by year."""
+        """Search for planning applications using multiple search terms."""
         all_summaries = []
+        seen_ids = set()
 
-        # Search by year — Arcus quick search matches reference numbers
         years = {date_from.year, date_to.year}
         for year in sorted(years):
-            result = await self._aura_call("PR_SearchService", "search", {
-                "request": {
-                    "registerName": self._register_name,
-                    "searchType": "quick",
-                    "searchTerm": str(year),
-                    "searchName": "Planning_Applications",
-                },
-            })
+            # Try multiple search terms to cover different reference formats:
+            # "/26" matches EPF/0001/26, DC/123/26, HGY/2025/2661
+            # "2026" matches CON/2026/0020, 5DN/2026/0001
+            search_terms = [f"/{year % 100:02d}", str(year)]
+            for term in search_terms:
+                try:
+                    result = await self._aura_call("PR_SearchService", "search", {
+                        "request": {
+                            "registerName": self._register_name,
+                            "searchType": "quick",
+                            "searchTerm": term,
+                            "searchName": "Planning_Applications",
+                        },
+                    })
+                except Exception:
+                    continue
 
-            rv = result.get("returnValue", result)
-            records = rv.get("records", []) if isinstance(rv, dict) else []
+                rv = result.get("returnValue", result)
+                records = rv.get("records", []) if isinstance(rv, dict) else []
 
-            for record in records:
-                received = _parse_date(record.get("arcusbuiltenv__Received_Date__c"))
-                if received and date_from <= received <= date_to:
+                for record in records:
+                    received = _parse_date(
+                        record.get("arcusbuiltenv__Received_Date__c")
+                        or record.get("arcusbuiltenv__Valid_Date__c")
+                    )
                     app_id = record.get("Id", "")
-                    ref = record.get("Name", "")
-                    all_summaries.append(ApplicationSummary(
-                        uid=app_id,
-                        url=f"{self._base_url}{self._path_prefix}/s/planning-application/{app_id}",
-                    ))
+                    if not app_id or app_id in seen_ids:
+                        continue
+                    # Include if date matches range, or if no date available
+                    if received and date_from <= received <= date_to:
+                        seen_ids.add(app_id)
+                        all_summaries.append(ApplicationSummary(
+                            uid=app_id,
+                            url=f"{self._base_url}{self._path_prefix}/s/planning-application/{app_id}",
+                        ))
+                    elif not received and str(year) in record.get("Name", ""):
+                        seen_ids.add(app_id)
+                        all_summaries.append(ApplicationSummary(
+                            uid=app_id,
+                            url=f"{self._base_url}{self._path_prefix}/s/planning-application/{app_id}",
+                        ))
 
         return all_summaries
 
@@ -226,28 +246,38 @@ class SalesforceArcusScraper(BaseScraper):
             years = {date_from.year, date_to.year}
             details = []
 
+            seen_ids = set()
             for year in sorted(years):
-                result = await self._aura_call("PR_SearchService", "search", {
-                    "request": {
-                        "registerName": self._register_name,
-                        "searchType": "quick",
-                        "searchTerm": str(year),
-                        "searchName": "Planning_Applications",
-                    },
-                })
-
-                rv = result.get("returnValue", result)
-                records = rv.get("records", []) if isinstance(rv, dict) else []
-
-                for record in records:
-                    received = _parse_date(
-                        record.get("arcusbuiltenv__Received_Date__c")
-                        or record.get("arcusbuiltenv__Valid_Date__c")
-                    )
-                    if not received or received < date_from or received > date_to:
+                search_terms = [f"/{year % 100:02d}", str(year)]
+                for term in search_terms:
+                    try:
+                        result = await self._aura_call("PR_SearchService", "search", {
+                            "request": {
+                                "registerName": self._register_name,
+                                "searchType": "quick",
+                                "searchTerm": term,
+                                "searchName": "Planning_Applications",
+                            },
+                        })
+                    except Exception:
                         continue
 
-                    app_id = record.get("Id", "")
+                    rv = result.get("returnValue", result)
+                    records = rv.get("records", []) if isinstance(rv, dict) else []
+
+                    for record in records:
+                        received = _parse_date(
+                            record.get("arcusbuiltenv__Received_Date__c")
+                            or record.get("arcusbuiltenv__Valid_Date__c")
+                        )
+                        app_id = record.get("Id", "")
+                        if not app_id or app_id in seen_ids:
+                            continue
+                        if received and (received < date_from or received > date_to):
+                            continue
+                        if not received and str(year) not in record.get("Name", ""):
+                            continue
+                        seen_ids.add(app_id)
                     address = (
                         record.get("arcusbuiltenv__Site_Address__c")
                         or record.get("Hidden_PR_Site_address__c")

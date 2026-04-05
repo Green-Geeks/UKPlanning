@@ -29,6 +29,7 @@ from src.platforms.dorset import DorsetScraper
 from src.platforms.statmap import StatmapScraper
 from src.platforms.hyndburn import NorthgateAssureScraper
 from src.platforms.liverpool import LiverpoolScraper
+from src.platforms.northgate import NorthgateScraper
 
 
 class ScraperRegistry:
@@ -70,6 +71,7 @@ class ScraperRegistry:
             "statmap": StatmapScraper,
             "liverpool": LiverpoolScraper,
             "northgate_assure": NorthgateAssureScraper,
+            "northgate": NorthgateScraper,
         }
 
     def get_scraper_class(self, platform):

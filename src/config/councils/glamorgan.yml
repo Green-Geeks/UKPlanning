@@ -1,6 +1,6 @@
 name: Glamorgan
 authority_code: glamorgan
-platform: planning_explorer
+platform: northgate
 base_url: https://vogonline.planning-register.co.uk
 schedule: 0 3 * * *
 requires_js: false

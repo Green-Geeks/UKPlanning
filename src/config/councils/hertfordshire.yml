@@ -1,6 +1,6 @@
 name: Hertfordshire
 authority_code: hertfordshire
-platform: planning_explorer
+platform: northgate
 base_url: https://planning.hertfordshire.gov.uk
 schedule: 0 3 * * *
 requires_js: false

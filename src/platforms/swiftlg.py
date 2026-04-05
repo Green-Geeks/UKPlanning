@@ -54,7 +54,7 @@ class SwiftLGScraper(BaseScraper):
                     if key in sel_dict:
                         sel_dict[key] = val
 
-    async def _accept_disclaimer(self, response):
+    async def _accept_disclaimer(self, response, search_url=None):
         """Handle disclaimer/login pages that some SwiftLG sites show first."""
         from bs4 import BeautifulSoup
         if response.status_code in (301, 302):
@@ -65,7 +65,10 @@ class SwiftLGScraper(BaseScraper):
         if accept_form:
             action = accept_form.get("action", "")
             accept_url = urljoin(str(response.url), action)
-            response = await self._client.post(accept_url, data={})
+            await self._client.post(accept_url, data={})
+            # Re-request the original search page now that disclaimer cookie is set
+            if search_url:
+                response = await self._client.get(search_url)
         return response
 
     @staticmethod
@@ -82,7 +85,7 @@ class SwiftLGScraper(BaseScraper):
     async def gather_ids(self, date_from, date_to):
         search_url = self.config.base_url + self.SEARCH_PATH
         response = await self._client.get(search_url)
-        response = await self._accept_disclaimer(response)
+        response = await self._accept_disclaimer(response, search_url=search_url)
         search_html = response.text
         form_data = self._extract_aspnet_fields(search_html)
         form_data[self.DATE_FROM_FIELD] = date_from.strftime(self.DATE_FORMAT)

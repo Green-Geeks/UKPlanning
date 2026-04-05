@@ -12,7 +12,7 @@ from src.scheduler.registry import ScraperRegistry
 logger = logging.getLogger(__name__)
 
 DEFAULT_LOOKBACK_DAYS = 60
-MIN_LOOKBACK_DAYS = 7
+MIN_LOOKBACK_DAYS = 28
 
 
 async def run_council_scrape(

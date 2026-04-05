@@ -98,7 +98,11 @@ class IdoxScraper(BaseScraper):
             form_data["_csrf"] = csrf_token
 
         results_url = real_base + self.RESULTS_PATH
-        response = await self._client.post(results_url, data=form_data)
+        search_page_url = str(response.url)
+        response = await self._client.post(
+            results_url, data=form_data,
+            headers={"Referer": search_page_url},
+        )
         html = response.text
 
         applications = []
@@ -142,7 +146,7 @@ class IdoxScraper(BaseScraper):
             uid = None
             if meta_el:
                 meta_text = meta_el.get_text(" ", strip=True)
-                ref_match = re.search(r"Ref\.?\s*No:?\s*(\S+)", meta_text)
+                ref_match = re.search(r"(?:Ref|Application|Case)\.?\s*No[.:]?\s*(\S+)", meta_text)
                 if ref_match:
                     uid = ref_match.group(1).strip()
 
