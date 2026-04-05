@@ -4,4 +4,4 @@ platform: nottinghamshire
 base_url: https://www.nottinghamshire.gov.uk/planningsearch/planappsrch.aspx
 schedule: 0 3 * * *
 requires_js: false
-enabled: true
+enabled: false
