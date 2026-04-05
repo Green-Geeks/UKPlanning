@@ -4,4 +4,4 @@ platform: swiftlg
 base_url: https://planning.walsall.gov.uk/swift/apas/run/wphappcriteria.display
 schedule: 0 3 * * *
 requires_js: false
-enabled: true
+enabled: false

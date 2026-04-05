@@ -4,4 +4,4 @@ platform: breckland
 base_url: https://planning.breckland.gov.uk/OcellaWeb/planningSearch
 schedule: 0 3 * * *
 requires_js: false
-enabled: true
+enabled: false

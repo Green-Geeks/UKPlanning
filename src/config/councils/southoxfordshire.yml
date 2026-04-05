@@ -4,4 +4,4 @@ platform: southoxon
 base_url: https://data.southoxon.gov.uk/ccm/support/Main.jsp
 schedule: 0 3 * * *
 requires_js: false
-enabled: true
+enabled: false

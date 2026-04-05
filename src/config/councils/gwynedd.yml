@@ -4,4 +4,4 @@ platform: swiftlg
 base_url: https://diogel.gwynedd.llyw.cymru/swiftlg/apas/run/wchvarylogin.display
 schedule: 0 3 * * *
 requires_js: false
-enabled: true
+enabled: false

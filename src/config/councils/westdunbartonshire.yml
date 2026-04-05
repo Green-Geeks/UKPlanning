@@ -4,5 +4,5 @@ platform: westdunbarton
 base_url: https://apps.west-dunbarton.gov.uk/dcsearch_appx.asp
 schedule: 0 3 * * *
 requires_js: false
-enabled: true
+enabled: false
 batch_size_days: 28
