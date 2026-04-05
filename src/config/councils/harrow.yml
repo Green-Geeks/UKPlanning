@@ -1,7 +1,7 @@
 name: Harrow
 authority_code: harrow
-platform: idox
-base_url: https://planningsearch.harrow.gov.uk/online-applications
+platform: tascomi
+base_url: https://planningsearch.harrow.gov.uk
 schedule: 0 3 * * *
 requires_js: false
 enabled: true

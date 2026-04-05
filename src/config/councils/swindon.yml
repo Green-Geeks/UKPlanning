@@ -1,7 +1,7 @@
 name: Swindon
 authority_code: swindon
 platform: idox
-base_url: https://pa.swindon.gov.uk/online-applications
+base_url: https://pa1.swindon.gov.uk/publicaccess
 schedule: 0 3 * * *
 requires_js: false
 enabled: true

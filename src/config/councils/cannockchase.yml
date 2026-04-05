@@ -1,7 +1,7 @@
 name: CannockChase
 authority_code: cannockchase
-platform: idox
-base_url: https://www.cannockchasedc.gov.uk/online-applications
+platform: agile
+base_url: https://planning.agileapplications.co.uk/cannock
 schedule: 0 3 * * *
 requires_js: false
 enabled: true

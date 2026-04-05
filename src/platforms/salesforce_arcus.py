@@ -30,6 +30,10 @@ COUNCIL_CONFIG = {
     "shepway": ("https://folkestonehythedc.my.site.com", "/PR3", "Arcus_BE_Public_Register"),
     "southderbyshire": ("https://southderbyshire.my.site.com", "", "Arcus_BE_Public_Register"),
     "wrexham": ("https://register.wrexham.gov.uk", "/pr", "Arcus_BE_Public_Register"),
+    "eastleigh": ("https://planning.eastleigh.gov.uk", "/s", "Arcus_BE_Public_Register"),
+    "wiltshire": ("https://development.wiltshire.gov.uk", "/pr", "Arcus_BE_Public_Register"),
+    "miltonkeynes": ("https://www.be.milton-keynes.gov.uk", "/pr", "Arcus_BE_Public_Register"),
+    "salford": ("https://salfordcitycouncil.my.site.com", "/pr", "Arcus_BE_Public_Register"),
 }
 
 

@@ -4,3 +4,4 @@ platform: idox
 base_url: "https://pa.newham.gov.uk/online-applications"
 schedule: "0 3 * * *"
 requires_js: false
+rate_limit_delay: 8.0

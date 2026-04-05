@@ -1,7 +1,7 @@
 name: Salford
 authority_code: salford
-platform: idox
-base_url: https://publicaccess.salford.gov.uk/online-applications
+platform: salesforce
+base_url: https://salfordcitycouncil.my.site.com
 schedule: 0 3 * * *
 requires_js: false
 enabled: true

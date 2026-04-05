@@ -1,7 +1,7 @@
 name: WalthamForest
 authority_code: walthamforest
-platform: idox
-base_url: https://planning.walthamforest.gov.uk/online-applications
+platform: tascomi
+base_url: https://placehub.walthamforest.gov.uk
 schedule: 0 3 * * *
 requires_js: false
 enabled: true

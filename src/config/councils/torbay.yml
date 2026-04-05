@@ -1,6 +1,6 @@
 name: Torbay
 authority_code: torbay
 platform: idox
-base_url: "http://www.torbay.gov.uk/newpublicaccess"
+base_url: "https://publicaccess.torbay.gov.uk/view"
 schedule: "0 3 * * *"
 requires_js: false
