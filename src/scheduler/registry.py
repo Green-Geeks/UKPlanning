@@ -1,6 +1,7 @@
 from src.core.config import CouncilConfig
 from src.core.scraper import BaseScraper
 from src.platforms.agile import AgileApplicationsScraper
+from src.platforms.appsearchserv import AppSearchServScraper
 from src.platforms.ambervalley import AmberValleyScraper
 from src.platforms.barnsley import BarnsleyScraper
 from src.platforms.bath import BathScraper
@@ -37,6 +38,7 @@ class ScraperRegistry:
 
     def __init__(self):
         self._registry = {
+            "appsearchserv": AppSearchServScraper,
             "idox": IdoxScraper,
             "idox_endexc": IdoxEndExcScraper,
             "idox_ni": IdoxNIScraper,

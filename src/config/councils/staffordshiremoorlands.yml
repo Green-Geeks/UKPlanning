@@ -1,7 +1,7 @@
 name: StaffordshireMoorlands
 authority_code: staffordshiremoorlands
-platform: idox
-base_url: https://publicaccess.staffsmoorlands.gov.uk/online-applications
+platform: appsearchserv
+base_url: http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true
