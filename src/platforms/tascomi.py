@@ -30,6 +30,7 @@ COUNCIL_URLS = {
     "stoke": "https://development.stoke.gov.uk",
     "easthampshire": "https://publicaccess.easthants.gov.uk",
     "gloucestershire": "https://planningonline.gloucestershire.gov.uk",
+    "merton": "https://rspandlp.merton.gov.uk",
 }
 
 

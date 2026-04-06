@@ -1,7 +1,7 @@
 name: MalvernHills
 authority_code: malvernhills
-platform: idox
+platform: planning_register
 base_url: https://plan.malvernhills.gov.uk
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

@@ -1,7 +1,7 @@
 name: Suffolk
 authority_code: suffolk
 platform: planning_register
-base_url: https://suffolk.planning-register.co.uk/
+base_url: https://suffolk.planning-register.co.uk
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

@@ -1,7 +1,7 @@
 name: Leicestershire
 authority_code: leicestershire
-platform: bespoke
-base_url: https://www.leicestershire.gov.uk/environment-and-planning/planning
+platform: planning_register
+base_url: https://leicestershire.planning-register.co.uk
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

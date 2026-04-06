@@ -1,7 +1,7 @@
 name: Cherwell
 authority_code: cherwell
-platform: idox
-base_url: https://planningregister.cherwell.gov.uk/online-applications
+platform: planning_register
+base_url: https://planningregister.cherwell.gov.uk
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

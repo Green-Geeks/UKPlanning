@@ -34,6 +34,19 @@ COUNCIL_URLS = {
     "wychavon": "https://plan.wychavon.gov.uk",
     "kent": "https://www.kentplanningapplications.co.uk",
     "exmoor": "https://exmoor.planning-register.co.uk",
+    "cherwell": "https://planningregister.cherwell.gov.uk",
+    "fylde": "https://pa.fylde.gov.uk",
+    "malvernhills": "https://plan.malvernhills.gov.uk",
+    "norfolk": "https://eplanning.norfolk.gov.uk",
+    "northdevon": "https://planning.northdevon.gov.uk",
+    "welwynhatfield": "https://planning.welhat.gov.uk",
+    "worcester": "https://plan.worcester.gov.uk",
+    "suffolk": "https://suffolk.planning-register.co.uk",
+    "leicestershire": "https://leicestershire.planning-register.co.uk",
+    "southwestdevon": "https://westdevon.planning-register.co.uk",
+    "surrey": "https://planning.surreycc.gov.uk",
+    "northamptonshire": "https://wnc.planning-register.co.uk",
+    "worcestershire": "https://worcestershire.planning-register.co.uk",
 }
 
 
