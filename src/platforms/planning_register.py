@@ -131,29 +131,48 @@ class PlanningRegisterScraper(BaseScraper):
             if "/Planning/Display/" in resp.text:
                 break  # Found results
 
-        soup = BeautifulSoup(resp.text, "html.parser")
         summaries = []
         seen = set()
+        base_search_url = str(resp.url).split("&page=")[0]
+        page_num = 1
+        max_pages = 50  # Safety limit
 
-        # Find all detail links regardless of page structure (table or div)
-        for link in soup.find_all("a", href=re.compile(r"/Planning/Display/")):
-            href = link.get("href", "")
-            if href in seen:
-                continue
-            seen.add(href)
+        while resp and page_num <= max_pages:
+            soup = BeautifulSoup(resp.text, "html.parser")
 
-            # Extract reference from the URL path
-            ref_match = re.search(r"/Planning/Display/(.+)$", href)
-            ref = ref_match.group(1) if ref_match else href
+            # Find all detail links regardless of page structure (table or div)
+            page_count = 0
+            for link in soup.find_all("a", href=re.compile(r"/Planning/Display/")):
+                href = link.get("href", "")
+                if href in seen:
+                    continue
+                seen.add(href)
+                page_count += 1
 
-            full_url = f"{self._base_url}{href}" if href.startswith("/") else href
-            summaries.append(ApplicationSummary(uid=ref, url=full_url))
+                ref_match = re.search(r"/Planning/Display/(.+)$", href)
+                ref = ref_match.group(1) if ref_match else href
 
-        # Check for pagination
-        next_link = soup.find("a", text=re.compile(r"Next|›"))
-        if next_link:
-            # TODO: handle pagination for large result sets
-            pass
+                full_url = f"{self._base_url}{href}" if href.startswith("/") else href
+                summaries.append(ApplicationSummary(uid=ref, url=full_url))
+
+            # Check for next page
+            if page_count == 0:
+                break
+
+            next_link = soup.find("a", string=re.compile(r"^\s*Next\s*$"))
+            if not next_link:
+                break
+
+            next_href = next_link.get("data-ajax-target") or next_link.get("href", "")
+            if not next_href or next_href == "#":
+                break
+
+            next_url = f"{self._base_url}{next_href}" if next_href.startswith("/") else next_href
+            page_num += 1
+            resp = await self._client.get(
+                next_url, headers={"X-Requested-With": "XMLHttpRequest"}
+            )
+            resp.raise_for_status()
 
         return summaries
 
