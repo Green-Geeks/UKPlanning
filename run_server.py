@@ -140,14 +140,16 @@ def run_server():
         return {"status": "started", "council": config.name, "authority_code": authority_code, "lookback_days": lookback or "default"}
 
     @app.post("/api/scrape-all")
-    async def trigger_scrape_all(concurrency: int = 8, db: Session = Depends(get_db)):
+    async def trigger_scrape_all(concurrency: int = 8, days: int = 0, db: Session = Depends(get_db)):
         """Trigger scrape for all enabled councils. Runs concurrently in background.
 
         Args:
             concurrency: Number of scrapers to run in parallel (default 8, max 20).
+            days: Force a specific lookback period in days (0 = use default logic).
         """
         from src.scheduler.orchestrator import Orchestrator
         concurrency = max(1, min(concurrency, 20))
+        lookback = days if days > 0 else None
 
         session = session_factory()
         orch = Orchestrator(configs=configs, session=session, registry=registry)
@@ -166,7 +168,10 @@ def run_server():
                     session = session_factory()
                     try:
                         logger.info("Scraping %s...", config.name)
-                        await run_council_scrape(config, registry, session)
+                        if lookback:
+                            await run_council_scrape(config, registry, session, lookback_days=lookback)
+                        else:
+                            await run_council_scrape(config, registry, session)
                     except Exception as e:
                         logger.error("Error scraping %s: %s", config.name, e)
                     finally:

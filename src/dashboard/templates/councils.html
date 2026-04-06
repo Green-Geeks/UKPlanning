@@ -5,8 +5,11 @@
 <div style="margin-bottom:1rem;display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
     <label for="concurrency-input" style="font-size:0.9rem;font-weight:600;">Concurrency:</label>
     <input id="concurrency-input" type="number" min="1" max="20" value="8" style="width:60px;padding:0.4rem;border:1px solid #ccc;border-radius:4px;font-size:0.9rem;">
-    <button onclick="scrapeAll()" style="padding:0.5rem 1.5rem;background:#2b6cb0;color:white;border:none;border-radius:4px;cursor:pointer;font-size:1rem;">Scrape All Enabled</button>
-    <button id="stop-btn" onclick="stopAll()" style="padding:0.5rem 1.5rem;background:#e53e3e;color:white;border:none;border-radius:4px;cursor:pointer;font-size:1rem;">Stop All Scrapes</button>
+    <button onclick="scrapeAll()" style="padding:0.5rem 1.5rem;background:#2b6cb0;color:white;border:none;border-radius:4px;cursor:pointer;font-size:1rem;">Scrape All (Default)</button>
+    <span style="margin-left:0.5rem;font-size:0.9rem;font-weight:600;">Days:</span>
+    <input id="days-all-input" type="number" min="1" max="365" value="60" style="width:60px;padding:0.4rem;border:1px solid #ccc;border-radius:4px;font-size:0.9rem;">
+    <button onclick="scrapeAllDays()" style="padding:0.5rem 1.5rem;background:#805ad5;color:white;border:none;border-radius:4px;cursor:pointer;font-size:1rem;">Scrape All (Custom Days)</button>
+    <button id="stop-btn" onclick="stopAll()" style="padding:0.5rem 1.5rem;background:#e53e3e;color:white;border:none;border-radius:4px;cursor:pointer;font-size:1rem;">Stop All</button>
     <span id="scrape-all-status" style="margin-left:0.5rem;"></span>
 </div>
 <table>
@@ -104,6 +107,19 @@ async function scrapeAll() {
         const resp = await fetch('/api/scrape-all?concurrency=' + concurrency, {method: 'POST'});
         const data = await resp.json();
         status.textContent = 'Queued ' + data.councils_queued + ' councils (' + data.concurrency + ' parallel)';
+    } catch(e) {
+        status.textContent = 'Error';
+    }
+}
+async function scrapeAllDays() {
+    const status = document.getElementById('scrape-all-status');
+    const concurrency = parseInt(document.getElementById('concurrency-input').value) || 8;
+    const days = parseInt(document.getElementById('days-all-input').value) || 60;
+    status.textContent = `Starting ${days}-day scrape...`;
+    try {
+        const resp = await fetch(`/api/scrape-all?concurrency=${concurrency}&days=${days}`, {method: 'POST'});
+        const data = await resp.json();
+        status.textContent = `Queued ${data.councils_queued} councils (${data.concurrency} parallel, ${days} day lookback)`;
     } catch(e) {
         status.textContent = 'Error';
     }
