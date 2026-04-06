@@ -75,6 +75,7 @@ class PlanningRegisterScraper(BaseScraper):
             headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"},
             follow_redirects=True,
             timeout=30,
+            verify=False,
         )
         self._disclaimer_accepted = False
 
@@ -82,6 +83,11 @@ class PlanningRegisterScraper(BaseScraper):
         """Accept the site disclaimer to get a session cookie."""
         if self._disclaimer_accepted:
             return
+        # GET the disclaimer page first to establish session cookie
+        await self._client.get(
+            f"{self._base_url}/Disclaimer?returnUrl=%2FSearch%2FAdvanced"
+        )
+        # Then POST to accept
         await self._client.post(
             f"{self._base_url}/Disclaimer/Accept?returnUrl=%2FSearch%2FAdvanced"
         )

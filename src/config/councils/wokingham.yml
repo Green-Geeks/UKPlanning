@@ -1,7 +1,7 @@
 name: Wokingham
 authority_code: wokingham
 platform: fastweb
-base_url: https://publicaccess.wokingham.gov.uk/online-applications
+base_url: https://planning.wokingham.gov.uk/FastWebPL
 schedule: 0 3 * * *
 requires_js: false
 enabled: true
