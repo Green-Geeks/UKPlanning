@@ -93,9 +93,11 @@ def create_app():
             ).scalar_one_or_none()
             stats[c.id] = {"app_count": app_count, "last_run": last_run}
         disabled_councils = _get_disabled_councils()
+        disabled_reasons = {c["authority_code"]: c["reason"] for c in disabled_councils}
         return render(request, "councils.html", {
             "councils": councils, "stats": stats,
             "disabled_councils": disabled_councils,
+            "disabled_reasons": disabled_reasons,
         })
 
     @app.get("/councils/{authority_code}")

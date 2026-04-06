@@ -19,7 +19,8 @@
         <td>{{ stats[c.id].app_count }}</td>
         <td>{% if stats[c.id].last_run %}{{ stats[c.id].last_run.completed_at or "Running" }}{% else %}Never{% endif %}</td>
         <td>
-            {% if not c.enabled %}<span class="badge badge-danger" title="Check disabled councils section below for reason">Disabled</span>
+            {% if not c.enabled %}<span class="badge badge-danger" title="{{ disabled_reasons.get(c.authority_code, 'No reason specified') }}">Disabled</span>
+            <small style="color:#888;display:block;font-size:0.75rem;">{{ disabled_reasons.get(c.authority_code, '') }}</small>
             {% elif stats[c.id].last_run and stats[c.id].last_run.status == "failed" %}<span class="badge badge-warning">Failing</span>
             {% elif stats[c.id].last_run and stats[c.id].last_run.status == "success" %}<span class="badge badge-success">Healthy</span>
             {% else %}<span class="badge badge-info">Pending</span>{% endif %}
