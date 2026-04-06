@@ -39,6 +39,7 @@ COUNCIL_CONFIG = {
     "havant": ("https://service.havant.gov.uk", "/pr", "Arcus_BE_Public_Register"),
     "reading": ("https://publicregister.reading.gov.uk", "/pr", "Arcus_BE_Public_Register"),
     "rochdale": ("https://account.rochdale.gov.uk", "/pr", "Arcus_BE_Public_Register"),
+    "bracknell": ("https://publicaccess.bracknell-forest.gov.uk", "/s", "Arcus_BE_Public_Register"),
 }
 
 
