@@ -1,7 +1,7 @@
 name: MoleValley
 authority_code: molevalley
-platform: swiftlg
-base_url: https://www.molevalley.gov.uk/swiftlg/apas/run/wphappcriteria.display
+platform: statmap
+base_url: https://molevalley-publicportal.statmap.co.uk/horizoNext/publicportal
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true
