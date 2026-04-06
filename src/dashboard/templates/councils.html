@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block title %}Councils - UK Planning Dashboard{% endblock %}
 {% block content %}
+<style>
+.filter-btn.active { font-weight: bold; box-shadow: 0 0 0 2px #2b6cb0; }
+</style>
 <h1>Councils</h1>
 <div style="margin-bottom:1rem;display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
     <label for="concurrency-input" style="font-size:0.9rem;font-weight:600;">Concurrency:</label>
@@ -12,11 +15,23 @@
     <button id="stop-btn" onclick="stopAll()" style="padding:0.5rem 1.5rem;background:#e53e3e;color:white;border:none;border-radius:4px;cursor:pointer;font-size:1rem;">Stop All</button>
     <span id="scrape-all-status" style="margin-left:0.5rem;"></span>
 </div>
-<table>
+<div style="margin-bottom:0.8rem;display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
+    <span style="font-size:0.9rem;font-weight:600;">Filter:</span>
+    <button class="filter-btn active" onclick="filterStatus('all')" style="padding:0.3rem 0.8rem;border:1px solid #ccc;border-radius:4px;cursor:pointer;font-size:0.85rem;background:#eee;">All</button>
+    <button class="filter-btn" onclick="filterStatus('healthy')" style="padding:0.3rem 0.8rem;border:1px solid #c6f6d5;border-radius:4px;cursor:pointer;font-size:0.85rem;background:#f0fff4;">Healthy</button>
+    <button class="filter-btn" onclick="filterStatus('failing')" style="padding:0.3rem 0.8rem;border:1px solid #fefcbf;border-radius:4px;cursor:pointer;font-size:0.85rem;background:#fffff0;">Failing</button>
+    <button class="filter-btn" onclick="filterStatus('pending')" style="padding:0.3rem 0.8rem;border:1px solid #bee3f8;border-radius:4px;cursor:pointer;font-size:0.85rem;background:#ebf8ff;">Pending</button>
+    <button class="filter-btn" onclick="filterStatus('disabled')" style="padding:0.3rem 0.8rem;border:1px solid #fed7d7;border-radius:4px;cursor:pointer;font-size:0.85rem;background:#fff5f5;">Disabled</button>
+    <span style="margin-left:1rem;font-size:0.9rem;font-weight:600;">Sort:</span>
+    <button onclick="sortTable('name')" style="padding:0.3rem 0.8rem;border:1px solid #ccc;border-radius:4px;cursor:pointer;font-size:0.85rem;background:#eee;">Name ↕</button>
+    <button onclick="sortTable('apps')" style="padding:0.3rem 0.8rem;border:1px solid #ccc;border-radius:4px;cursor:pointer;font-size:0.85rem;background:#eee;">Applications ↕</button>
+    <span id="filter-count" style="margin-left:0.5rem;font-size:0.85rem;color:#666;"></span>
+</div>
+<table id="councils-table">
     <thead><tr><th>Name</th><th>Platform</th><th>Applications</th><th>Last Run</th><th>Status</th><th>Action</th></tr></thead>
     <tbody>
     {% for c in councils %}
-    <tr>
+    <tr data-status="{% if not c.enabled %}disabled{% elif stats[c.id].last_run and stats[c.id].last_run.status == 'failed' %}failing{% elif stats[c.id].last_run and stats[c.id].last_run.status == 'success' %}healthy{% else %}pending{% endif %}" data-name="{{ c.name }}" data-apps="{{ stats[c.id].app_count }}">
         <td><a href="/councils/{{ c.authority_code }}">{{ c.name }}</a></td>
         <td>{{ c.platform }}</td>
         <td>{{ stats[c.id].app_count }}</td>
@@ -62,6 +77,53 @@
 {% endif %}
 
 <script>
+let currentFilter = 'all';
+let currentSort = 'name';
+let sortAsc = true;
+
+function filterStatus(status) {
+    currentFilter = status;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    const rows = document.querySelectorAll('#councils-table tbody tr');
+    let shown = 0;
+    rows.forEach(row => {
+        const rowStatus = row.dataset.status;
+        if (status === 'all' || rowStatus === status) {
+            row.style.display = '';
+            shown++;
+        } else {
+            row.style.display = 'none';
+        }
+    });
+    document.getElementById('filter-count').textContent = `Showing ${shown} of ${rows.length}`;
+}
+
+function sortTable(by) {
+    if (currentSort === by) {
+        sortAsc = !sortAsc;
+    } else {
+        currentSort = by;
+        sortAsc = (by === 'name');
+    }
+    const tbody = document.querySelector('#councils-table tbody');
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+    rows.sort((a, b) => {
+        let va, vb;
+        if (by === 'name') {
+            va = a.dataset.name.toLowerCase();
+            vb = b.dataset.name.toLowerCase();
+        } else {
+            va = parseInt(a.dataset.apps) || 0;
+            vb = parseInt(b.dataset.apps) || 0;
+        }
+        if (va < vb) return sortAsc ? -1 : 1;
+        if (va > vb) return sortAsc ? 1 : -1;
+        return 0;
+    });
+    rows.forEach(row => tbody.appendChild(row));
+}
+
 async function scrapeCouncil(code, btn) {
     btn.disabled = true;
     btn.textContent = 'Starting...';
