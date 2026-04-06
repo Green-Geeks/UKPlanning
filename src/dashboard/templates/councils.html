@@ -19,7 +19,7 @@
         <td>{{ stats[c.id].app_count }}</td>
         <td>{% if stats[c.id].last_run %}{{ stats[c.id].last_run.completed_at or "Running" }}{% else %}Never{% endif %}</td>
         <td>
-            {% if not c.enabled %}<span class="badge badge-danger">Disabled</span>
+            {% if not c.enabled %}<span class="badge badge-danger" title="Check disabled councils section below for reason">Disabled</span>
             {% elif stats[c.id].last_run and stats[c.id].last_run.status == "failed" %}<span class="badge badge-warning">Failing</span>
             {% elif stats[c.id].last_run and stats[c.id].last_run.status == "success" %}<span class="badge badge-success">Healthy</span>
             {% else %}<span class="badge badge-info">Pending</span>{% endif %}
@@ -33,6 +33,28 @@
     {% endfor %}
     </tbody>
 </table>
+
+{% if disabled_councils %}
+<h2 style="margin-top:2rem;">Disabled Councils ({{ disabled_councils|length }})</h2>
+<p style="color:#666;font-size:0.9rem;">These councils have been investigated but cannot currently be scraped. Each has a documented reason.</p>
+<table>
+    <thead><tr><th>Name</th><th>Platform</th><th>Status</th><th>Reason</th></tr></thead>
+    <tbody>
+    {% for c in disabled_councils %}
+    <tr style="opacity:0.7;">
+        <td>{{ c.name }}</td>
+        <td>{{ c.platform or 'N/A' }}</td>
+        <td>
+            {% if c.archived %}<span class="badge badge-danger">Archived</span>
+            {% else %}<span class="badge badge-warning">Blocked</span>{% endif %}
+        </td>
+        <td style="font-size:0.85rem;color:#555;">{{ c.reason }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
 <script>
 async function scrapeCouncil(code, btn) {
     btn.disabled = true;

@@ -1,5 +1,7 @@
+import re
 from pathlib import Path
 
+import yaml
 from fastapi import FastAPI, Request, Depends
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
@@ -8,6 +10,26 @@ from sqlalchemy.orm import Session
 
 from src.core.models import Council, Application, ScrapeRun
 from src.dashboard.dependencies import get_db
+
+CONFIG_DIR = Path(__file__).parent.parent / "config" / "councils"
+
+
+def _get_disabled_councils():
+    """Load disabled council info from YAML configs."""
+    disabled = []
+    for f in sorted(CONFIG_DIR.glob("*.yml")):
+        content = f.read_text()
+        data = yaml.safe_load(content)
+        if data.get("enabled") is False:
+            reason_match = re.search(r"# disabled_reason: (.+)", content)
+            disabled.append({
+                "authority_code": data["authority_code"],
+                "name": data.get("name", data["authority_code"]),
+                "platform": data.get("platform", ""),
+                "reason": reason_match.group(1) if reason_match else "No reason specified",
+                "archived": data.get("archived", False),
+            })
+    return disabled
 
 TEMPLATES_DIR = Path(__file__).parent / "templates"
 
@@ -70,8 +92,10 @@ def create_app():
                 select(ScrapeRun).where(ScrapeRun.council_id == c.id).order_by(ScrapeRun.id.desc()).limit(1)
             ).scalar_one_or_none()
             stats[c.id] = {"app_count": app_count, "last_run": last_run}
+        disabled_councils = _get_disabled_councils()
         return render(request, "councils.html", {
             "councils": councils, "stats": stats,
+            "disabled_councils": disabled_councils,
         })
 
     @app.get("/councils/{authority_code}")
