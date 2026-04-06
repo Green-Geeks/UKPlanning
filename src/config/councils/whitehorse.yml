@@ -5,4 +5,4 @@ base_url: https://data.whitehorsedc.gov.uk/java/support/Main.jsp
 schedule: 0 3 * * *
 requires_js: false
 enabled: false
-# disabled_reason: CCM/JSP platform (shared with southoxon) - already has scraper
+# disabled_reason: PlanIt confirms working - needs scraper development

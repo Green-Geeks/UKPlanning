@@ -1,9 +1,9 @@
 name: NIP
 authority_code: nip
 platform: unsupported
-base_url: "https://infrastructure.planninginspectorate.gov.uk/projects/register-of-applications"
-schedule: "0 3 * * *"
+base_url: https://infrastructure.planninginspectorate.gov.uk/projects/register-of-applications
+schedule: 0 3 * * *
 requires_js: false
 enabled: false
-# National Infrastructure Planning (England and Wales)
-# disabled_reason: National Infrastructure Planning - different system
+archived: true
+# disabled_reason: ARCHIVED - confirmed inaccessible

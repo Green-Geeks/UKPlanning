@@ -5,4 +5,4 @@ base_url: https://planning.broxbourne.gov.uk/LPAssure/ES/Presentation/Planning/O
 schedule: 0 3 * * *
 requires_js: false
 enabled: false
-# disabled_reason: Northgate Assure - 404 on search endpoint
+# disabled_reason: PlanIt confirms working - needs scraper development

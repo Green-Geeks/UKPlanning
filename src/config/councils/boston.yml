@@ -5,4 +5,4 @@ base_url: https://www.mybostonuk.com/development-management/planning-application
 schedule: 0 3 * * *
 requires_js: false
 enabled: false
-# disabled_reason: Access restricted after Jul 2025 per PlanIt
+# disabled_reason: PlanIt confirms working - needs scraper development

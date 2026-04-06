@@ -5,4 +5,5 @@ base_url: https://www.colchester.gov.uk/planning-search-results/
 schedule: 0 3 * * *
 requires_js: false
 enabled: false
-# disabled_reason: Power Apps Portal / custom SPA - needs Playwright
+archived: true
+# disabled_reason: ARCHIVED - confirmed inaccessible

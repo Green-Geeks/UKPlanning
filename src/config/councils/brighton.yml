@@ -5,4 +5,4 @@ base_url: https://planningapps.brighton-hove.gov.uk/online-applications
 schedule: 0 3 * * *
 requires_js: false
 enabled: false
-# disabled_reason: Behind Incapsula WAF - blocks all automated access
+# disabled_reason: PlanIt confirms working - needs scraper development

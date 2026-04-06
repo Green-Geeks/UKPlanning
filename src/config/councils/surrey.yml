@@ -5,3 +5,4 @@ base_url: https://planning.surreycc.gov.uk
 schedule: 0 3 * * *
 requires_js: false
 enabled: true
+# disabled_reason: PlanIt confirms working - needs scraper development
