@@ -1,8 +1,7 @@
 name: Boston
 authority_code: boston
-platform: bespoke
-base_url: https://www.mybostonuk.com/development-management/planning-application-search/
+platform: boston
+base_url: https://www.boston.gov.uk/planningapplicationsearch
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
-# disabled_reason: PlanIt confirms working - needs scraper development
+enabled: true

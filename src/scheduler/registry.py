@@ -5,8 +5,10 @@ from src.platforms.appsearchserv import AppSearchServScraper
 from src.platforms.ambervalley import AmberValleyScraper
 from src.platforms.barnsley import BarnsleyScraper
 from src.platforms.bath import BathScraper
+from src.platforms.boston import BostonScraper
 from src.platforms.fareham import FarehamScraper
 from src.platforms.fastweb import FastwebScraper
+from src.platforms.jersey import JerseyScraper
 from src.platforms.idox import IdoxScraper, IdoxEndExcScraper, IdoxNIScraper, IdoxCrumbScraper
 from src.platforms.ni_portal import NIPortalScraper
 from src.platforms.northlincs import NorthLincsScraper
@@ -43,6 +45,7 @@ class ScraperRegistry:
     def __init__(self):
         self._registry = {
             "appsearchserv": AppSearchServScraper,
+            "boston": BostonScraper,
             "idox": IdoxScraper,
             "idox_endexc": IdoxEndExcScraper,
             "idox_ni": IdoxNIScraper,
@@ -70,6 +73,7 @@ class ScraperRegistry:
             "planning_register": PlanningRegisterScraper,
             "tandridge": TandridgeScraper,
             "tascomi": TascomiScraper,
+            "jersey": JerseyScraper,
             "kensington": KensingtonScraper,
             "kirklees": KirkleesScraper,
             "southoxon": SouthOxonScraper,

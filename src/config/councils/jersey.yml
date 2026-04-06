@@ -1,8 +1,7 @@
 name: Jersey
 authority_code: jersey
-platform: unsupported
-base_url: "https://www.mygov.je/Planning/Pages"
-schedule: "0 3 * * *"
+platform: jersey
+base_url: https://www.gov.je/citizen/Planning/Pages/Planning.aspx
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
-# disabled_reason: PlanIt confirms working - needs scraper development
+enabled: true
