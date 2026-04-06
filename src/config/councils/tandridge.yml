@@ -1,8 +1,7 @@
 name: Tandridge
 authority_code: tandridge
-platform: bespoke
+platform: tandridge
 base_url: https://tdcplanningsearch.tandridge.gov.uk/
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
-# disabled_reason: Migrated to custom platform
+enabled: true
