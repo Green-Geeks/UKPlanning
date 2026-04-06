@@ -5,3 +5,4 @@ base_url: https://planning.hants.gov.uk/online-applications
 schedule: 0 3 * * *
 requires_js: false
 enabled: false
+# disabled_reason: Cloudflare protection - PlanIt data up to Apr 2023

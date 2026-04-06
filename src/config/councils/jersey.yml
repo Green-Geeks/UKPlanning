@@ -5,3 +5,4 @@ base_url: "https://www.mygov.je/Planning/Pages"
 schedule: "0 3 * * *"
 requires_js: false
 enabled: false
+# disabled_reason: Crown dependency - custom portal

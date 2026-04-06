@@ -6,3 +6,4 @@ schedule: "0 3 * * *"
 requires_js: false
 enabled: false
 # was Fastweb
+# disabled_reason: Idox returns 500 server error

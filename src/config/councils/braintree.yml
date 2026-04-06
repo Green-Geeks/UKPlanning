@@ -5,3 +5,4 @@ base_url: https://publicaccess.braintree.gov.uk/online-applications
 schedule: 0 3 * * *
 requires_js: false
 enabled: false
+# disabled_reason: Cloudflare protection - PlanIt data up to Nov 2023

@@ -5,3 +5,4 @@ base_url: https://planning.highpeak.gov.uk/online-applications
 schedule: 0 3 * * *
 requires_js: false
 enabled: false
+# disabled_reason: DNS failure - all connection attempts failed

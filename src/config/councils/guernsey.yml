@@ -5,3 +5,4 @@ base_url: "http://planningexplorer.gov.gg/portal/servlets"
 schedule: "0 3 * * *"
 requires_js: false
 enabled: false
+# disabled_reason: Crown dependency - AppSearchServ portal

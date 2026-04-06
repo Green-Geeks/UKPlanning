@@ -1,7 +1,8 @@
 name: Tandridge
 authority_code: tandridge
-platform: swiftlg
-base_url: https://www.tandridge.gov.uk/swiftlg/apas/run
+platform: bespoke
+base_url: https://tdcplanningsearch.tandridge.gov.uk/
 schedule: 0 3 * * *
 requires_js: false
 enabled: false
+# disabled_reason: Migrated to custom platform

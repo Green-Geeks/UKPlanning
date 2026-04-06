@@ -5,3 +5,4 @@ base_url: https://planning.ashfield.gov.uk/planning-applications/search-applicat
 schedule: 0 3 * * *
 requires_js: false
 enabled: false
+# disabled_reason: Civica W2 - iframe/shadow DOM rendering

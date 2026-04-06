@@ -4,4 +4,4 @@ platform: rochford
 base_url: https://maps.rochford.gov.uk/DevelopmentControl.aspx
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

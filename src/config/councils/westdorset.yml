@@ -1,7 +1,7 @@
 name: WestDorset
 authority_code: westdorset
-platform: idox
-base_url: https://planning.dorset.gov.uk/public-access
+platform: dorset
+base_url: https://planning.dorsetcouncil.gov.uk
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

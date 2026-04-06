@@ -5,3 +5,4 @@ base_url: https://planning360.waverley.gov.uk/planning
 schedule: 0 3 * * *
 requires_js: false
 enabled: false
+# disabled_reason: CivicaJson - server timeout/503

@@ -5,3 +5,4 @@ base_url: https://plantech.centralbedfordshire.gov.uk/PLANTECH/DCWebPages/acolne
 schedule: 0 3 * * *
 requires_js: false
 enabled: false
+# disabled_reason: Acolnet platform - custom

@@ -5,3 +5,4 @@ base_url: https://www.rbkc.gov.uk/Planning/searches/default.aspx
 schedule: 0 3 * * *
 requires_js: false
 enabled: false
+# disabled_reason: Rebuilt post-cyber-attack Mar 2026 - SolidJS SPA

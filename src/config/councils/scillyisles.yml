@@ -5,3 +5,4 @@ base_url: "http://www.scilly.gov.uk/planning-development"
 schedule: "0 3 * * *"
 requires_js: false
 enabled: false
+# disabled_reason: Very few applications - no standard portal

@@ -1,7 +1,7 @@
 name: Bournemouth
 authority_code: bournemouth
-platform: idox
-base_url: https://boppa.poole.gov.uk/online-applications
+platform: dorset
+base_url: https://planning.bcpcouncil.gov.uk
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

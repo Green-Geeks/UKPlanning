@@ -5,3 +5,4 @@ base_url: https://emaps.elmbridge.gov.uk/online-applications
 schedule: 0 3 * * *
 requires_js: false
 enabled: false
+# disabled_reason: Custom platform (not Idox) - no scraper

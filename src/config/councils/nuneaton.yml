@@ -5,3 +5,4 @@ base_url: https://customer.nuneatonandbedworth.gov.uk
 schedule: 0 3 * * *
 requires_js: false
 enabled: false
+# disabled_reason: Granicus platform - PlanIt data up to Oct 2019

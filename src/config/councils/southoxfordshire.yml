@@ -5,3 +5,4 @@ base_url: https://data.southoxon.gov.uk/ccm/support/Main.jsp
 schedule: 0 3 * * *
 requires_js: false
 enabled: false
+# disabled_reason: CCM/JSP platform (shared with whitehorse) - already has scraper
