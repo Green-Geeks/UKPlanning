@@ -5,8 +5,6 @@ services:
       POSTGRES_DB: ukplanning
       POSTGRES_USER: ukplanning
       POSTGRES_PASSWORD: ${DB_PASSWORD:-devpassword}
-    ports:
-      - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
@@ -14,11 +12,12 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    restart: unless-stopped
 
   app:
     build: .
     ports:
-      - "8000:8000"
+      - "${APP_PORT:-8000}:8000"
     environment:
       DATABASE_URL: postgresql://ukplanning:${DB_PASSWORD:-devpassword}@db:5432/ukplanning
     depends_on:
