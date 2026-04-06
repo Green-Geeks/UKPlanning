@@ -28,6 +28,8 @@
         <td>
             {% if c.enabled %}
             <button onclick="scrapeCouncil('{{ c.authority_code }}', this)" style="padding:0.3rem 0.8rem;background:#2b6cb0;color:white;border:none;border-radius:3px;cursor:pointer;font-size:0.85rem;">Scrape</button>
+            <input type="number" min="1" max="365" value="30" style="width:45px;padding:0.2rem;font-size:0.8rem;border:1px solid #ccc;border-radius:3px;" id="days-{{ c.authority_code }}">
+            <button onclick="testScrapeCouncil('{{ c.authority_code }}', this)" style="padding:0.3rem 0.6rem;background:#805ad5;color:white;border:none;border-radius:3px;cursor:pointer;font-size:0.8rem;">Test</button>
             {% endif %}
         </td>
     </tr>
@@ -62,6 +64,25 @@ async function scrapeCouncil(code, btn) {
     btn.textContent = 'Starting...';
     try {
         const resp = await fetch('/api/scrape/' + code, {method: 'POST'});
+        const data = await resp.json();
+        if (resp.ok) {
+            btn.textContent = 'Running';
+            btn.style.background = '#38a169';
+        } else {
+            btn.textContent = data.error || 'Error';
+            btn.style.background = '#e53e3e';
+        }
+    } catch(e) {
+        btn.textContent = 'Error';
+        btn.style.background = '#e53e3e';
+    }
+}
+async function testScrapeCouncil(code, btn) {
+    const days = parseInt(document.getElementById('days-' + code).value) || 30;
+    btn.disabled = true;
+    btn.textContent = days + 'd...';
+    try {
+        const resp = await fetch('/api/scrape/' + code + '?days=' + days, {method: 'POST'});
         const data = await resp.json();
         if (resp.ok) {
             btn.textContent = 'Running';

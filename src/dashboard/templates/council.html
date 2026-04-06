@@ -5,6 +5,11 @@
 <h1>{{ council.name }}
 {% if council.enabled %}
 <button id="scrape-btn" onclick="scrapeThis()" style="padding:0.4rem 1rem;background:#2b6cb0;color:white;border:none;border-radius:4px;cursor:pointer;font-size:0.9rem;margin-left:1rem;vertical-align:middle;">Scrape Now</button>
+<span style="margin-left:1rem;vertical-align:middle;">
+    <input id="days-input" type="number" min="1" max="365" value="30" style="width:55px;padding:0.3rem;border:1px solid #ccc;border-radius:4px;font-size:0.85rem;vertical-align:middle;" title="Number of days to look back">
+    <button id="test-btn" onclick="testScrape()" style="padding:0.4rem 1rem;background:#805ad5;color:white;border:none;border-radius:4px;cursor:pointer;font-size:0.9rem;vertical-align:middle;">Test Scrape</button>
+    <span id="test-status" style="font-size:0.85rem;color:#666;margin-left:0.5rem;"></span>
+</span>
 {% endif %}
 </h1>
 <dl class="detail-grid">
@@ -65,6 +70,31 @@ async function scrapeThis() {
     } catch(e) {
         btn.textContent = 'Error';
         btn.style.background = '#e53e3e';
+    }
+}
+async function testScrape() {
+    const btn = document.getElementById('test-btn');
+    const status = document.getElementById('test-status');
+    const days = parseInt(document.getElementById('days-input').value) || 30;
+    btn.disabled = true;
+    btn.textContent = 'Scraping...';
+    status.textContent = `Looking back ${days} days...`;
+    try {
+        const resp = await fetch(`/api/scrape/{{ council.authority_code }}?days=${days}`, {method: 'POST'});
+        const data = await resp.json();
+        if (resp.ok) {
+            btn.textContent = 'Running';
+            btn.style.background = '#38a169';
+            status.textContent = `Started (${days} day lookback)`;
+        } else {
+            btn.textContent = 'Error';
+            btn.style.background = '#e53e3e';
+            status.textContent = data.error || 'Failed';
+        }
+    } catch(e) {
+        btn.textContent = 'Error';
+        btn.style.background = '#e53e3e';
+        status.textContent = 'Request failed';
     }
 }
 </script>

@@ -106,20 +106,29 @@ def run_server():
     from sqlalchemy.orm import Session
 
     @app.post("/api/scrape/{authority_code}")
-    async def trigger_scrape(authority_code: str, db: Session = Depends(get_db)):
-        """Trigger a scrape for a single council. Runs in background."""
+    async def trigger_scrape(authority_code: str, days: int = 0, db: Session = Depends(get_db)):
+        """Trigger a scrape for a single council. Runs in background.
+
+        Args:
+            days: Force a specific lookback period in days (0 = use default logic).
+        """
         config = configs_by_code.get(authority_code)
         if not config:
             return JSONResponse({"error": f"Council '{authority_code}' not found"}, status_code=404)
         if authority_code in running_scrapes:
             return JSONResponse({"error": f"Scrape already running for '{authority_code}'"}, status_code=409)
 
+        lookback = days if days > 0 else None
+
         async def do_scrape():
             running_scrapes.add(authority_code)
             try:
                 session = session_factory()
                 try:
-                    await run_council_scrape(config, registry, session)
+                    if lookback:
+                        await run_council_scrape(config, registry, session, lookback_days=lookback)
+                    else:
+                        await run_council_scrape(config, registry, session)
                 finally:
                     session.close()
             finally:
@@ -128,7 +137,7 @@ def run_server():
         task = asyncio.create_task(do_scrape())
         scrape_tasks.add(task)
         task.add_done_callback(scrape_tasks.discard)
-        return {"status": "started", "council": config.name, "authority_code": authority_code}
+        return {"status": "started", "council": config.name, "authority_code": authority_code, "lookback_days": lookback or "default"}
 
     @app.post("/api/scrape-all")
     async def trigger_scrape_all(concurrency: int = 8, db: Session = Depends(get_db)):
