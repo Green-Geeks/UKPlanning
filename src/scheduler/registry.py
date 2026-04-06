@@ -20,6 +20,7 @@ from src.platforms.rochford import RochfordScraper
 from src.platforms.stratfordonavon import StratfordOnAvonScraper
 from src.platforms.telford import TelfordScraper
 from src.platforms.hereford import HerefordScraper
+from src.platforms.kensington import KensingtonScraper
 from src.platforms.nottinghamshire import NottinghamshireScraper
 from src.platforms.ribblevalley import RibbleValleyScraper
 from src.platforms.tandridge import TandridgeScraper
@@ -69,6 +70,7 @@ class ScraperRegistry:
             "planning_register": PlanningRegisterScraper,
             "tandridge": TandridgeScraper,
             "tascomi": TascomiScraper,
+            "kensington": KensingtonScraper,
             "kirklees": KirkleesScraper,
             "southoxon": SouthOxonScraper,
             "whitehorse": SouthOxonScraper,

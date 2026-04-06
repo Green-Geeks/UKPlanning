@@ -1,8 +1,7 @@
 name: Kensington
 authority_code: kensington
-platform: bespoke
-base_url: https://www.rbkc.gov.uk/Planning/searches/default.aspx
+platform: kensington
+base_url: https://atlas.rbkc.gov.uk/planningsearch
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
-# disabled_reason: Back online (Tytl platform) - needs Playwright scraper for binary API
+enabled: true
