@@ -17,7 +17,7 @@ services:
   app:
     build: .
     ports:
-      - "${APP_PORT:-8000}:8000"
+      - "${APP_PORT:-8000}:${APP_PORT:-8000}"
     environment:
       DATABASE_URL: postgresql://ukplanning:${DB_PASSWORD:-devpassword}@db:5432/ukplanning
       APP_PORT: ${APP_PORT:-8000}

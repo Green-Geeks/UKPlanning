@@ -15,9 +15,7 @@ RUN playwright install --with-deps chromium
 
 COPY . .
 
-EXPOSE 8000 8866
-
 HEALTHCHECK --interval=30s --timeout=10s --start-period=15s --retries=3 \
-    CMD python -c "import os, httpx; httpx.get(f'http://localhost:{os.environ.get(\"APP_PORT\", 8000)}/', timeout=5)" || exit 1
+    CMD python -c "import os, httpx; httpx.get(f'http://localhost:{os.environ.get(\"APP_PORT\", \"8000\")}/', timeout=5)" || exit 1
 
 CMD ["python", "run_server.py"]

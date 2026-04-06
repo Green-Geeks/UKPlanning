@@ -232,7 +232,7 @@ def run_server():
             "stale": max(0, stale_count - len(running_scrapes)),
         }
 
-    port = int(os.environ.get("APP_PORT", 8000))
+    port = int(os.environ.get("PORT", os.environ.get("APP_PORT", 8000)))
 
     logger.info("Starting UK Planning Dashboard")
     logger.info("  Councils loaded: %d", len(configs))
