@@ -1,7 +1,7 @@
 name: Havant
 authority_code: havant
-platform: idox
-base_url: https://planningpublicaccess.havant.gov.uk/online-applications
+platform: salesforce
+base_url: https://service.havant.gov.uk
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

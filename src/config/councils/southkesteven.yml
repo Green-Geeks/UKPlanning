@@ -1,7 +1,7 @@
 name: SouthKesteven
 authority_code: southkesteven
 platform: idox
-base_url: http://planning.southkesteven.gov.uk/online-applications
+base_url: https://prod.publicaccess.southkesteven.gov.uk/online-applications
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

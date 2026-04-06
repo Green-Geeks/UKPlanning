@@ -1,7 +1,7 @@
 name: LakeDistrict
 authority_code: lakedistrict
-platform: bespoke
-base_url: https://www.lakedistrict.gov.uk/planning/applicationsanddecisions/planning-application-search-tool
+platform: agile
+base_url: https://planning.agileapplications.co.uk/ldnpa
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

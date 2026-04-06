@@ -32,6 +32,11 @@ COUNCIL_CONFIG = {
     "redbridge": {"client": "REDBRIDGE", "prefix": ""},
     "richmond": {"client": "RICHMONDUPONTHAMES", "prefix": "PA"},
     "cannockchase": {"client": "CANNOCK", "prefix": "CH/"},
+    "dudley": {"client": "DUDLEY", "prefix": "P"},
+    "lakedistrict": {"client": "LDNPA", "prefix": ""},
+    "pembrokeshire": {"client": "PEMBROKESHIRE", "prefix": ""},
+    "peterborough": {"client": "PETERBOROUGH", "prefix": ""},
+    "snowdonia": {"client": "SNOWDONIA", "prefix": "NP"},
 }
 
 

@@ -36,6 +36,9 @@ COUNCIL_CONFIG = {
     "salford": ("https://salfordcitycouncil.my.site.com", "/pr", "Arcus_BE_Public_Register"),
     "ashford": ("https://ashfordboroughcouncil.my.site.com", "/pr", "Arcus_BE_Public_Register"),
     "erewash": ("https://planning.erewash.gov.uk", "/pr", "Arcus_BE_Public_Register"),
+    "havant": ("https://service.havant.gov.uk", "/pr", "Arcus_BE_Public_Register"),
+    "reading": ("https://publicregister.reading.gov.uk", "/pr", "Arcus_BE_Public_Register"),
+    "rochdale": ("https://account.rochdale.gov.uk", "/pr", "Arcus_BE_Public_Register"),
 }
 
 

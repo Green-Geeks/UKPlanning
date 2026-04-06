@@ -1,8 +1,8 @@
 name: EastDevon
 authority_code: eastdevon
 platform: idox
-base_url: "https://planning.eastdevon.gov.uk/online-applications"
-schedule: "0 3 * * *"
+base_url: https://planning.eastdevon.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
 rate_limit_delay: 8.0
-enabled: false
+enabled: true

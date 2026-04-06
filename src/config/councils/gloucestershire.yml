@@ -1,7 +1,7 @@
 name: Gloucestershire
 authority_code: gloucestershire
-platform: idox
-base_url: https://planning.gloucestershire.gov.uk/publicaccess
+platform: tascomi
+base_url: https://planningonline.gloucestershire.gov.uk
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

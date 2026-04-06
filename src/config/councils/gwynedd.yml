@@ -1,7 +1,7 @@
 name: Gwynedd
 authority_code: gwynedd
-platform: swiftlg
-base_url: https://diogel.gwynedd.llyw.cymru/swiftlg/apas/run/wchvarylogin.display
+platform: tascomi
+base_url: https://amg.gwynedd.llyw.cymru
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

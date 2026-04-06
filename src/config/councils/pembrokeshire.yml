@@ -1,7 +1,7 @@
 name: Pembrokeshire
 authority_code: pembrokeshire
-platform: swiftlg
-base_url: https://planning.pembrokeshire.gov.uk/swiftlg/apas/run/wphappcriteria.display
+platform: agile
+base_url: https://planning.agileapplications.co.uk/pembrokeshire
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

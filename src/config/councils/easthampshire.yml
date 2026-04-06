@@ -1,7 +1,7 @@
 name: EastHampshire
 authority_code: easthampshire
-platform: idox_endexc
-base_url: "https://planningpublicaccess.easthants.gov.uk/online-applications"
-schedule: "0 3 * * *"
+platform: tascomi
+base_url: https://publicaccess.easthants.gov.uk
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

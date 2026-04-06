@@ -1,7 +1,7 @@
 name: Dudley
 authority_code: dudley
-platform: planning_explorer
-base_url: https://www5.dudley.gov.uk
+platform: agile
+base_url: https://planning.agileapplications.co.uk/dudley
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

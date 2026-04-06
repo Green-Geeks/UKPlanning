@@ -1,8 +1,7 @@
 name: Rutland
 authority_code: rutland
-platform: swiftlg
-base_url: "http://planningonline.rutland.gov.uk/swift/apas/run"
-schedule: "0 3 * * *"
+platform: idox
+base_url: https://publicaccess.rutland.gov.uk/online-applications
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
-# Was AppSearchServ
+enabled: true

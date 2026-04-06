@@ -24,6 +24,12 @@ COUNCIL_URLS = {
     "cheshireeast": "https://pa.cheshireeast.gov.uk",
     "denbighshire": "https://developments.denbighshire.gov.uk",
     "warrington": "https://online.warrington.gov.uk",
+    "gwynedd": "https://amg.gwynedd.llyw.cymru",
+    "hackney": "https://developmentandhousing.hackney.gov.uk",
+    "wirral": "https://online.wirral.gov.uk",
+    "stoke": "https://development.stoke.gov.uk",
+    "easthampshire": "https://publicaccess.easthants.gov.uk",
+    "gloucestershire": "https://planningonline.gloucestershire.gov.uk",
 }
 
 

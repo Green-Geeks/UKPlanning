@@ -1,7 +1,7 @@
 name: Hackney
 authority_code: hackney
-platform: planning_explorer
-base_url: https://planning.hackney.gov.uk
+platform: tascomi
+base_url: https://developmentandhousing.hackney.gov.uk
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

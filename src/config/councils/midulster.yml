@@ -1,7 +1,7 @@
 name: MidUlster
 authority_code: midulster
-platform: ni_portal
-base_url: https://planningregister.planningsystemni.gov.uk
+platform: idox
+base_url: https://planning.midulstercouncil.org/online-applications
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

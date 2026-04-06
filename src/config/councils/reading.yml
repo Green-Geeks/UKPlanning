@@ -1,7 +1,7 @@
 name: Reading
 authority_code: reading
-platform: bespoke
-base_url: https://planning.reading.gov.uk/fastweb_PL/search.asp
+platform: salesforce
+base_url: https://publicregister.reading.gov.uk
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

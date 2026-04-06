@@ -4,4 +4,4 @@ platform: planning_explorer
 base_url: https://myeplanning.oxfordshire.gov.uk
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

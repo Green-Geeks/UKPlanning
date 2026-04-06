@@ -1,7 +1,7 @@
 name: Wirral
 authority_code: wirral
-platform: idox
-base_url: https://planning.wirral.gov.uk/online-applications
+platform: tascomi
+base_url: https://online.wirral.gov.uk
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

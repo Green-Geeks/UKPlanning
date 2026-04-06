@@ -1,7 +1,7 @@
 name: Birmingham
 authority_code: birmingham
 platform: planning_explorer
-base_url: "https://eplanning.birmingham.gov.uk/Northgate/PlanningExplorer"
-schedule: "0 3 * * *"
+base_url: https://eplanning.birmingham.gov.uk/Northgate/PlanningExplorer
+schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

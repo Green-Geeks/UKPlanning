@@ -1,7 +1,7 @@
 name: Snowdonia
 authority_code: snowdonia
-platform: idox
-base_url: https://publicaccess.eryri.llyw.cymru/online-applications
+platform: agile
+base_url: https://planning.agileapplications.co.uk/snowdonia
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true
