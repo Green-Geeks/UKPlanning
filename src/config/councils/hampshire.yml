@@ -1,8 +1,7 @@
 name: Hampshire
 authority_code: hampshire
-platform: idox
-base_url: https://planning.hants.gov.uk/online-applications
+platform: planning_register
+base_url: https://planning.hants.gov.uk
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
-# disabled_reason: PlanIt confirms working - needs scraper development
+enabled: true

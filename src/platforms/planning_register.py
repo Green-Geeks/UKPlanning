@@ -47,6 +47,7 @@ COUNCIL_URLS = {
     "surrey": "https://planning.surreycc.gov.uk",
     "northamptonshire": "https://wnc.planning-register.co.uk",
     "worcestershire": "https://worcestershire.planning-register.co.uk",
+    "hampshire": "https://planning.hants.gov.uk",
 }
 
 
