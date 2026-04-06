@@ -5,4 +5,4 @@ base_url: https://planning.hounslow.gov.uk/
 schedule: 0 3 * * *
 requires_js: false
 enabled: false
-# disabled_reason: DNS failure from dev machine
+# disabled_reason: Northgate Assure - loads in Playwright but needs JS-based scraper
