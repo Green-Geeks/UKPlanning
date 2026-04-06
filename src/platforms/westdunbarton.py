@@ -53,10 +53,16 @@ class WestDunbartonScraper(BaseScraper):
 
     def __init__(self, config: CouncilConfig):
         super().__init__(config)
+        import ssl
+        ctx = ssl.create_default_context()
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE
+        ctx.set_ciphers("DEFAULT@SECLEVEL=1")
         self._client = httpx.AsyncClient(
             headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"},
             follow_redirects=True,
             timeout=30,
+            verify=ctx,
         )
 
     async def gather_ids(self, date_from: date, date_to: date) -> List[ApplicationSummary]:

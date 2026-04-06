@@ -1,6 +1,7 @@
 import asyncio
 import logging
 import random
+import ssl
 from typing import Any, Dict, Optional
 from urllib.parse import urlparse
 
@@ -50,11 +51,15 @@ class HttpClient:
         }
         if headers:
             default_headers.update(headers)
+        ctx = ssl.create_default_context()
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE
+        ctx.set_ciphers("DEFAULT@SECLEVEL=1")
         self._client = httpx.AsyncClient(
             timeout=timeout,
             headers=default_headers,
             follow_redirects=True,
-            verify=False,
+            verify=ctx,
         )
         self._rate_limit_delay = rate_limit_delay
         self._max_retries = max_retries

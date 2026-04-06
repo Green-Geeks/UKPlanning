@@ -8,12 +8,22 @@ We use /Search/Standard with AcknowledgeLetterDateFrom/To for date-based search,
 then fetch /Planning/Display/{reference} for detail.
 """
 import re
+import ssl
 from datetime import date, datetime
 from typing import List, Optional
 from urllib.parse import quote
 
 import httpx
 from bs4 import BeautifulSoup
+
+
+def _make_ssl_context():
+    """Create an SSL context that works with older/stricter servers."""
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
+    ctx.set_ciphers("DEFAULT@SECLEVEL=1")
+    return ctx
 
 from src.core.config import CouncilConfig
 from src.core.scraper import ApplicationDetail, ApplicationSummary, BaseScraper
@@ -75,7 +85,7 @@ class PlanningRegisterScraper(BaseScraper):
             headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"},
             follow_redirects=True,
             timeout=30,
-            verify=False,
+            verify=_make_ssl_context(),
         )
         self._disclaimer_accepted = False
 

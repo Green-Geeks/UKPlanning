@@ -4,6 +4,7 @@ POST to /results.asp with DateReceivedStart/End. Results as HTML table
 with detail links at /detail.asp?AltRef={ref}.
 """
 import re
+import ssl
 from datetime import date, datetime
 from typing import List, Optional
 from urllib.parse import urljoin
@@ -38,11 +39,15 @@ class FastwebScraper(BaseScraper):
         self._base_url = COUNCIL_URLS.get(
             config.authority_code, config.base_url.rstrip("/")
         )
+        ctx = ssl.create_default_context()
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE
+        ctx.set_ciphers("DEFAULT@SECLEVEL=1")
         self._client = httpx.AsyncClient(
             headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"},
             follow_redirects=True,
             timeout=30,
-            verify=False,
+            verify=ctx,
         )
 
     async def gather_ids(self, date_from: date, date_to: date) -> List[ApplicationSummary]:
