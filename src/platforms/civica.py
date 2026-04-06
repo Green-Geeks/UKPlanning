@@ -17,11 +17,22 @@ COUNCIL_CONFIG = {
         "handler": "https://planning.ashfield.gov.uk/civica/Resource/Civica/Handler.ashx",
         "ref_type": "GFPlanning",
         "app_url": "https://planning.ashfield.gov.uk/planning-applications/planning-application?RefType=GFPlanning&KeyNo=",
+        "date_from_field": "SDate1From",
+        "date_to_field": "SDate1To",
+    },
+    "havering": {
+        "handler": "https://msp.havering.gov.uk/civica/Resource/Civica/Handler.ashx",
+        "ref_type": "GFPlanning",
+        "app_url": "https://msp.havering.gov.uk/planning/planning-application?RefType=GFPlanning&KeyNo=",
+        "date_from_field": "SDate1From",
+        "date_to_field": "SDate1To",
     },
     "stalbans": {
         "handler": "https://planningapplications.stalbans.gov.uk/w2webparts/Resource/Civica/Handler.ashx",
         "ref_type": "PBDC",
         "app_url": "https://planningapplications.stalbans.gov.uk/planning/planning-application?RefType=PBDC&KeyNo=",
+        "date_from_field": "received_dateFrom",
+        "date_to_field": "received_dateTo",
     },
 }
 
@@ -56,6 +67,8 @@ class CivicaScraper(BaseScraper):
         self._handler_url = cfg.get("handler", "")
         self._ref_type = cfg.get("ref_type", "GFPlanning")
         self._app_url_base = cfg.get("app_url", "")
+        self._date_from_field = cfg.get("date_from_field", "SDate1From")
+        self._date_to_field = cfg.get("date_to_field", "SDate1To")
         self._client = httpx.AsyncClient(
             headers={
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)",
@@ -83,8 +96,8 @@ class CivicaScraper(BaseScraper):
 
     async def gather_ids(self, date_from: date, date_to: date) -> List[ApplicationSummary]:
         search_fields = {
-            "received_dateFrom": date_from.strftime("%d/%m/%Y"),
-            "received_dateTo": date_to.strftime("%d/%m/%Y"),
+            self._date_from_field: date_from.strftime("%d/%m/%Y"),
+            self._date_to_field: date_to.strftime("%d/%m/%Y"),
         }
 
         all_summaries = []
@@ -101,7 +114,7 @@ class CivicaScraper(BaseScraper):
 
             for obj in objects:
                 fields = _field_dict(obj.get("Items", []))
-                ref = fields.get("ref_no", "")
+                ref = fields.get("ref_no") or fields.get("SDescription", "")
                 key_no = obj.get("KeyNo") or fields.get("KeyNo", "")
                 if ref:
                     all_summaries.append(ApplicationSummary(
@@ -127,8 +140,8 @@ class CivicaScraper(BaseScraper):
         from src.core.scraper import ScrapeResult
         try:
             search_fields = {
-                "received_dateFrom": date_from.strftime("%d/%m/%Y"),
-                "received_dateTo": date_to.strftime("%d/%m/%Y"),
+                self._date_from_field: date_from.strftime("%d/%m/%Y"),
+                self._date_to_field: date_to.strftime("%d/%m/%Y"),
             }
 
             details = []
@@ -145,14 +158,14 @@ class CivicaScraper(BaseScraper):
 
                 for obj in objects:
                     fields = _field_dict(obj.get("Items", []))
-                    ref = fields.get("ref_no", "")
+                    ref = fields.get("ref_no") or fields.get("SDescription", "")
                     if not ref:
                         continue
                     key_no = obj.get("KeyNo") or fields.get("KeyNo", "")
                     details.append(ApplicationDetail(
                         reference=ref,
-                        address=fields.get("application_address", ""),
-                        description=fields.get("proposal", ""),
+                        address=fields.get("application_address") or fields.get("ApplicationAddress") or fields.get("Address", ""),
+                        description=fields.get("proposal") or fields.get("Proposal") or fields.get("SText10", ""),
                         url=f"{self._app_url_base}{key_no}" if key_no else None,
                         application_type=fields.get("app_type"),
                         status=fields.get("app_status"),
