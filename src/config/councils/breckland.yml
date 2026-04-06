@@ -1,7 +1,7 @@
 name: Breckland
 authority_code: breckland
-platform: breckland
-base_url: https://planning.breckland.gov.uk/OcellaWeb/planningSearch
+platform: tascomi
+base_url: https://publicportal.breckland.gov.uk
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
+enabled: true

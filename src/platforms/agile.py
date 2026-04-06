@@ -31,6 +31,7 @@ COUNCIL_CONFIG = {
     "yorkshiredales": {"client": "YD", "prefix": "C/"},
     "redbridge": {"client": "REDBRIDGE", "prefix": ""},
     "richmond": {"client": "RICHMONDUPONTHAMES", "prefix": "PA"},
+    "cannockchase": {"client": "CANNOCK", "prefix": "CH/"},
 }
 
 

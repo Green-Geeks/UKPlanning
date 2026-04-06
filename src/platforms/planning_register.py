@@ -33,6 +33,7 @@ COUNCIL_URLS = {
     "redcar": "https://planning.redcar-cleveland.gov.uk",
     "wychavon": "https://plan.wychavon.gov.uk",
     "kent": "https://www.kentplanningapplications.co.uk",
+    "exmoor": "https://exmoor.planning-register.co.uk",
 }
 
 

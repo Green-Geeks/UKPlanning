@@ -34,6 +34,8 @@ COUNCIL_CONFIG = {
     "wiltshire": ("https://development.wiltshire.gov.uk", "/pr", "Arcus_BE_Public_Register"),
     "miltonkeynes": ("https://www.be.milton-keynes.gov.uk", "/pr", "Arcus_BE_Public_Register"),
     "salford": ("https://salfordcitycouncil.my.site.com", "/pr", "Arcus_BE_Public_Register"),
+    "ashford": ("https://ashfordboroughcouncil.my.site.com", "/pr", "Arcus_BE_Public_Register"),
+    "erewash": ("https://planning.erewash.gov.uk", "/pr", "Arcus_BE_Public_Register"),
 }
 
 
