@@ -1,8 +1,7 @@
 name: Rotherham
 authority_code: rotherham
-platform: idox
+platform: fastweb
 base_url: https://planning.rotherham.gov.uk/online-applications
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
-# disabled_reason: Fastweb platform - no scraper built yet
+enabled: true

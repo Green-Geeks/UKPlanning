@@ -1,8 +1,7 @@
 name: Arun
 authority_code: arun
-platform: idox
+platform: ocella
 base_url: https://www1.arun.gov.uk/online-applications
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
-# disabled_reason: Ocella platform - no scraper built yet
+enabled: true

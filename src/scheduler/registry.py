@@ -6,6 +6,7 @@ from src.platforms.ambervalley import AmberValleyScraper
 from src.platforms.barnsley import BarnsleyScraper
 from src.platforms.bath import BathScraper
 from src.platforms.fareham import FarehamScraper
+from src.platforms.fastweb import FastwebScraper
 from src.platforms.idox import IdoxScraper, IdoxEndExcScraper, IdoxNIScraper, IdoxCrumbScraper
 from src.platforms.ni_portal import NIPortalScraper
 from src.platforms.northlincs import NorthLincsScraper
@@ -31,6 +32,7 @@ from src.platforms.statmap import StatmapScraper
 from src.platforms.hyndburn import NorthgateAssureScraper
 from src.platforms.liverpool import LiverpoolScraper
 from src.platforms.northgate import NorthgateScraper
+from src.platforms.ocella import OcellaScraper
 
 
 class ScraperRegistry:
@@ -52,6 +54,7 @@ class ScraperRegistry:
             "barnsley": BarnsleyScraper,
             "bath": BathScraper,
             "fareham": FarehamScraper,
+            "fastweb": FastwebScraper,
             "northlincs": NorthLincsScraper,
             "salesforce": SalesforceArcusScraper,
             "acolnet": CentralBedfordshireScraper,
@@ -73,6 +76,7 @@ class ScraperRegistry:
             "statmap": StatmapScraper,
             "liverpool": LiverpoolScraper,
             "northgate_assure": NorthgateAssureScraper,
+            "ocella": OcellaScraper,
             "northgate": NorthgateScraper,
         }
 

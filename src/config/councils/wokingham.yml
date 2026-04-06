@@ -1,8 +1,7 @@
 name: Wokingham
 authority_code: wokingham
-platform: idox
+platform: fastweb
 base_url: https://publicaccess.wokingham.gov.uk/online-applications
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
-# disabled_reason: Fastweb platform - no scraper built yet
+enabled: true

@@ -1,8 +1,7 @@
 name: GreatYarmouth
 authority_code: greatyarmouth
-platform: idox
+platform: ocella
 base_url: https://planning.great-yarmouth.gov.uk/online-applications
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
-# disabled_reason: Ocella platform - no scraper built yet
+enabled: true
