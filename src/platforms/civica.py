@@ -20,6 +20,13 @@ COUNCIL_CONFIG = {
         "date_from_field": "SDate1From",
         "date_to_field": "SDate1To",
     },
+    "waverley": {
+        "handler": "https://planning360.waverley.gov.uk:4443/w2webparts/Resource/Civica/Handler.ashx",
+        "ref_type": "GFPlanning",
+        "app_url": "https://planning360.waverley.gov.uk:4443/planning/planning-application?RefType=GFPlanning&KeyNo=",
+        "date_from_field": "SDate1From",
+        "date_to_field": "SDate1To",
+    },
     "havering": {
         "handler": "https://msp.havering.gov.uk/civica/Resource/Civica/Handler.ashx",
         "ref_type": "GFPlanning",

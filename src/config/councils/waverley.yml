@@ -1,8 +1,7 @@
 name: Waverley
 authority_code: waverley
-platform: bespoke
-base_url: https://planning360.waverley.gov.uk/planning
+platform: civica
+base_url: https://planning360.waverley.gov.uk:4443
 schedule: 0 3 * * *
 requires_js: false
-enabled: false
-# disabled_reason: PlanIt confirms working - needs scraper development
+enabled: true
