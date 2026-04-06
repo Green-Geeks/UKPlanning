@@ -20,6 +20,7 @@ services:
       - "${APP_PORT:-8000}:8000"
     environment:
       DATABASE_URL: postgresql://ukplanning:${DB_PASSWORD:-devpassword}@db:5432/ukplanning
+      APP_PORT: ${APP_PORT:-8000}
     depends_on:
       db:
         condition: service_healthy

@@ -232,13 +232,15 @@ def run_server():
             "stale": max(0, stale_count - len(running_scrapes)),
         }
 
+    port = int(os.environ.get("APP_PORT", 8000))
+
     logger.info("Starting UK Planning Dashboard")
     logger.info("  Councils loaded: %d", len(configs))
-    logger.info("  Dashboard: http://0.0.0.0:8000")
+    logger.info("  Dashboard: http://0.0.0.0:%d", port)
     logger.info("  Trigger scrape: POST /api/scrape/{authority_code}")
     logger.info("  Trigger all:    POST /api/scrape-all")
 
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=port)
 
 
 if __name__ == "__main__":
