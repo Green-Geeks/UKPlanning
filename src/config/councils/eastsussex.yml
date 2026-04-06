@@ -5,4 +5,4 @@ base_url: https://apps.eastsussex.gov.uk/environment/planning/applications/regis
 schedule: 0 3 * * *
 requires_js: false
 enabled: false
-# disabled_reason: PlanIt confirms working - needs scraper development
+# disabled_reason: Blazor Server (SignalR websocket) - form submits don't work without SignalR.

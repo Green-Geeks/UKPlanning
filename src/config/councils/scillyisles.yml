@@ -5,4 +5,4 @@ base_url: "http://www.scilly.gov.uk/planning-development"
 schedule: "0 3 * * *"
 requires_js: false
 enabled: false
-# disabled_reason: PlanIt confirms working - needs scraper development
+# disabled_reason: Gazette/PDF only - no searchable application database. Confirmed via Playwright.

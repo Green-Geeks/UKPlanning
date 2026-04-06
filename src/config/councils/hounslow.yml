@@ -5,4 +5,4 @@ base_url: https://planning.hounslow.gov.uk/
 schedule: 0 3 * * *
 requires_js: false
 enabled: false
-# disabled_reason: PlanIt confirms working - needs scraper development
+# disabled_reason: Northgate EnterpriseStore - reports 'Unsupported Web Browser' even in Playwright.

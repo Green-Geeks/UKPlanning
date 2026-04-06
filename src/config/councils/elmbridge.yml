@@ -5,4 +5,4 @@ base_url: https://emaps.elmbridge.gov.uk/online-applications
 schedule: 0 3 * * *
 requires_js: false
 enabled: false
-# disabled_reason: PlanIt confirms working - needs scraper development
+# disabled_reason: Template file removed - portal decommissioned. Confirmed via Playwright.

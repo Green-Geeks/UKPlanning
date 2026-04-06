@@ -6,4 +6,4 @@ schedule: "0 3 * * *"
 requires_js: false
 enabled: false
 # No scraper - site has PDFs only
-# disabled_reason: PlanIt confirms working - needs scraper development
+# disabled_reason: PDF gazette only - no searchable database. Confirmed via Playwright.
